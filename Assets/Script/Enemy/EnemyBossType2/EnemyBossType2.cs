@@ -63,7 +63,7 @@ public class EnemyBossType2 : Unit
 
     private bool deathCheck = false;
 
-    private bool dieAnimationCheck = false;
+    private bool allEnemyObjRemove = true;
 
     [SerializeField] private bool testHpSet = false;
 
@@ -96,7 +96,7 @@ public class EnemyBossType2 : Unit
 
         if (testHpSet)
         {
-            hp = 10;
+            hp = 3;
         }
 
         stat.SetHp(hp);
@@ -116,7 +116,6 @@ public class EnemyBossType2 : Unit
         if (deathCheck)
         {
             box.enabled = false;
-
             return;
         }
 
@@ -407,10 +406,15 @@ public class EnemyBossType2 : Unit
 
             anim.SetTrigger("Die");
 
+            patten2ObjCheck = null;
+            patten3ObjCheck = null;
+
+            PoolingManager.Instance.RemoveAllPoolingObject(GameManager.instance.GetEnemyAttackObjectPatten.gameObject);
+
         }
     }
 
-    
+
 
     //애니메이션용
 
@@ -435,9 +439,6 @@ public class EnemyBossType2 : Unit
 
     }
 
-    private void DeathAnimationEndCheck()
-    {
-        GameManager.instance.SetBossDieCheck(true);
-    }
+
 
 }

@@ -234,9 +234,17 @@ public class PoolingManager : MonoBehaviour
     public void RemoveAllPoolingObject(GameObject _obj)
     {
         int parentCount = _obj.transform.childCount;
-        for(int i =0; i< parentCount; i++)
+        Debug.Log($"풀링 : {parentCount}");
+        for (int i = parentCount - 1; i> 0; i--)
         {
-            string name = _obj.transform.GetChild(i).name;
+            Transform trsObj = _obj.transform.GetChild(i);
+
+            if (trsObj == null)
+            {
+                Debug.Log("수정필요");
+                break;
+            }
+            string name = trsObj.name;
 
             Transform parent = transform.Find(name);
 
@@ -246,10 +254,10 @@ public class PoolingManager : MonoBehaviour
 
             if (parent.childCount < poolingCount)
             {
-                _obj.transform.GetChild(i).SetParent(parent);
-                _obj.SetActive(false);
-                _obj.transform.GetChild(i).gameObject.SetActive(false);
-                _obj.transform.GetChild(i).position = Vector3.zero;
+                trsObj.SetParent(parent);
+                trsObj.gameObject.SetActive(false);
+                trsObj.position = Vector3.zero;
+
             }
             else
             {
