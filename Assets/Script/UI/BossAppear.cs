@@ -34,7 +34,7 @@ public class BossAppear : MonoBehaviour
 
         rectTrs = transform.GetChild(1).GetComponent<RectTransform>();
         bossName = rectTrs.GetComponentInChildren<TextMeshProUGUI>();
-        //bossName.text =  겟스테이지 수정후에 스테이지에맞게 설정
+        bossName.text = (bossName.text == null ? "MisingEnemy" : GameManager.instance.BossName);
         bossImage = transform.GetChild(2).GetComponent<Image>();
 
         int bulidNum = SceneManager.GetActiveScene().buildIndex;

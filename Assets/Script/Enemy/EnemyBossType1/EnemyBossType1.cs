@@ -5,13 +5,13 @@ using UnityEngine.AI;
 
 public class EnemyBossType1 : Unit
 {
-    private int pattenType;
+    [SerializeField] private int pattenType;
     private BombingPatten bombing;
 
     private bool moveAnimation = true;
 
     [SerializeField] private float attackDelay = 3;//공격간의 시간
-    private float attackDelayTimer = 0;
+    [SerializeField] private float attackDelayTimer = 0;
 
     private bool attackAnimationCheck = false;
     private bool animationCheck = false;
@@ -41,7 +41,7 @@ public class EnemyBossType1 : Unit
     private Vector3 beforePlayerTrs;
 
     private bool deathCheck = false;
-    
+    [SerializeField] private bool testHp;
     protected new void Start()
     {
         base.Start();
@@ -58,19 +58,23 @@ public class EnemyBossType1 : Unit
         if (GameManager.instance.GetStageNum == 1)
         {
             hp = 100;
-            stat.SetHp(hp);
         }
         else if (GameManager.instance.GetStageNum == 2)
         {
             hp = 150;
-            stat.SetHp(hp);
         }
         else
         {
             hp = 100;
-            stat.SetHp(hp);
             Debug.LogError($"StageNumError , StageNum ={GameManager.instance.GetStageNum}");
         }
+
+        if (testHp)
+        {
+            hp = 4;
+        }
+
+        stat.SetHp(hp);
     }
 
     void Update()
@@ -83,13 +87,13 @@ public class EnemyBossType1 : Unit
 
         if (deathCheck)
         {
-            box.enabled = false;   
+            box.enabled = false;
             return;
         }
         enemyMove();
         enemyAttackMotion();
-        enemyAttackPattern();
         enemyHalfPatten();
+        enemyPatten4();
         enemyDie();
     }
 
@@ -144,7 +148,6 @@ public class EnemyBossType1 : Unit
                 animator.SetFloat("SkillState", 0);
 
                 pattenType = 4;
-
             }
             else
             {
@@ -169,129 +172,104 @@ public class EnemyBossType1 : Unit
 
     }
 
-    private void enemyAttackPattern()
+    private void enemyPatten1()
     {
-        if (pattenType == 1)
+        if (playerTrs.position.x >= 7 && playerTrs.position.x <= 22 && playerTrs.position.z >= 7 && playerTrs.position.z <= 22)
         {
+            pullObject.Clear();
+            Vector3 targetVecX;
+            Vector3 targetVecZ;
 
-            if (playerTrs.position.x >= 7 && playerTrs.position.x <= 22 && playerTrs.position.z >= 7 && playerTrs.position.z <= 22)
+            if (playerTrs.position.x > beforePlayerTrs.x)
             {
-                pullObject.Clear();
-                Vector3 targetVecX;
-                Vector3 targetVecZ;
-
-                if (playerTrs.position.x > beforePlayerTrs.x)
-                {
-                    targetVecX = new Vector3(playerTrs.position.x + 4, playerTrs.position.y, playerTrs.position.z);
-                }
-                else
-                {
-                    targetVecX = new Vector3(playerTrs.position.x - 4, playerTrs.position.y, playerTrs.position.z);
-                }
-
-                if (playerTrs.position.z > beforePlayerTrs.z)
-                {
-                    targetVecZ = new Vector3(playerTrs.position.x, playerTrs.position.y, playerTrs.position.z + 4);
-                }
-                else
-                {
-                    targetVecZ = new Vector3(playerTrs.position.x, playerTrs.position.y, playerTrs.position.z - 4);
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    pullObject.Add(PoolingManager.Instance.CreateObject("PullObject", GameManager.instance.GetEnemyAttackObjectPatten));
-                    if (i == 0)
-                    {
-                        pullObject[i].transform.position = targetVecX;
-                    }
-                    else
-                    {
-                        pullObject[i].transform.position = targetVecZ;
-                    }
-                    pullObject[i].GetComponent<PullObject>().RemoveObject(5);
-                }
-
-                #region
-                //for (int i = 0; i < 4; i++)
-                //{
-                //    Vector3 playerVec = playerTrs.position;
-                //    Vector3 targetVec;
-                //    if (i == 0)
-                //    {
-                //        targetVec = new Vector3(playerVec.x + 4, playerVec.y, playerVec.z);
-
-                //    }
-                //    else if (i == 1)
-                //    {
-                //        targetVec = new Vector3(playerVec.x - 4, playerVec.y, playerVec.z);
-
-                //    }
-                //    else if (i == 2)
-                //    {
-                //        targetVec = new Vector3(playerVec.x, playerVec.y, playerVec.z + 4);
-
-                //    }
-                //    else
-                //    {
-                //        targetVec = new Vector3(playerVec.x, playerVec.y, playerVec.z - 4);
-
-                //    }
-
-                //    pullObject.Add(PoolingManager.Instance.CreateObject("PullObject", GameManager.instance.GetEnemyAttackObjectPatten));
-                //    pullObject[i].transform.position = targetVec;
-                //    pullObject[i].GetComponent<PullObject>().RemoveObject(5);
-
-                //}
-                #endregion
-                pattenType = 0;
-                attackAnimationCheck = false;
-                animationCheck = false;
+                targetVecX = new Vector3(playerTrs.position.x + 4, playerTrs.position.y, playerTrs.position.z);
             }
             else
             {
-                pattenType = Random.Range(2, 4);//이떄는 외부에있으므로 다른패턴을쓴다
+                targetVecX = new Vector3(playerTrs.position.x - 4, playerTrs.position.y, playerTrs.position.z);
+            }
+
+            if (playerTrs.position.z > beforePlayerTrs.z)
+            {
+                targetVecZ = new Vector3(playerTrs.position.x, playerTrs.position.y, playerTrs.position.z + 4);
+            }
+            else
+            {
+                targetVecZ = new Vector3(playerTrs.position.x, playerTrs.position.y, playerTrs.position.z - 4);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                pullObject.Add(PoolingManager.Instance.CreateObject("PullObject", GameManager.instance.GetEnemyAttackObjectPatten));
+                if (i == 0)
+                {
+                    pullObject[i].transform.position = targetVecX;
+                }
+                else
+                {
+                    pullObject[i].transform.position = targetVecZ;
+                }
+                pullObject[i].GetComponent<PullObject>().RemoveObject(5);
             }
 
 
-
-        }
-
-        if (pattenType == 2)
-        {
-            StartCoroutine(bombingPatten());
             pattenType = 0;
             attackAnimationCheck = false;
             animationCheck = false;
-        }
-
-        if (pattenType == 3)
-        {
-            GameObject obj = PoolingManager.Instance.CreateObject("Type1Patten3", GameManager.instance.GetEnemyAttackObjectPatten);
-            obj.transform.position = patten3Pos;
-            obj.GetComponent<Type1Patten3>().SetShotStart(true);
-            pattenType = 0;
             attackDelayTimer = 0;
-            attackAnimationCheck = false;
-            animationCheck = false;
-            Debug.Log($"Patten3 ={patten3Pos}");
-
         }
+        else
+        {
+            int pattenTypeNum = Random.Range(0, 9);//이떄는 외부에있으므로 다른패턴을쓴다
+            if (pattenTypeNum > 3)
+            {
+                enemyPatten2();
+            }
+            else
+            {
+                enemyPatten3();
+            }
+        }
+    }
 
+    private void enemyPatten2()
+    {
+        StartCoroutine(bombingPatten());
+        pattenType = 0;
+        attackAnimationCheck = false;
+        animationCheck = false;
+        attackDelayTimer = 0;
+    }
+
+    private void enemyPatten3()
+    {
+        GameObject obj = PoolingManager.Instance.CreateObject("Type1Patten3", GameManager.instance.GetEnemyAttackObjectPatten);
+        Vector3 pos = attackTrs.position;
+        pos.y = 0.1f;
+
+        obj.transform.position = pos;
+        obj.GetComponent<Type1Patten3>().SetShotStart(true);
+        pattenType = 0;
+        attackAnimationCheck = false;
+        animationCheck = false;
+        attackDelayTimer = 0;
+    }
+
+    private void enemyPatten4()
+    {
         if (pattenType == 4)
         {
             attackRange = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.BossEndAttackRange, GameManager.instance.GetEnemyAttackObjectPatten);
             attackRange.transform.position = transform.position;
             attackRange.GetComponent<MeleeAttackRange>().Boss = this;
             player.Pull(transform.parent.position, 1f, 3.2f);
-            attackDelayTimer = 0;
             pattenType = 0;
+            attackDelayTimer = 0;
         }
 
         if (attackRange != null)
         {
             attackRange.GetComponent<MeleeAttackRange>().SetAttack(patten4AttackRangeCheck, patten4AttackStart);
         }
-
     }
 
     IEnumerator bombingPatten()
@@ -349,6 +327,7 @@ public class EnemyBossType1 : Unit
             deathCheck = true;
 
             animator.SetTrigger("Die");
+            PoolingManager.Instance.RemoveAllPoolingObject(GameManager.instance.GetEnemyAttackObjectPatten.gameObject);
 
         }
     }
@@ -356,8 +335,15 @@ public class EnemyBossType1 : Unit
     //애니메이터외부
     private void Patten1And2Animation()
     {
-        pattenType = Random.Range(1, 4);
-        attackDelayTimer = 0;
+        pattenType = Random.Range(1, 3);
+        if (pattenType == 1)
+        {
+            enemyPatten1();
+        }
+        else
+        {
+            enemyPatten2();
+        }
     }
 
     private void MeleeAttackStart()
@@ -384,10 +370,8 @@ public class EnemyBossType1 : Unit
 
     private void Patten3PostionCheck()
     {
-        patten3Pos = attackTrs.position;
-        patten3Pos.y = 0.1f;
-        Debug.Log($"animation ={patten3Pos}");
         pattenType = 3;
+        enemyPatten3();
     }
 
 }

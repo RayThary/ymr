@@ -43,7 +43,7 @@ public class BossEnemyEndType : Unit
     private List<GameObject> bullet = new List<GameObject>();
 
 
-    [SerializeField]private BoxCollider box;//돌진시 피격판정용
+    [SerializeField] private BoxCollider box;//돌진시 피격판정용
 
     //몇초동안 멸리있었는지체크해주기위해 만듬
     [SerializeField] private float farTime = 5;
@@ -54,11 +54,14 @@ public class BossEnemyEndType : Unit
 
     //반피이하 패턴
     private bool halfPattenCheck = false;
-    
-    [SerializeField]private List<EndBossSeal> cube = new List<EndBossSeal>();
+    private bool halfPattenIng = false;
+    [SerializeField] private List<EndBossSeal> cube = new List<EndBossSeal>();
 
+    private float halfTimer = 0;
 
     [SerializeField] private float moveSpeed = 3.5f;
+
+    private bool deathCheck = false;
 
     private Player player;
 
@@ -66,10 +69,10 @@ public class BossEnemyEndType : Unit
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            //Debug.Log("히트!");
+            player.Hit(this, 1);
         }
     }
-    
+
     protected new void Start()
     {
         base.Start();
@@ -84,16 +87,33 @@ public class BossEnemyEndType : Unit
         nav.speed = moveSpeed;
 
         cube.FindAll(x => x.Boss = this);
+
+        BossUI.Instance.StatBoss = stat;
+        
+        stat.SetHp(10);//보스hp
+        
     }
 
 
     void Update()
     {
+        if (GameManager.instance.GetStart() == false)
+        {
+            return;
+        }
+
+
+        if (deathCheck)
+        {
+            box.enabled = false;
+            return;
+        }
+
         endBossMove();
         farPatten();
         vicinityPatten();
         HaxagonPatten();
-
+        enemyDie();
 
     }
 
@@ -133,7 +153,7 @@ public class BossEnemyEndType : Unit
 
     private void farPatten()
     {
-        
+
         if (farTimer >= farTime)
         {
             if (farAttackCheck == false)
@@ -214,15 +234,15 @@ public class BossEnemyEndType : Unit
         {
             return;
         }
-        
+
         if (vicinityPattenCheck)
         {
             nav.speed = 0;
-            
+
             attackRange = PoolingManager.Instance.CreateObject("BossEndAttackRange", transform);
             attackRange.transform.position = transform.parent.position;
             attackRange.GetComponent<MeleeAttackRange>().Boss = this;
-            
+
             anim.SetFloat("AttackSpeed", 0.4f);
             anim.SetFloat("AttackState", 1);
             anim.SetFloat("SkillState", 0.5f);
@@ -257,7 +277,23 @@ public class BossEnemyEndType : Unit
 
     private void HaxagonPatten()
     {
-        if (halfPattenCheck == false)
+        if (halfPattenCheck)
+        {
+            if (halfPattenIng)
+            {
+                halfTimer += Time.deltaTime;
+                if (halfTimer > 5)
+                {
+                    int halfNum = Random.Range(0, 10);
+                    if (halfNum > 6)
+                    {
+                        StartCoroutine(HaxagonLaser());
+                    }
+                    halfPattenIng = false;
+                }
+            }
+        }
+        else
         {
             if (stat.HP <= stat.MAXHP / 2)
             {
@@ -269,16 +305,29 @@ public class BossEnemyEndType : Unit
 
     IEnumerator HaxagonLaser()
     {
-        for (int i = 0; i < 99; i++)
+        for (int i = 0; i < 5; i++)
         {
             PoolingManager.Instance.CreateObject("HaxagonLaser", transform.parent.parent);
             yield return new WaitForSeconds(5);
-
+            if (i == 5)
+            {
+                halfPattenIng = true;
+            }
         }
 
     }
 
-  
+    private void enemyDie()
+    {
+        if (stat.HP <= 0)
+        {
+            deathCheck = true;
+
+            anim.SetTrigger("Die");
+            PoolingManager.Instance.RemoveAllPoolingObject(GameManager.instance.GetEnemyAttackObjectPatten.gameObject);
+
+        }
+    }
 
 
     //애니메이션용
@@ -298,7 +347,7 @@ public class BossEnemyEndType : Unit
     private void VicinityStartAnim()
     {
         vicinityAttackRangeCheck = true;
-        
+
     }
 
     private void VicinityAnim()
@@ -308,7 +357,7 @@ public class BossEnemyEndType : Unit
     }
     private void VicinityEndAnim()
     {
-        
+
         vicinityAttackRangeCheck = false;
         vicinityAttack = false;
         vicinityCoolCheck = true;

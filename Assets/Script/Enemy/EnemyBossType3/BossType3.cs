@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BossType3 : Unit
 {
@@ -31,11 +32,13 @@ public class BossType3 : Unit
 
     [SerializeField] private GameObject objShield;
 
+    private BoxCollider box;
     private Animator anim;
     private Transform playerTrs;
     private GroundPatten groundpatten;
     private ParticleSystem particle;
 
+    private bool deathCheck = false;
 
     protected new void Start()
     {
@@ -43,6 +46,7 @@ public class BossType3 : Unit
         AttackSpeed = 1;
         beforeAttackPattenTime = attackPattenTime;
         playerTrs = GameManager.instance.GetPlayerTransform;
+        box = GetComponent<BoxCollider>();
         anim = GetComponent<Animator>();
         groundpatten = GetComponent<GroundPatten>();
         particle = GetComponent<ParticleSystem>();
@@ -62,29 +66,38 @@ public class BossType3 : Unit
         if (GameManager.instance.GetStageNum == 1)
         {
             hp = 100;
-            stat.SetHp(hp);
         }
         else if (GameManager.instance.GetStageNum == 2)
         {
             hp = 150;
-            stat.SetHp(hp);
         }
         else
         {
             hp = 100;
-            stat.SetHp(hp);
             Debug.LogError($"StageNumError , StageNum ={GameManager.instance.GetStageNum}");
         }
 
+        stat.SetHp(hp);
     }
 
     void Update()
     {
+        if (GameManager.instance.GetStart() == false)
+        {
+            return;
+        }
+
+
+        if (deathCheck)
+        {
+            box.enabled = false;
+            return;
+        }
         basicAttackPatten();
         attackPatten();
         pattenAnimator();
         halfHpAddPatten();
-        //shieldPatten();
+        enemyDie();
     }
 
 
@@ -272,7 +285,7 @@ public class BossType3 : Unit
         {
             return;
         }
-       
+
         int shieldNum;
         ParticleSystem.MainModule main = particle.main;
 
@@ -298,7 +311,17 @@ public class BossType3 : Unit
         }
     }
 
-   
+    private void enemyDie()
+    {
+        if (stat.HP <= 0)
+        {
+            deathCheck = true;
+
+            anim.SetTrigger("Die");
+            PoolingManager.Instance.RemoveAllPoolingObject(GameManager.instance.GetEnemyAttackObjectPatten.gameObject);
+
+        }
+    }
 
     //애니메이션용
     private void EnventEnd()

@@ -16,15 +16,11 @@ public class DangerZone : MonoBehaviour
 
     private float alpha = 0.9f;
 
+ 
     void Start()
     {
-
-
-
         spr = GetComponent<SpriteRenderer>();
         color = spr.color;
-
-
     }
 
 

@@ -234,7 +234,6 @@ public class PoolingManager : MonoBehaviour
     public void RemoveAllPoolingObject(GameObject _obj)
     {
         int parentCount = _obj.transform.childCount;
-        Debug.Log($"Ç®¸µ : {parentCount}");
         for (int i = parentCount - 1; i> 0; i--)
         {
             Transform trsObj = _obj.transform.GetChild(i);

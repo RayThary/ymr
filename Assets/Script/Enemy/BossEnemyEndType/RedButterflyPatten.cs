@@ -27,14 +27,15 @@ public class RedButterflyPatten : MonoBehaviour
             dangerzone.enabled = false;
             spr.enabled = false;
         }
-        //if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-        //{
-        //    bombCheck = true;
-        //    timer = 0;
-        //    StartCoroutine(crateButterfly());
-        //    dangerzone.enabled = false;
-        //    spr.enabled = false;
-        //}
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+        {
+            bombCheck = true;
+            timer = 0;
+            StartCoroutine(crateButterfly());
+            dangerzone.enabled = false;
+            spr.enabled = false;
+        }
     }
 
     void Start()

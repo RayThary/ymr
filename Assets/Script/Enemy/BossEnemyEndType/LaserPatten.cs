@@ -15,6 +15,7 @@ public class LaserPatten : MonoBehaviour
     private Transform playerTrs;
     private Vector3 targetVec;
 
+    private Player player;
     private bool firstCheck = false;
 
     public bool test = false;
@@ -36,10 +37,13 @@ public class LaserPatten : MonoBehaviour
         box = GetComponent<BoxCollider>();
 
         playerTrs = GameManager.instance.GetPlayerTransform;
+        player = GameManager.instance.GetPlayer;
+
         Vector3 spawnPos = parentTrs.position;
         spawnPos.y = 0f;
         lineRen.SetPosition(0, spawnPos);
     }
+
 
     // Update is called once per frame
     void Update()
@@ -68,12 +72,20 @@ public class LaserPatten : MonoBehaviour
         lineRen.SetPosition(1, transform.position);
     }
 
+    private void OnDrawGizmos()
+    {
+        Debug.DrawLine(lineRen.GetPosition(0), lineRen.GetPosition(1), Color.red);
+    }
 
     private void hitCheck()
     {
-        if (Physics.Linecast(parentTrs.position, transform.position, LayerMask.GetMask("Player")))
+        Vector3 startVec = lineRen.GetPosition(0);
+        Vector3 endVec = lineRen.GetPosition(1);
+        startVec.y = 0;
+        endVec.y = 0;
+
+        if (Physics.Linecast(startVec, endVec, LayerMask.GetMask("Player")))
         {
-            Player player = GameManager.instance.GetPlayer;
             player.Hit(null, 1);
         }
     }

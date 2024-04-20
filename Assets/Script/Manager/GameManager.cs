@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     //카드 고를때 화면을 가릴 이미지
     private Image cardSelectWindow;
 
+    private string bossName;
+    public string BossName { get { return bossName; } }
 
     private void Awake()
     {
@@ -53,6 +55,8 @@ public class GameManager : MonoBehaviour
         player = FindObjectOfType<Player>();
         enemyAttackObj = transform.GetChild(0);
         stage = GetComponentInChildren<BoxCollider>();
+
+        bossName = GameObject.Find("Boss").GetComponentInChildren<Stat>().BossName;
 
         //프레임 설정 / 화면비
         RefreshRate rate = new RefreshRate();
@@ -79,12 +83,10 @@ public class GameManager : MonoBehaviour
             CardTest = false;
             cardManager.ViewCards();
         }
-
-       
-
-     
+        
     }
 
+  
     //보스가 죽으면 실행
     public void CardSelectStep()
     {

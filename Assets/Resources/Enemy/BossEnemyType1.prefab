@@ -1614,10 +1614,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   godTimer: 0
+  pattenType: 0
   attackDelay: 2
+  attackDelayTimer: 0
   nextBombingTime: 0.5
   pullObject: []
   attackTrs: {fileID: 6992006303454770055}
+  testHp: 0
 --- !u!114 &3272973751995671131
 MonoBehaviour:
   m_ObjectHideFlags: 0
