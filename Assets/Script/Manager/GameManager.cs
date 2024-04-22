@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     private Player player;
-    public Player GetPlayer { get { return player; } }    
+    public Player GetPlayer { get { return player; } }
     public Transform GetPlayerTransform { get { return player.transform; } }
 
     private Transform enemyAttackObj;
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private BoxCollider stage;
     public BoxCollider GetStage { get { return stage; } }
 
-    [SerializeField]private int stageNum = 1;
+    [SerializeField] private int stageNum = 1;
     public int GetStageNum { get { return stageNum; } }
 
     private bool StartCheck = true;
@@ -56,7 +56,10 @@ public class GameManager : MonoBehaviour
         enemyAttackObj = transform.GetChild(0);
         stage = GetComponentInChildren<BoxCollider>();
 
-        bossName = GameObject.Find("Boss").GetComponentInChildren<Stat>().BossName;
+        if (SceneManager.loadedSceneCount ==1|| SceneManager.loadedSceneCount == 2|| SceneManager.loadedSceneCount == 3||SceneManager.loadedSceneCount == 4)
+        {
+            bossName = GameObject.Find("Boss").GetComponentInChildren<Stat>().BossName;
+        }
 
         //프레임 설정 / 화면비
         RefreshRate rate = new RefreshRate();
@@ -73,20 +76,20 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-       
+
     }
 
     private void Update()
     {
-        if(CardTest)
+        if (CardTest)
         {
             CardTest = false;
             cardManager.ViewCards();
         }
-        
+
     }
 
-  
+
     //보스가 죽으면 실행
     public void CardSelectStep()
     {

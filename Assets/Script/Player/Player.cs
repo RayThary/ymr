@@ -97,11 +97,11 @@ public class Player : Unit
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // 입력에 따라 이동 벡터를 만듭니다.
-        Vector3 moveDirection = new (horizontalInput, 0, verticalInput);
+        Vector3 moveDirection = new(horizontalInput, 0, verticalInput);
 
         // 이동 벡터의 길이를 1로 정규화하고 속도를 곱합니다.
         moveDirection.Normalize();
-        moveVelocity = moveDirection;
+        moveVelocity = moveDirection * stat.SPEED;
     }
 
     //당기는 방향
@@ -133,7 +133,7 @@ public class Player : Unit
         // 이동을 적용합니다.
         if (canMove)
         {
-            _rigidbody.velocity = (moveVelocity * stat.SPEED);
+            _rigidbody.velocity = (moveVelocity);
         }
     }
 
