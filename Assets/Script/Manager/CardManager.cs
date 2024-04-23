@@ -25,11 +25,28 @@ public class CardManager : MonoBehaviour
         }
     }
 
+    public enum CardSprite
+    {
+        DefencePet,
+        FlamePet,
+        GunPet,
+        MinePet,
+        Attack,
+        Defence,
+        Speed,
 
-    public CardVeiw[] view;
-    public List<Card> publicCards = new();
-    public List<Card> selectCards = new();
+    }
+
+    [SerializeField]
+    private CardVeiw[] view;
+    private List<Card> publicCards = new();
+    public List<Card> PublicCards { get { return publicCards; } }
+    private List<Card> selectCards = new();
+    public List<Card> SelectCards { get { return selectCards; } }
     private Player player;
+    [SerializeField]
+    private Sprite[] sprites;
+    public Sprite[] Sprites { get { return sprites; } }
 
     private void Awake()
     {
@@ -78,8 +95,8 @@ public class CardManager : MonoBehaviour
         for (int i = 0; i < view.Length; i++)
         {
             view[i].gameObject.SetActive(true);
-            view[i].card = cards[i];
-            view[i].transform.GetChild(0).GetComponent<Text>().text = view[i].card.ToString();
+            view[i].Card = cards[i];
+            view[i].transform.GetChild(0).GetComponent<Text>().text = view[i].Card.ToString();
         }
     }
 
@@ -90,7 +107,7 @@ public class CardManager : MonoBehaviour
         for (int i = 0; i < view.Length; i++)
         {
             view[i].gameObject.SetActive(false);
-            view[i].card = null;
+            view[i].Card = null;
         }
         GameManager.instance.CardSelected();
     }
@@ -103,6 +120,7 @@ public class QuickAttackCard : Card
     public QuickAttackCard(Player player) : base(player)
     {
         exp = "공격속도가 빨라집니다";
+        sprite = CardManager.CardSprite.Attack;
     }
 
     public override void Activation()
@@ -128,6 +146,7 @@ public class PenetrationCard : Card
     public PenetrationCard(Player player) : base(player)
     {
         exp = "공격이 대상에게 명중했을때 더이상 사라지지 않습니다.";
+        sprite = CardManager.CardSprite.Attack;
     }
     public override void Activation()
     {
@@ -145,6 +164,7 @@ public class MineCard : Card
     public MineCard(Player player) : base(player)
     {
         exp = "대상에게 공격명중 3번째마다 지뢰를 소환합니다.";
+        sprite = CardManager.CardSprite.Attack;
     }
     public override void Activation()
     {
@@ -163,6 +183,7 @@ public class DrainCard : Card
     public DrainCard(Player player) : base(player)
     {
         exp = "공격이 명중할 때마다 체력을 1 회복합니다.";
+        sprite = CardManager.CardSprite.Defence;
     }
 
     public override void Activation()
@@ -182,6 +203,7 @@ public class ExplosionCard : Card
     public ExplosionCard(Player player) : base(player)
     {
         exp = "매 공격이 폭발을 일으킵니다.";
+        sprite = CardManager.CardSprite.Attack;
     }
 
     public override void Activation()
@@ -201,6 +223,7 @@ public class GuidedCard : Card
     public GuidedCard(Player player) : base(player)
     {
         exp = "공격이 상대를 향해 회전합니다.";
+        sprite = CardManager.CardSprite.Attack;
     }
 
     public override void Activation()
@@ -220,6 +243,7 @@ public class PoisonCard : Card
     public PoisonCard(Player player) : base(player)
     {
         exp = "공격이 명중할 때마다 대상에게 독상태를 부여합니다.";
+        sprite = CardManager.CardSprite.Attack;
     }
 
     public override void Activation()
@@ -238,6 +262,7 @@ public class FastCard : Card
     public FastCard(Player player) : base(player)
     {
         exp = "이동속도가 상승합니다.";
+        sprite = CardManager.CardSprite.Speed;
     }
 
     public override void Activation()
@@ -256,6 +281,7 @@ public class HealthCard : Card
     public HealthCard(Player player) : base(player)
     {
         exp = "최대 체력이 상승합니다.";
+        sprite = CardManager.CardSprite.Defence;
     }
     public override void Activation()
     {
@@ -273,6 +299,7 @@ public class MoveCard : Card
     public MoveCard(Player player) : base(player)
     {
         exp = "공격이 상대를 향해 이동합니다.";
+        sprite = CardManager.CardSprite.Attack;
     }
 
     public override void Activation()
@@ -291,6 +318,7 @@ public class CutCard : Card
     public CutCard(Player player) : base(player)
     {
         exp = "공격이 상대방의 공격을 없앱니다.";
+        sprite = CardManager.CardSprite.Defence;
     }
 
     public override void Activation()
@@ -309,6 +337,7 @@ public class ThornCard : Card
     public ThornCard(Player player) : base(player)
     {
         exp = "공격을 받을 때 상대에게 대미지를 1 줍니다.";
+        sprite = CardManager.CardSprite.Attack;
     }
 
     public override void Activation()
@@ -328,6 +357,7 @@ public class NaturalCard : Card
     public NaturalCard(Player player) : base(player)
     {
         exp = "자연회복을 시작합니다.";
+        sprite = CardManager.CardSprite.Defence;
     }
 
     public override void Activation()
@@ -346,6 +376,7 @@ public class DashCard : Card
     public DashCard(Player player) : base(player)
     {
         exp = "공격 시 공격 방향으로 대쉬합니다.";
+        sprite = CardManager.CardSprite.Speed;
     }
 
     public override void Activation()
@@ -364,6 +395,7 @@ public class EnhanceCard : Card
     public EnhanceCard(Player player) : base(player)
     {
         exp = "대쉬 후 공격이 1회 강회됩니다.";
+        sprite = CardManager.CardSprite.Attack;
     }
 
     public override void Activation()
@@ -383,6 +415,7 @@ public class MineMachineCard : Card
     public MineMachineCard(Player player) : base(player)
     {
         exp = "플레이어를 따라다니며 지뢰를 설치합니다.";
+        sprite = CardManager.CardSprite.MinePet;
     }
 
     public override void Activation()
@@ -411,6 +444,7 @@ public class GunMachineCard : Card
     public GunMachineCard(Player player) : base(player)
     {
         exp = "플레이어를 따라다니며 적에게 총을 발사합니다.";
+        sprite = CardManager.CardSprite.GunPet;
     }
 
     public override void Activation()
@@ -439,6 +473,7 @@ public class FlameMachineCard : Card
     public FlameMachineCard(Player player) : base(player)
     {
         exp = "적에게 다가가 공격합니다.";
+        sprite = CardManager.CardSprite.FlamePet;
     }
 
     public override void Activation()
@@ -467,6 +502,7 @@ public class DefenceMachineCard : Card
     public DefenceMachineCard(Player player) : base(player)
     {
         exp = "일정시간마다 플레이어에게 보호막을 걸어줍니다.";
+        sprite = CardManager.CardSprite.DefencePet;
     }
 
     public override void Activation()
@@ -493,6 +529,7 @@ public class Evolution : Card
     public Evolution(Player player) : base(player)
     {
         exp = "체력 10증가 공격력 2증가.";
+        sprite = CardManager.CardSprite.Attack;
     }
 
     public override void Activation()
@@ -529,6 +566,7 @@ public class ShotgunCard : Card
         rate = 1;
         timer = 5;
         exp = "사거리가 짧고 공격속도가 느린 공격이 2발 추가됩니다.";
+        sprite = CardManager.CardSprite.Attack;
     }
 
     public override void Activation()
@@ -551,6 +589,7 @@ public class Quickly : Card
     {
         exp = "공격속도가 0.1초 빨라집니다. 총알의 속도도 빨라집니다.";
         depot = player.GetComponent<WeaponDepot>();
+        sprite = CardManager.CardSprite.Attack;
     }
 
     public override void Activation()
@@ -590,6 +629,7 @@ public class FireB : Card
         //파이어볼의 공격속도는 아무 의미가 없음 (rate)
         fireBall = new FireBall(player.GetComponent<WeaponDepot>().Launcher, player, player.GetComponent<WeaponDepot>().Muzzle, 1f, 10);
         fireBall.Speed = 5;
+        sprite = CardManager.CardSprite.Attack;
     }
 
     public override void Activation()

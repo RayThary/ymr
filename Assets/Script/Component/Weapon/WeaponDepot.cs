@@ -61,15 +61,15 @@ public class WeaponDepot : MonoBehaviour
     //모든 카드 해제
     public void CardDisarming()
     {
-        for(int i = 0; i < CardManager.Instance.selectCards.Count; i++)
+        for(int i = 0; i < CardManager.Instance.SelectCards.Count; i++)
         {
-            CardManager.Instance.selectCards[i].Deactivation();
+            CardManager.Instance.SelectCards[i].Deactivation();
         }
-        CardManager.Instance.selectCards.Clear();
+        CardManager.Instance.SelectCards.Clear();
     }
     public void EquipBow()
     {
-        _launcher.AddAttackType(new Shot(_launcher, player, muzzle, PoolingManager.ePoolingObject.ComponuntBulle, 0, 1, 10));
+        _launcher.AddAttackType(new Shot(_launcher, player, muzzle, PoolingManager.ePoolingObject.ComponuntBulle, 0, 0.7f, 10));
         bow.gameObject.SetActive(true);
         wand.gameObject.SetActive(false);
     }

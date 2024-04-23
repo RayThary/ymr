@@ -63,8 +63,6 @@ public class EnemyBossType2 : Unit
 
     private bool deathCheck = false;
 
-    private bool dieAnimationCheck = false;
-
     [SerializeField] private bool testHpSet = false;
 
     protected new void Start()
@@ -77,20 +75,21 @@ public class EnemyBossType2 : Unit
         meteorBoxSize = GameManager.instance.GetStage.size;
         box = GetComponent<BoxCollider>();
 
-        BossUI.Instance.StatBoss = stat;
-
         float hp = 100;
         if (GameManager.instance.GetStageNum == 1)
         {
             hp = 100;
+            stat.SetHp(hp);
         }
         else if (GameManager.instance.GetStageNum == 2)
         {
             hp = 150;
+            stat.SetHp(hp);
         }
         else
         {
             hp = 100;
+            stat.SetHp(hp);
             Debug.LogError($"StageNumError , StageNum ={GameManager.instance.GetStageNum}");
         }
 
@@ -98,8 +97,6 @@ public class EnemyBossType2 : Unit
         {
             hp = 10;
         }
-
-        stat.SetHp(hp);
 
 
     }
@@ -116,7 +113,6 @@ public class EnemyBossType2 : Unit
         if (deathCheck)
         {
             box.enabled = false;
-
             return;
         }
 
@@ -410,8 +406,6 @@ public class EnemyBossType2 : Unit
         }
     }
 
-    
-
     //애니메이션용
 
     private void enemyAttackMotionStart()
@@ -434,10 +428,4 @@ public class EnemyBossType2 : Unit
         patten2ObjSpawnCheck = true;
 
     }
-
-    private void DeathAnimationEndCheck()
-    {
-        GameManager.instance.SetBossDieCheck(true);
-    }
-
 }

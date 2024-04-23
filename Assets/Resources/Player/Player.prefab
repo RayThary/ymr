@@ -3997,7 +3997,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   godTimer: 1
-  spaceImage: {fileID: 0}
   spaceCooltime: 1
   spaceDis: 2.5
   travel: 0.1

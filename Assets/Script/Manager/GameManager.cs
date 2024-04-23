@@ -36,8 +36,6 @@ public class GameManager : MonoBehaviour
     //카드 고를때 화면을 가릴 이미지
     private Image cardSelectWindow;
 
-    private bool bossDieCheck = false;
-
     private void Awake()
     {
         if (instance == null)
@@ -80,14 +78,6 @@ public class GameManager : MonoBehaviour
             CardTest = false;
             cardManager.ViewCards();
         }
-
-        if (bossDieCheck)
-        {
-            PoolingManager.Instance.RemoveAllPoolingObject(transform.GetChild(0).gameObject);
-            bossDieCheck = false;
-        }
-
-     
     }
 
     //보스가 죽으면 실행
@@ -116,9 +106,18 @@ public class GameManager : MonoBehaviour
         //화면 다시 열어주고
         cardSelectWindow.rectTransform.sizeDelta = new Vector2(0, 0);
         //스테이지 중에 랜덤으로 하나 골라서 씬 로드
-        int stage = stageList[Random.Range(0, stageList.Count)];
-        stageList.Remove(stage);
-        //SceneManager.LoadScene("BossType" + stage);
+        if(stageNum ==  3)
+        {
+            //마지막 보스 스테이지 로드
+        }
+        else
+        {
+            int stage = stageList[Random.Range(0, stageList.Count)];
+            stageList.Remove(stage);
+            //SceneManager.LoadScene("BossType" + stage);
+        }
+
+
         SceneManager.LoadScene(1);
         //여기서 선택한 씬을 기록
     }
@@ -139,11 +138,6 @@ public class GameManager : MonoBehaviour
             }
         }
         return list[index];
-    }
-
-    public void SetBossDieCheck(bool _value)
-    {
-        bossDieCheck = _value;
     }
 
     public void SetStageNum()

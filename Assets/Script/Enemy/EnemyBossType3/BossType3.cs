@@ -55,27 +55,6 @@ public class BossType3 : Unit
         basicAttackTimer = basicAttackTime - 1;
         attackPattenTimer = attackPattenTime - 2;
         shieldChangeTimer = shieldChangeTime;
-
-        BossUI.Instance.StatBoss = stat;
-        float hp = 100;
-
-        if (GameManager.instance.GetStageNum == 1)
-        {
-            hp = 100;
-            stat.SetHp(hp);
-        }
-        else if (GameManager.instance.GetStageNum == 2)
-        {
-            hp = 150;
-            stat.SetHp(hp);
-        }
-        else
-        {
-            hp = 100;
-            stat.SetHp(hp);
-            Debug.LogError($"StageNumError , StageNum ={GameManager.instance.GetStageNum}");
-        }
-
     }
 
     void Update()

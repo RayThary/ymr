@@ -46,6 +46,8 @@ public class PoolingManager : MonoBehaviour
         CurveBulletPatten,
         CurveBullet,
         FireBall,
+        RushCoolTimer,
+        PlayerHpUI,
     }
 
     [System.Serializable]
@@ -61,7 +63,7 @@ public class PoolingManager : MonoBehaviour
     public static PoolingManager Instance;
     private void OnValidate()
     {
-
+        
 
     }
 
@@ -184,8 +186,6 @@ public class PoolingManager : MonoBehaviour
         return getPoolingObject(_name, _parent);
     }
 
-
-
     private GameObject getPoolingObject(string _name, Transform _parent)
     {
         Transform parent = transform.Find(_name);
@@ -230,35 +230,4 @@ public class PoolingManager : MonoBehaviour
             Destroy(_obj);
         }
     }
-
-    public void RemoveAllPoolingObject(GameObject _obj)
-    {
-        int parentCount = _obj.transform.childCount;
-        for(int i =0; i< parentCount; i++)
-        {
-            string name = _obj.transform.GetChild(i).name;
-
-            Transform parent = transform.Find(name);
-
-            cPoolingObject poolingObj = m_listPoolingObj.Find(x => x.obj.name == name);
-
-            int poolingCount = poolingObj.count;
-
-            if (parent.childCount < poolingCount)
-            {
-                _obj.transform.GetChild(i).SetParent(parent);
-                _obj.SetActive(false);
-                _obj.transform.GetChild(i).gameObject.SetActive(false);
-                _obj.transform.GetChild(i).position = Vector3.zero;
-            }
-            else
-            {
-                Destroy(_obj);
-            }
-        }
-
-        
-       
-    }
-
 }
