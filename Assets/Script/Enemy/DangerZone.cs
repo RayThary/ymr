@@ -76,4 +76,8 @@ public class DangerZone : MonoBehaviour
         time = _value;
     }
 
+    public void setSprite(bool _value)
+    {
+        spr.enabled = _value;
+    }
 }

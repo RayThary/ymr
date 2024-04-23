@@ -55,13 +55,13 @@ public class GroundPatten : MonoBehaviour
 
     private bool mapChange = true;
 
-
     private Transform playerTrs;
+    private Stat stat;
 
     void Start()
     {
         playerTrs = GameManager.instance.GetPlayerTransform;
-
+        stat = GetComponent<Stat>();
     }
 
     // Update is called once per frame
@@ -168,7 +168,11 @@ public class GroundPatten : MonoBehaviour
         {
             GameObject obj;
             obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectPatten);
-            obj.transform.position = mapUnderTrs[i].transform.position;
+
+            Vector3 objVec = mapUnderTrs[i].transform.position;
+            objVec.y = -1.1f;
+            obj.transform.position = objVec;
+
             UpGround upGround = obj.GetComponent<UpGround>();
             upGround.Horizontal = true;
             DangerZone danger = obj.GetComponentInChildren<DangerZone>();
@@ -200,7 +204,10 @@ public class GroundPatten : MonoBehaviour
             GameObject obj;
 
             obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectPatten);
-            obj.transform.position = mapUnderTrs[i].transform.position;
+
+            Vector3 objVec = mapUnderTrs[i].transform.position;
+            objVec.y = -1.1f;
+            obj.transform.position = objVec;
 
             UpGround upGround = obj.GetComponentInChildren<UpGround>();
             upGround.Horizontal = true;
@@ -224,7 +231,9 @@ public class GroundPatten : MonoBehaviour
             for (int j = 0; j < objTrs.Count; j++)
             {
                 obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectPatten);
-                obj.transform.position = objTrs[j].transform.position;
+                Vector3 objVec = objTrs[j].transform.position;
+                objVec.y = -1.1f;
+                obj.transform.position = objVec;
 
                 UpGround upGround = obj.GetComponent<UpGround>();
                 upGround.Vertical = true;
@@ -248,7 +257,9 @@ public class GroundPatten : MonoBehaviour
             for (int j = 0; j < objTrs.Count; j++)
             {
                 obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectPatten);
-                obj.transform.position = objTrs[j].transform.position;
+                Vector3 objVec = objTrs[j].transform.position;
+                objVec.y = -1.1f;
+                obj.transform.position = objVec;
 
                 UpGround upGround = obj.GetComponent<UpGround>();
                 upGround.Vertical = true;
@@ -273,7 +284,9 @@ public class GroundPatten : MonoBehaviour
             for (int j = 0; j < objTrs.Count; j++)
             {
                 obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectPatten);
-                obj.transform.position = objTrs[j].transform.position;
+                Vector3 objVec = objTrs[j].transform.position;
+                objVec.y = -1.1f;
+                obj.transform.position = objVec;
 
                 UpGround upGround = obj.GetComponent<UpGround>();
                 upGround.Horizontal = true;
@@ -296,10 +309,13 @@ public class GroundPatten : MonoBehaviour
             objTrs.Clear();
 
             objTrs = mapUnder.FindAll((x) => x.name.Contains($",{i}}}") == true);
+            
             for (int j = 0; j < objTrs.Count; j++)
             {
                 obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectPatten);
-                obj.transform.position = objTrs[j].transform.position;
+                Vector3 objVec = objTrs[j].transform.position;
+                objVec.y = -1.1f;
+                obj.transform.position = objVec;
 
                 UpGround upGround = obj.GetComponent<UpGround>();
                 upGround.Horizontal = true;
@@ -417,7 +433,13 @@ public class GroundPatten : MonoBehaviour
         for (int i = 0; i < spawnTrs.Count; i++)
         {
             GameObject obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectPatten);
-            obj.transform.position = spawnTrs[i];
+
+            //spawnTrs[i].y = -1.1f; 이거왜안되지 
+
+            Vector3 objTrs = spawnTrs[i];
+            objTrs.y = -1.1f;
+            obj.transform.position = objTrs;
+
             UpGround upGround = obj.GetComponent<UpGround>();
             upGround.SetStopTime(true, 3);
 

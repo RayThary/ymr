@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -29002,6 +29002,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2106740381}
     m_Modifications:
     - target: {fileID: 23018044173033137, guid: 7bc9c3fa2e3146046b62348320b7c2f1, type: 3}
+      propertyPath: spaceDis
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23018044173033137, guid: 7bc9c3fa2e3146046b62348320b7c2f1, type: 3}
       propertyPath: moveSpeed
       value: 1
       objectReference: {fileID: 0}
@@ -39146,8 +39150,9 @@ MonoBehaviour:
     count: 2000
     description: "\uC62C\uB77C\uAC00\uB294\uB545"
   - obj: {fileID: 6578840334332229284, guid: 9639e47cfef22414bb64ad9c7719349a, type: 3}
-    count: 2000
-    description: "\uB098\uBE44\uAC00 \uC0AC\uB77C\uC9C0\uBA74\uB098\uC624\uB294 \uD3ED\uBC1C\uC785\uB2C8\uB2E4."
+    count: 10
+    description: "\uB545\uC774\uC62C\uB77C\uC624\uB294 \uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4(
+      \uD50C\uB808\uC774\uC5B4\uAC00 \uD53C\uACA9\uC2DC \uBC00\uB824\uB098\uB294\uD615\uD0DC)"
   - obj: {fileID: 582911774159304142, guid: 60c64273d29865d468d05e61f83fffad, type: 3}
     count: 5
     description: "#\uC790\uBAA8\uC591\uC758 \uC6C0\uC9C1\uC774\uB294 \uB808\uC774\uC800\uD328\uD134\uC785\uB2C8\uB2E4."
@@ -120086,6 +120091,10 @@ PrefabInstance:
       propertyPath: nowMap
       value: 
       objectReference: {fileID: 1175253017}
+    - target: {fileID: 3188818464083842718, guid: 32d356f629480e240a33314b86a20d20, type: 3}
+      propertyPath: pattenName
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3623441426410762198, guid: 32d356f629480e240a33314b86a20d20, type: 3}
       propertyPath: m_Name
       value: BossEenemyType3
@@ -120137,6 +120146,14 @@ PrefabInstance:
     - target: {fileID: 3684180842383300830, guid: 32d356f629480e240a33314b86a20d20, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722386777724119727, guid: 32d356f629480e240a33314b86a20d20, type: 3}
+      propertyPath: attackPattenTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722386777724119727, guid: 32d356f629480e240a33314b86a20d20, type: 3}
+      propertyPath: shieldChangeTime
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

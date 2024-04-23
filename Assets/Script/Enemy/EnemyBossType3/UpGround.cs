@@ -14,10 +14,10 @@ public class UpGround : MonoBehaviour
 
     private bool upTimeCheck = false;
     private bool downTimeCheck = false;
-    private float timer = 0;
+    [SerializeField]private float timer = 0;
     [SerializeField] private float upSpeed = 1;
     private SpriteRenderer spr;
-    private float dangerZoneTime = 0;
+    [SerializeField]private float dangerZoneTime = 0;
 
     private bool stopWall = false;
     private float stopTime = 1.0f;
@@ -162,13 +162,10 @@ public class UpGround : MonoBehaviour
             stopWall = false;
             laserShotCheck = false;
             transform.position = new Vector3(transform.position.x, -1.1f, transform.position.z);
+            transform.GetComponentInChildren<DangerZone>().setSprite(true);
             PoolingManager.Instance.RemovePoolingObject(gameObject);
         }
     }
-
-
-
-
 
     public void SetStopTime(bool _stopWall, float _stopTime)
     {
@@ -178,7 +175,7 @@ public class UpGround : MonoBehaviour
 
     public Vector3 playerHitDirection()
     {
-        //cubeWall 수정필요 넣는부분을 그때그때 들어올떄 보내주는걸로바꾸는게좋을듯 생각필요
+        
         if (cubeWall)
         {
             if (horizontal == false)
@@ -292,4 +289,5 @@ public class UpGround : MonoBehaviour
 
 
     }
+
 }

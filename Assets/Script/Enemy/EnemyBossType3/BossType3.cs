@@ -30,6 +30,8 @@ public class BossType3 : Unit
     private float shieldChangeTimer = 0;
     private float beforeShieldChangeTime;
 
+    private bool basicAttackSpeedUp = false;
+
     [SerializeField] private GameObject objShield;
 
     private BoxCollider box;
@@ -77,8 +79,10 @@ public class BossType3 : Unit
             Debug.LogError($"StageNumError , StageNum ={GameManager.instance.GetStageNum}");
         }
 
+
         stat.SetHp(hp);
     }
+
 
     void Update()
     {
@@ -103,7 +107,15 @@ public class BossType3 : Unit
 
     private void basicAttackPatten()
     {
-        basicAttackTimer += Time.deltaTime;
+        if (basicAttackSpeedUp)
+        {
+            basicAttackTimer += Time.deltaTime * 1.5f;
+        }
+        else
+        {
+            basicAttackTimer += Time.deltaTime;
+        }
+
         if (basicAttackTimer >= basicAttackTime)
         {
             GameObject obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundLaserObj, GameManager.instance.GetEnemyAttackObjectPatten);
@@ -295,16 +307,17 @@ public class BossType3 : Unit
             shieldNum = Random.Range(0, 10);
             if (shieldNum > 5)
             {
+                basicAttackSpeedUp = false;
                 main.startColor = Color.black;
                 objShield.SetActive(true);
-                shieldChangeTime = 5;
+                shieldChangeTime = 3;
             }
             else
             {
+                basicAttackSpeedUp = true;
                 main.startColor = Color.white;
                 objShield.SetActive(false);
                 shieldChangeTime = beforeShieldChangeTime;
-                basicAttackTime = basicAttackTime * 0.5f;
             }
             particle.Play();
             shieldChangeTimer = 0;

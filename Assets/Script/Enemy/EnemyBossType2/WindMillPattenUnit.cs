@@ -17,4 +17,14 @@ public class WindMillPattenUnit : MonoBehaviour
         width.GetComponent<WindMillPatten>().Boss = boss;
     }
 
+    private void Update()
+    {
+        if (boss.STAT.HP <= 0)
+        {
+            PoolingManager.Instance.RemovePoolingObject(gameObject);
+            
+        }
+    }
+
+
 }
