@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     //카드 고를때 화면을 가릴 이미지
     private Image cardSelectWindow;
+    //튜토리얼에서 무기를 고르지 않고 포탈에 들어갈 경우 메세지
+    [SerializeField]
+    private GameObject waringText;
 
     private void Awake()
     {
@@ -80,7 +83,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //보스가 죽으면 실행
+    //보스가 죽고 포탈에 들어가면 실행
     public void CardSelectStep()
     {
         //근데 무기를 장착중인지 확인 해야함
@@ -93,11 +96,22 @@ public class GameManager : MonoBehaviour
             //카드 보여주고
             CardTest = true;
         }
+        else
+        {
+            StartCoroutine(WaringText());
+        }
+    }
+    private IEnumerator WaringText()
+    {
+        waringText.SetActive(true);
+        yield return new WaitForSeconds(2);
+        waringText.SetActive(false);
     }
 
     public void CardSelected()
     {
-        NextStageStep();
+        //NextStageStep();
+        cardSelectWindow.rectTransform.sizeDelta = new Vector2(0, 0);
     }
 
     //CardSelected 작동한 후에 실행

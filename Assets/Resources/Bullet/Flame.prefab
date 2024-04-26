@@ -117,7 +117,7 @@ Transform:
   m_Children:
   - {fileID: 4178643196464885677}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5743617334928831289
 MonoBehaviour:
@@ -131,6 +131,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 333b35e0a7723c8419124f697d838981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _time: 0
+  ani:
+  - {fileID: -1443884807514508771, guid: 38e5fdbb5e3ac0c4b9e9f60cc92147ad, type: 3}
+  - {fileID: -8602310420281792435, guid: 38e5fdbb5e3ac0c4b9e9f60cc92147ad, type: 3}
 --- !u!54 &4032997389712707673
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -45,6 +45,7 @@ public class WeaponDepot : MonoBehaviour
         if(Input.GetMouseButton(0))
         {
             _launcher.LeftDown();
+            Debug.Log(_launcher.AttackTypes.Count);
         }
         else if(Input.GetMouseButtonUp(0))
         {
