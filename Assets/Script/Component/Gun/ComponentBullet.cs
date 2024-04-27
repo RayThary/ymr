@@ -41,17 +41,20 @@ public class ComponentBullet : ComponentObject
         }
 
         Unit unit = other.GetComponent<Unit>();
-        if (unit == null || other.GetComponent<Player>() == _player)
+        if (other.GetComponent<Player>() == _player)
             return;
 
         bool destroy = true;
-        unit.Hit(_player, _player.STAT.AD);
-        _player.componentController.CallAttack(unit);
-        if(unit.STAT.HP <= 0)
-        {
-            _player.componentController.CallKill(unit);
-        }
 
+        if(unit != null)
+        {
+            unit.Hit(_player, _player.STAT.AD);
+            _player.componentController.CallAttack(unit);
+            if (unit.STAT.HP <= 0)
+            {
+                _player.componentController.CallKill(unit);
+            }
+        }
         for (int i = 0; i < components.Count; i++)
         {
             if (!components[i].Destroy(other))
@@ -59,9 +62,10 @@ public class ComponentBullet : ComponentObject
                 destroy = false;
             }
         }
+
         if (destroy)
         {
-            if(1 << other.gameObject.layer ==  LayerMask.GetMask("Enemy") || 1 << other.gameObject.layer == LayerMask.GetMask("Wall"))
+            if (1 << other.gameObject.layer ==  LayerMask.GetMask("Enemy") || 1 << other.gameObject.layer == LayerMask.GetMask("Wall"))
                 PoolingManager.Instance.RemovePoolingObject(gameObject);
         }
     }
