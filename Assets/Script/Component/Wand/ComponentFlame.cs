@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class ComponentFlame : ComponentObject
 {
+    [SerializeField]
+    private Sprite[] ani;
+    [SerializeField]
+    private float aniTimer = 1;
+    private SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -30,11 +34,28 @@ public class ComponentFlame : ComponentObject
 
     public void Fire(Player player, float timer)
     {
+        if(spriteRenderer == null)
+            spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         _player = player;
         _time = timer;
         for (int i = 0; i < components.Count; i++)
         {
             components[i].Fire(this);
+        }
+        StartCoroutine(Animation());
+    }
+
+    private IEnumerator Animation()
+    {
+        int index = 0;
+        while(gameObject.activeSelf)
+        {
+            spriteRenderer.sprite = ani[index];
+            yield return new WaitForSeconds(aniTimer);
+
+            index++;
+            if (index >= ani.Length)
+                index = 0;
         }
     }
 

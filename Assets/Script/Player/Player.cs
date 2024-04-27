@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class Player : Unit
 {
@@ -20,24 +22,30 @@ public class Player : Unit
     Vector3 moveVelocity;
 
     //대쉬의 쿨타임을 알려줄 이미지
-    public Image spaceImage;
+    private Canvas spaceCanvas;
+    private Image spaceImage;
     //대쉬의 쿨타임
-    public float spaceCooltime = 3;
+    [SerializeField]
+    private float spaceCooltime = 3;
     //대쉬가 움직일 거리
-    public float spaceDis;
+    [SerializeField]
+    private float spaceDis;
     //대쉬의 이동시간과 무적시간
-    public float travel = 0.1f;
+    [SerializeField]
+    private float travel = 0.1f;
     //시간을 잴 변수
     private float spaceTimer;
     public float SpaceTimer { get { return spaceTimer; } set { spaceTimer = value; } }
     //플레이어가 움직일 수 있는지
     private bool canMove = true;
     public bool CanMove { get { return canMove; } set { canMove = value; } }
-
+    
+    [SerializeField]
     //맞고 나서 무적시간
-    public float hit_invincibility;
+    private float hit_invincibility;
     //무적시간을 재는 코루틴
-    public Coroutine invincibility = null;
+    
+    private Coroutine invincibility = null;
     private SpriteAlphaControl spriteAlpha;
     private Animator animator;
     //당기는 함수를 저장할 변수
@@ -57,8 +65,11 @@ public class Player : Unit
         animator = transform.GetChild(0).GetComponent<Animator>();
         componentController = new ComponentController(this);
         DontDestroyOnLoad(this);
+        CreatePlayerUI();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    
 
     private void Update()
     {
@@ -88,6 +99,20 @@ public class Player : Unit
             spaceTimer -= Time.deltaTime;
             spaceImage.fillAmount = spaceTimer / spaceCooltime;
         }
+    }
+
+    private void CreatePlayerUI()
+    {
+        spaceCanvas = FindObjectOfType<Canvas>();
+        spaceImage = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.RushCoolTimer, spaceCanvas.transform).GetComponent<Image>();
+        spaceImage.rectTransform.anchoredPosition = new Vector2(-100, 100);
+        PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.PlayerHpUI, spaceCanvas.transform).GetComponent<RectTransform>().anchoredPosition = new Vector2(100, 100);
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        CreatePlayerUI();
+        transform.position = new Vector3(14.5f, 0, 3);
     }
 
     private void MoveCalculate()
@@ -231,6 +256,7 @@ public class Player : Unit
         componentController.CallDashStart();
         float timer = 0;
         canMove = false;
+
         while (true)
         {
             _rigidbody.velocity = (spaceDis * velocity);
@@ -265,11 +291,13 @@ public class Player : Unit
     {
         god = true;
         godTimer = t;
+        GetComponent<Collider>().enabled = false;
         while (godTimer > 0)
         {
             godTimer -= Time.deltaTime;
             yield return null;
         }
+        GetComponent<Collider>().enabled = true;
         god = false;
         invincibility = null;
     }

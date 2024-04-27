@@ -8,6 +8,8 @@ public abstract class Card
 
     protected string exp = "";
     public string Explanation { get { return exp; } }
+    protected CardManager.CardSprite sprite;
+    public CardManager.CardSprite Sprite { get { return sprite; } }
 
     public abstract void Activation();
     public abstract void Deactivation();
