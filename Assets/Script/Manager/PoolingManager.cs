@@ -58,6 +58,22 @@ public class PoolingManager : MonoBehaviour
 
     [SerializeField] private List<cPoolingObject> m_listPoolingObj;
 
+    public enum soundPoolingClip
+    {
+
+    }
+
+    //  오브젝트에 사운드클립을 박아넣고 모든클립은 재생끝났을때 자동리무브 해주는걸로 만들예정
+
+    [System.Serializable]
+    public class cPoolingClip 
+    {
+        public AudioClip clip;
+        public int count;
+    }
+
+    [SerializeField] private List<cPoolingClip> m_listSoundClip;
+
     public static PoolingManager Instance;
     private void OnValidate()
     {
@@ -91,15 +107,16 @@ public class PoolingManager : MonoBehaviour
     {
         List<string> listParentName = new List<string>();
 
-        int count = transform.childCount;
-        for (int iNum = 0; iNum < count; ++iNum)
+        int pCount = transform.childCount;
+        int cCount = transform.childCount;
+        for (int iNum = 0; iNum < pCount; ++iNum)
         {
             string name = transform.GetChild(iNum).name;
             listParentName.Add(name);
         }
 
-        count = m_listPoolingObj.Count;
-        for (int iNum = 0; iNum < count; ++iNum)
+        pCount = m_listPoolingObj.Count;
+        for (int iNum = 0; iNum < pCount; ++iNum)
         {
             if (m_listPoolingObj[iNum].obj == null)
             {
@@ -122,8 +139,11 @@ public class PoolingManager : MonoBehaviour
             }
         }
 
-        count = listParentName.Count;
-        for (int iNum = count - 1; iNum > -1; --iNum)
+       
+
+
+        pCount = listParentName.Count;
+        for (int iNum = pCount - 1; iNum > -1; --iNum)
         {
             GameObject obj = transform.Find(listParentName[iNum]).gameObject;
             Destroy(obj);
@@ -132,8 +152,8 @@ public class PoolingManager : MonoBehaviour
 
     private void initPoolingChild()
     {
-        int count = m_listPoolingObj.Count;
-        for (int iNum = 0; iNum < count; ++iNum)
+        int pCount = m_listPoolingObj.Count;
+        for (int iNum = 0; iNum < pCount; ++iNum)
         {
             if (m_listPoolingObj[iNum].obj == null)
             {

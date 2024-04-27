@@ -22,16 +22,12 @@ public class BossAppear : MonoBehaviour
     private bool stopCheck = false;
     private bool readyCheck = false;
 
-    private bool startCheck = false;
-
-
-
     void Start()
     {
         GameManager.instance.SetStart(false);
 
         anim = GetComponent<Animator>();
-
+        GameManager.instance.SetStart(false);
         rectTrs = transform.GetChild(1).GetComponent<RectTransform>();
         bossName = rectTrs.GetComponentInChildren<TextMeshProUGUI>();
         bossName.text = (bossName.text == null ? "MisingEnemy" : GameManager.instance.BossName);
@@ -97,5 +93,5 @@ public class BossAppear : MonoBehaviour
     {
         GameManager.instance.SetStart(true);
     }
-
+   
 }

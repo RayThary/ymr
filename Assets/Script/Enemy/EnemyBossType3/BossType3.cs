@@ -109,7 +109,7 @@ public class BossType3 : Unit
     {
         if (basicAttackSpeedUp)
         {
-            basicAttackTimer += Time.deltaTime * 1.5f;
+            basicAttackTimer += Time.deltaTime * 2f;
         }
         else
         {
@@ -305,12 +305,12 @@ public class BossType3 : Unit
         if (shieldChangeTimer >= shieldChangeTime)
         {
             shieldNum = Random.Range(0, 10);
-            if (shieldNum > 5)
+            if (shieldNum > 6)
             {
                 basicAttackSpeedUp = false;
                 main.startColor = Color.black;
                 objShield.SetActive(true);
-                shieldChangeTime = 3;
+                shieldChangeTime = 4;
             }
             else
             {
