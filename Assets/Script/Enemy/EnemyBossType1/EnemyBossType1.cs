@@ -42,6 +42,15 @@ public class EnemyBossType1 : Unit
 
     private bool deathCheck = false;
     [SerializeField] private bool testHp;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            player.Hit(this, 1);
+        }
+    }
+
     protected new void Start()
     {
         base.Start();

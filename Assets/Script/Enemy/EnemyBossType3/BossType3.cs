@@ -37,11 +37,18 @@ public class BossType3 : Unit
     private BoxCollider box;
     private Animator anim;
     private Transform playerTrs;
+    private Player player;
     private GroundPatten groundpatten;
     private ParticleSystem particle;
 
     private bool deathCheck = false;
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            player.Hit(this, 1);
+        }
+    }
     protected new void Start()
     {
         base.Start();
@@ -49,6 +56,7 @@ public class BossType3 : Unit
         beforeAttackPattenTime = attackPattenTime;
         playerTrs = GameManager.instance.GetPlayerTransform;
         box = GetComponent<BoxCollider>();
+        player = GameManager.instance.GetPlayer;
         anim = GetComponent<Animator>();
         groundpatten = GetComponent<GroundPatten>();
         particle = GetComponent<ParticleSystem>();

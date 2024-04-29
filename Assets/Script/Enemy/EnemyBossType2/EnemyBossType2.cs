@@ -52,9 +52,8 @@ public class EnemyBossType2 : Unit
     private NavMeshAgent nav;
     private bool noMove = false;
 
-
     private Transform playerTrs;
-
+    private Player player;
 
     private bool patten1Check = false;//메테오 패턴1써보는곳
     private bool patten2Check = false;//근접패턴 적이오면 주위구체3개소환하는곳
@@ -67,11 +66,20 @@ public class EnemyBossType2 : Unit
 
     [SerializeField] private bool testHpSet = false;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            player.Hit(this, 1);
+        }
+    }
+
     protected new void Start()
     {
         base.Start();
         nav = transform.parent.GetComponent<NavMeshAgent>();
         playerTrs = GameManager.instance.GetPlayerTransform;
+        player = GameManager.instance.GetPlayer;
         target = GameManager.instance.GetPlayerTransform;
         anim = GetComponent<Animator>();
         meteorBoxSize = GameManager.instance.GetStage.size;
