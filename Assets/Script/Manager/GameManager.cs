@@ -32,12 +32,16 @@ public class GameManager : MonoBehaviour
 
     private List<int> stageList = new List<int>();
 
+    private string bossName;
+    public string BossName { get { return bossName; } }
+
     [SerializeField]
     //카드 고를때 화면을 가릴 이미지
     private Image cardSelectWindow;
 
-    private string bossName;
-    public string BossName { get { return bossName; } }
+    //튜토리얼에서 무기를 고르지 않고 포탈에 들어갈 경우 메세지
+    [SerializeField]
+    private GameObject waringText;
 
     private void Awake()
     {
@@ -55,11 +59,6 @@ public class GameManager : MonoBehaviour
         player = FindObjectOfType<Player>();
         enemyAttackObj = transform.GetChild(0);
         stage = GetComponentInChildren<BoxCollider>();
-
-        if (SceneManager.loadedSceneCount ==1|| SceneManager.loadedSceneCount == 2|| SceneManager.loadedSceneCount == 3||SceneManager.loadedSceneCount == 4)
-        {
-            bossName = GameObject.Find("Boss").GetComponentInChildren<Stat>().BossName;
-        }
 
         //프레임 설정 / 화면비
         RefreshRate rate = new RefreshRate();
@@ -86,11 +85,9 @@ public class GameManager : MonoBehaviour
             CardTest = false;
             cardManager.ViewCards();
         }
-
     }
 
-
-    //보스가 죽으면 실행
+    //보스가 죽고 포탈에 들어가면 실행
     public void CardSelectStep()
     {
         //근데 무기를 장착중인지 확인 해야함
@@ -103,11 +100,22 @@ public class GameManager : MonoBehaviour
             //카드 보여주고
             CardTest = true;
         }
+        else
+        {
+            StartCoroutine(WaringText());
+        }
+    }
+    private IEnumerator WaringText()
+    {
+        waringText.SetActive(true);
+        yield return new WaitForSeconds(2);
+        waringText.SetActive(false);
     }
 
     public void CardSelected()
     {
         NextStageStep();
+        cardSelectWindow.rectTransform.sizeDelta = new Vector2(0, 0);
     }
 
     //CardSelected 작동한 후에 실행
@@ -116,9 +124,18 @@ public class GameManager : MonoBehaviour
         //화면 다시 열어주고
         cardSelectWindow.rectTransform.sizeDelta = new Vector2(0, 0);
         //스테이지 중에 랜덤으로 하나 골라서 씬 로드
-        int stage = stageList[Random.Range(0, stageList.Count)];
-        stageList.Remove(stage);
-        //SceneManager.LoadScene("BossType" + stage);
+        if (stageNum == 3)
+        {
+            //마지막 보스 스테이지 로드
+        }
+        else
+        {
+            int stage = stageList[Random.Range(0, stageList.Count)];
+            stageList.Remove(stage);
+            //SceneManager.LoadScene("BossType" + stage);
+        }
+
+
         SceneManager.LoadScene(1);
         //여기서 선택한 씬을 기록
     }
@@ -140,7 +157,6 @@ public class GameManager : MonoBehaviour
         }
         return list[index];
     }
-
 
     public void SetStageNum()
     {
