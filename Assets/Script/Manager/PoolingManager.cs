@@ -46,6 +46,8 @@ public class PoolingManager : MonoBehaviour
         CurveBulletPatten,
         CurveBullet,
         FireBall,
+        RushCoolTimer,
+        PlayerHpUI,
     }
 
     [System.Serializable]

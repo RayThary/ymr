@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -24251,6 +24251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b749a48c1e302cd4ea48bc27cef36170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explan: {fileID: 0}
+  _name: {fileID: 0}
 --- !u!1 &317544797
 GameObject:
   m_ObjectHideFlags: 0
@@ -39239,6 +39241,13 @@ MonoBehaviour:
   - obj: {fileID: 6009053421921428543, guid: 2435946b7ceb8e047a43bfb3e0c84242, type: 3}
     count: 20
     description: "\uD30C\uC774\uC5B4\uBCFC"
+  - obj: {fileID: 4493129744902347110, guid: b6c673a20e5eea14d8fedadccfd321a5, type: 3}
+    count: 20
+    description: "\uD50C\uB808\uC774\uC5B4\uC758 \uB300\uC2DC "
+  - obj: {fileID: 5515080439169409439, guid: aae666dc726f74949924415461e78a2d, type: 3}
+    count: 20
+    description: "\uD50C\uB808\uC774\uC5B4 \uCCB4\uB825 ui"
+  m_listSoundClip: []
 --- !u!4 &609085456
 Transform:
   m_ObjectHideFlags: 0
@@ -58482,6 +58491,7 @@ MonoBehaviour:
   stage: {fileID: 0}
   stageNum: 1
   cardSelectWindow: {fileID: 0}
+  waringText: {fileID: 0}
 --- !u!1 &979526300
 GameObject:
   m_ObjectHideFlags: 0
@@ -64195,6 +64205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b749a48c1e302cd4ea48bc27cef36170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explan: {fileID: 0}
+  _name: {fileID: 0}
 --- !u!114 &1084563463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72634,10 +72646,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_backGroundSound: {fileID: 0}
-  m_btnAudioSource: {fileID: 0}
+  m_SFXAudioSource: {fileID: 0}
   m_mixer: {fileID: 24100000, guid: 09d42ad7a4608944391b6d860abca916, type: 2}
   m_backGroundClip: {fileID: 0}
-  slider: {fileID: 0}
+  BackGroundSlider: {fileID: 0}
+  SFXSlider: {fileID: 0}
 --- !u!4 &1210960921
 Transform:
   m_ObjectHideFlags: 0
@@ -91916,6 +91929,7 @@ MonoBehaviour:
   - {fileID: 314813437}
   - {fileID: 2022394387}
   - {fileID: 1084563462}
+  sprites: []
 --- !u!4 &1607198115
 Transform:
   m_ObjectHideFlags: 0
@@ -112844,6 +112858,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b749a48c1e302cd4ea48bc27cef36170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explan: {fileID: 0}
+  _name: {fileID: 0}
 --- !u!1 &2026768701
 GameObject:
   m_ObjectHideFlags: 0
