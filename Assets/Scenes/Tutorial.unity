@@ -3347,7 +3347,7 @@ GameObject:
   - component: {fileID: 47827428}
   - component: {fileID: 47827427}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: CardName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17530,6 +17530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explan: {fileID: 608400837}
+  _name: {fileID: 47827427}
 --- !u!1 &317972223
 GameObject:
   m_ObjectHideFlags: 0
@@ -33557,7 +33558,7 @@ GameObject:
   - component: {fileID: 618418970}
   - component: {fileID: 618418969}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: CardName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57994,6 +57995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explan: {fileID: 2013608979}
+  _name: {fileID: 618418969}
 --- !u!114 &1084563463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59065,7 +59067,7 @@ GameObject:
   - component: {fileID: 1095508926}
   - component: {fileID: 1095508925}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: CardName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105661,6 +105663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explan: {fileID: 1780894502}
+  _name: {fileID: 1095508925}
 --- !u!1 &2026166827
 GameObject:
   m_ObjectHideFlags: 0
