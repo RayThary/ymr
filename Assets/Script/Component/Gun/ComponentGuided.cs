@@ -6,19 +6,37 @@ using UnityEngine.UI;
 public class ComponentGuided : IComponentObject
 {
     private ComponentObject componentBullet;
-    private Transform _canvas;
+    private Transform _guidedUI;
     private float _senser;
     private float _radius;
 
     public void Fire(ComponentObject bullet)
     {
-        _canvas = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.GuidedUI, null).transform;
-        _canvas.transform.SetParent(bullet.transform, false);
-        _senser = _canvas.GetChild(0).GetComponent<Image>().fillAmount * 360;
-        _radius = _canvas.GetChild(0).GetComponent<Image>().rectTransform.rect.width * 0.5f;
+        for(int i = 0; i < bullet.transform.childCount; i++)
+        {
+            if (bullet.transform.GetChild(i).name.Equals("guidedUI"))
+            {
+                _guidedUI = bullet.transform.GetChild(i);
+                _guidedUI.gameObject.SetActive(true);
+                break;
+            }
+        }
+
+        if(_guidedUI == null)
+        {
+            _guidedUI = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.GuidedUI, null).transform;
+            _guidedUI.transform.SetParent(bullet.transform, false);
+            _guidedUI.name = "guidedUI";
+            _senser = _guidedUI.GetChild(0).GetComponent<Image>().fillAmount * 360;
+            _radius = _guidedUI.GetChild(0).GetComponent<Image>().rectTransform.rect.width * 0.5f;
+        }
         componentBullet = bullet;
     }
 
+    public void Remove()
+    {
+        _guidedUI.gameObject.SetActive(false);
+    }
     public void Update()
     {
         componentBullet.transform.eulerAngles += new Vector3(0, Rotate(10, FindTarget()) * 0.1f, 0);
