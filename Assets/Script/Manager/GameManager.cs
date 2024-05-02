@@ -95,8 +95,17 @@ public class GameManager : MonoBehaviour
         //장착하고 있는 무기의 갯수가 0개가 아니다!
         if (w.Launcher.AttackTypes.Count != 0)
         {
+            float width = Screen.width;
+            float height = Screen.height;
+            if (cardSelectWindow == null)
+            {
+                cardSelectWindow = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.CardSelectWindow, FindObjectOfType<Canvas>().transform).GetComponent<Image>();
+                cardSelectWindow.transform.position = new Vector3(width * 0.5f, height * 0.5f);
+                cardSelectWindow.transform.SetAsFirstSibling();
+            }
+
             //화면 가려주고
-            cardSelectWindow.rectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
+            cardSelectWindow.rectTransform.sizeDelta = new Vector2(width, height);
             //카드 보여주고
             CardTest = true;
         }

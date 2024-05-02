@@ -48,6 +48,7 @@ public class PoolingManager : MonoBehaviour
         FireBall,
         RushCoolTimer,
         PlayerHpUI,
+        CardSelectWindow,
     }
 
     [System.Serializable]
