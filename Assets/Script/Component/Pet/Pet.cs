@@ -58,7 +58,7 @@ public abstract class Pet : MonoBehaviour
     //주인 찾아가기
     public virtual void Follow()
     {
-        if(_master != null)
+        if(_master != null && Vector3.Distance(transform.position, _master.transform.position) > 0.5f)
         {
             transform.position += (_master.transform.position - transform.position).normalized * Time.deltaTime * _speed;
         }

@@ -66,7 +66,13 @@ public class ComponentBullet : ComponentObject
         if (destroy)
         {
             if (1 << other.gameObject.layer ==  LayerMask.GetMask("Enemy") || 1 << other.gameObject.layer == LayerMask.GetMask("Wall"))
+            {
+                for (int i = 0; i < components.Count; i++)
+                {
+                    components[i].Remove(this);
+                }
                 PoolingManager.Instance.RemovePoolingObject(gameObject);
+            }
         }
     }
 }

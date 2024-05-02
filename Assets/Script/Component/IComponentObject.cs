@@ -6,4 +6,5 @@ public interface IComponentObject
     void Update();
     void Enter(Collider other);
     bool Destroy(Collider other) { return true; }
+    void Remove(ComponentObject componentObject) { }
 }
