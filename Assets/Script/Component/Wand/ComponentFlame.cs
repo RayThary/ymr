@@ -62,7 +62,7 @@ public class ComponentFlame : ComponentObject
     private void OnTriggerEnter(Collider other)
     {
         Unit unit = other.GetComponent<Unit>();
-        if (unit != null)
+        if (unit != null && unit != _player)
         {
             unit.Hit(_player, _player.STAT.AD);
             _player.componentController.CallAttack(unit);
