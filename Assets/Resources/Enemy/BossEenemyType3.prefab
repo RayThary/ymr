@@ -232,6 +232,7 @@ MonoBehaviour:
   Right: 0
   CloseWallSetUpGroundTime: 1
   CloseWallRadius: 4
+  mapUnderTrs: []
   pattenName: 0
   pattenStart: 0
 --- !u!114 &2774756359738663857
