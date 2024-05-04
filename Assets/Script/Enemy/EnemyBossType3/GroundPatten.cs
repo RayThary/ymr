@@ -27,7 +27,7 @@ public class GroundPatten : MonoBehaviour
 
 
     private List<GameObject> mapUnder = new List<GameObject>();
-    private List<GameObject> mapUnderTrs = new List<GameObject>();
+    [SerializeField]private List<GameObject> mapUnderTrs = new List<GameObject>();
 
     private List<(int, int)> listUpground = new List<(int, int)>();
     private void addUpground((int, int) point)
