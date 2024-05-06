@@ -38,8 +38,9 @@ public class SoundManager : MonoBehaviour
         StartCoroutine("bgStart");
         //m_backGroundSound.PlayOneShot(오디오, 클립) 무조건한번 실행
         //slider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("Master", x); });//슬라이더연결
-        BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", Mathf.Log10(x) * 20); });
-        SFXSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("SFX", x); });
+
+        //BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", Mathf.Log10(x) * 20); });
+        //SFXSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("SFX", x); });
 
     }
     //private void

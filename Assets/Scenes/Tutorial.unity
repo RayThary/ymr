@@ -64799,10 +64799,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c88cbddb113bf43ba61a56ad76f05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_backGroundSound: {fileID: 0}
-  m_SFXAudioSource: {fileID: 0}
-  m_mixer: {fileID: 24100000, guid: 09d42ad7a4608944391b6d860abca916, type: 2}
-  m_backGroundClip: {fileID: 0}
+  m_backGroundSound: {fileID: 1210960922}
+  m_SFXAudioSource: {fileID: 1210960922}
+  m_mixer: {fileID: 24100000, guid: cfda0f4beffce5e4e91848319930f574, type: 2}
+  m_backGroundClip: {fileID: 8300000, guid: 71f43bf5338c646409ac97770490e422, type: 3}
   BackGroundSlider: {fileID: 0}
   SFXSlider: {fileID: 0}
 --- !u!4 &1210960921
