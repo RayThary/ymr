@@ -57,6 +57,8 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: ce45b60b8596371429635ba16585b3ad
     name: BackGround
+  - guid: 32839f748f2e046418a472a755214d55
+    name: Master
   - guid: de2c7150ee1aba84d9a6be0513ab8de3
     name: SFX
   m_AudioMixerGroupViews:
