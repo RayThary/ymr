@@ -127,16 +127,15 @@ public class GameManager : MonoBehaviour
         if (stageNum == 3)
         {
             //마지막 보스 스테이지 로드
+            SceneManager.LoadScene("Type" + "Boss" + "Stage");
         }
         else
         {
             int stage = stageList[Random.Range(0, stageList.Count)];
             stageList.Remove(stage);
-            //SceneManager.LoadScene("BossType" + stage);
+            SceneManager.LoadScene("Type" + stage + "Stage");
         }
 
-
-        SceneManager.LoadScene(1);
         //여기서 선택한 씬을 기록
     }
 

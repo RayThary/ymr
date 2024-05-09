@@ -12,15 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial.unity
     guid: 539f99d7cff68814280a4b382167a681
   - enabled: 1
-    path: Assets/Scenes/TestType1Stage.unity
+    path: Assets/Scenes/Type1Stage.unity
     guid: e5e58c19a47fcfe4f959d74803f175d3
   - enabled: 1
-    path: Assets/Scenes/TestType2Stage.unity
+    path: Assets/Scenes/Type2Stage.unity
     guid: 70b1c14ba4f533a4f89dd30bd2db3ed9
   - enabled: 1
-    path: Assets/Scenes/TestType3Stage.unity
+    path: Assets/Scenes/Type3Stage.unity
     guid: 5ba43388054fcf240ae812e71b635241
   - enabled: 1
-    path: Assets/Scenes/TestTypeEndStage.unity
+    path: Assets/Scenes/TypeEndStage.unity
     guid: 623feea779b02da41a9f7337ad8c7186
   m_configObjects: {}
