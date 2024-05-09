@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         //프레임 제한 최대 60
         Application.targetFrameRate = 60;//59 
 
-        for (int i = 1; i < 5; i++)
+        for (int i = 1; i < 3; i++)
         {
             stageList.Add(i);
         }
