@@ -56,11 +56,7 @@ public class CardManager : MonoBehaviour
     private void Start()
     {
         player = GameManager.instance.GetPlayer;
-        canvas = FindAnyObjectByType<Canvas>();
-        for (int i = 0; i < view.Length; i++)
-        {
-            view[i].Init(this);
-        }
+        
         publicCards.Add(new QuickAttackCard(player));
         publicCards.Add(new PenetrationCard(player));
         publicCards.Add(new MineCard(player));
@@ -90,6 +86,16 @@ public class CardManager : MonoBehaviour
 
     public void ViewCards()
     {
+        if (view == null || view[0] == null)
+        {
+            CardInit();
+        }
+
+        for (int i = 0; i < view.Length; i++)
+        {
+            view[i].Init(this);
+        }
+
         List<Card> list = publicCards.Except(selectCards).ToList();
         Card[] cards = AngleCalculator.GetRandomCards(list, view.Length);
         if (cards == null)
@@ -115,9 +121,16 @@ public class CardManager : MonoBehaviour
 
     public void CardInit()
     {
+        canvas = FindAnyObjectByType<Canvas>();
+        if (view == null)
+        {
+            view = new CardVeiw[3];
+        }
+           
         for(int i = 0; i < 3; i++)
         {
             view[i] = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.CardButton, canvas.transform).GetComponent<CardVeiw>();
+            view[i].transform.position = new Vector3(660 + (i * 300), 540, 0);
         }
     }
 }
