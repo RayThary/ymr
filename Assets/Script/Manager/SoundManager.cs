@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
@@ -11,12 +12,15 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource m_backGroundSound;
     [SerializeField] private AudioSource m_SFXAudioSource;
     [SerializeField] private AudioMixer m_mixer;
-    [SerializeField] private AudioClip m_backGroundClip;
 
+    [SerializeField] private AudioClip m_battleBackGroundClip;
+    [SerializeField] private AudioClip m_mainBackGroundClip;
 
+    [SerializeField] private Slider MasterSound;
     [SerializeField] private Slider BackGroundSlider;
     [SerializeField] private Slider SFXSlider;
-
+    
+    
 
 
     private void Awake()
@@ -37,19 +41,26 @@ public class SoundManager : MonoBehaviour
     {
         StartCoroutine("bgStart");
         //m_backGroundSound.PlayOneShot(오디오, 클립) 무조건한번 실행
-        //slider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("Master", x); });//슬라이더연결
-
-        //BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", Mathf.Log10(x) * 20); });
-        //SFXSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("SFX", x); });
+        MasterSound.onValueChanged.AddListener((x) => { m_mixer.SetFloat("Master", x); });//슬라이더연결
+        
+        BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", Mathf.Log10(x) * 20); });
+        SFXSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("SFX", x); });
 
     }
-    //private void
+
 
 
     IEnumerator bgStart()
     {
         yield return new WaitForSeconds(2);
-        bgSoundPlay(m_backGroundClip);
+        if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            bgSoundPlay(m_mainBackGroundClip);
+        }
+        else
+        {
+            bgSoundPlay(m_battleBackGroundClip);
+        }
     }
 
     public void BackGroundVolume(float _volume)
