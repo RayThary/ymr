@@ -49,6 +49,8 @@ public class PoolingManager : MonoBehaviour
         RushCoolTimer,
         PlayerHpUI,
         CardSelectWindow,
+        CardButton,
+
     }
 
     [System.Serializable]
