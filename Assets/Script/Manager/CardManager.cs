@@ -37,8 +37,9 @@ public class CardManager : MonoBehaviour
 
     }
 
-    [SerializeField]
+
     private CardVeiw[] view;
+    private Canvas canvas;
     private List<Card> publicCards = new();
     public List<Card> PublicCards { get { return publicCards; } }
     private List<Card> selectCards = new();
@@ -55,6 +56,7 @@ public class CardManager : MonoBehaviour
     private void Start()
     {
         player = GameManager.instance.GetPlayer;
+        canvas = FindAnyObjectByType<Canvas>();
         for (int i = 0; i < view.Length; i++)
         {
             view[i].Init(this);
@@ -109,6 +111,14 @@ public class CardManager : MonoBehaviour
             view[i].Card = null;
         }
         GameManager.instance.CardSelected();
+    }
+
+    public void CardInit()
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            view[i] = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.CardSelectWindow, canvas.transform).GetComponent<CardVeiw>();
+        }
     }
 }
 
