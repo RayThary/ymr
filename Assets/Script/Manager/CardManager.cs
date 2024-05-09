@@ -117,7 +117,7 @@ public class CardManager : MonoBehaviour
     {
         for(int i = 0; i < 3; i++)
         {
-            view[i] = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.CardSelectWindow, canvas.transform).GetComponent<CardVeiw>();
+            view[i] = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.CardButton, canvas.transform).GetComponent<CardVeiw>();
         }
     }
 }
