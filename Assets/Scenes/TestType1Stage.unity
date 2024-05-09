@@ -21710,6 +21710,7 @@ MonoBehaviour:
   Right: 0
   CloseWallSetUpGroundTime: 1
   CloseWallRadius: 4
+  mapUnderTrs: []
   pattenName: 0
   pattenStart: 0
 --- !u!4 &276327372
@@ -24252,7 +24253,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explan: {fileID: 0}
-  _name: {fileID: 0}
 --- !u!1 &317544797
 GameObject:
   m_ObjectHideFlags: 0
@@ -63904,6 +63904,7 @@ GameObject:
   - component: {fileID: 1080121522}
   - component: {fileID: 1080121524}
   - component: {fileID: 1080121523}
+  - component: {fileID: 1080121525}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -63983,6 +63984,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 171225797}
+--- !u!114 &1080121525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080121521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a632be1cf00f84fa9435664f27bb06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1080151088
 GameObject:
   m_ObjectHideFlags: 0
@@ -64206,7 +64219,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explan: {fileID: 0}
-  _name: {fileID: 0}
 --- !u!114 &1084563463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72648,7 +72660,9 @@ MonoBehaviour:
   m_backGroundSound: {fileID: 0}
   m_SFXAudioSource: {fileID: 0}
   m_mixer: {fileID: 24100000, guid: 09d42ad7a4608944391b6d860abca916, type: 2}
-  m_backGroundClip: {fileID: 0}
+  m_battleBackGroundClip: {fileID: 0}
+  m_mainBackGroundClip: {fileID: 0}
+  MasterSound: {fileID: 0}
   BackGroundSlider: {fileID: 0}
   SFXSlider: {fileID: 0}
 --- !u!4 &1210960921
@@ -112859,7 +112873,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explan: {fileID: 0}
-  _name: {fileID: 0}
 --- !u!1 &2026768701
 GameObject:
   m_ObjectHideFlags: 0
