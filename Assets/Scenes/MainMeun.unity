@@ -1690,7 +1690,6 @@ GameObject:
   - component: {fileID: 614932593}
   - component: {fileID: 614932592}
   - component: {fileID: 614932591}
-  - component: {fileID: 614932590}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1698,18 +1697,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &614932590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 614932589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbb092972487e5d48aae8470466330c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &614932591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2380,7 +2367,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 614932590}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LobbyScript, Assembly-CSharp
         m_MethodName: StartButton
         m_Mode: 1
@@ -3647,7 +3634,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 614932590}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LobbyScript, Assembly-CSharp
         m_MethodName: ExitButton
         m_Mode: 1
@@ -4051,7 +4038,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 614932590}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LobbyScript, Assembly-CSharp
         m_MethodName: OptionButton
         m_Mode: 1
