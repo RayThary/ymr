@@ -11,7 +11,7 @@ public class SoundManager : MonoBehaviour
 
     public void BackGroundVolume(float _volume)
     {
-        //m_mixer.SetFloat("BackGround", Mathf.Log10(_volume) * 20);
+        
         m_backGroundSource.volume = _volume;
     }
 
@@ -61,7 +61,9 @@ public class SoundManager : MonoBehaviour
 
         StartCoroutine("bgStart");
         //m_backGroundSound.PlayOneShot(오디오, 클립) 무조건한번 실행
-        MasterSound.onValueChanged.AddListener((x) => { m_mixer.SetFloat("Master", Mathf.Log10(x) * 20); });//슬라이더연결
+        
+        //MasterSound.onValueChanged.AddListener((x) => { m_mixer.SetFloat("Master", Mathf.Log10(x) * 20); });//슬라이더연결
+        MasterSound.onValueChanged.AddListener((x) => { m_backGroundSource.volume = x; });//슬라이더연결
 
         //BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", x); });
         //BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", Mathf.Log10(x) * 20); });
