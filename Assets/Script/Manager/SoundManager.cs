@@ -2,14 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager instance;
 
-    [SerializeField] private AudioSource m_backGroundSound;
+    public void BackGroundVolume(float _volume)
+    {
+        //m_mixer.SetFloat("BackGround", Mathf.Log10(_volume) * 20);
+        m_backGroundSource.volume = _volume;
+    }
+
+    public void SFXVolume(float _volume)
+    {
+        m_mixer.SetFloat("SFX", Mathf.Log10(_volume) * 20);
+    }
+
+
+    public static SoundManager instance;
+    private AudioSource m_masterSource;
+    [SerializeField] private AudioSource m_backGroundSource;
     [SerializeField] private AudioSource m_SFXAudioSource;
     [SerializeField] private AudioMixer m_mixer;
 
@@ -19,7 +33,11 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private Slider MasterSound;
     [SerializeField] private Slider BackGroundSlider;
     [SerializeField] private Slider SFXSlider;
-    
+
+    [SerializeField] private float masterVolum;
+    [SerializeField] private float backVolum;
+    [SerializeField] private float SFXVolum;
+
     
 
 
@@ -39,15 +57,24 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
+        m_masterSource = GetComponent<AudioSource>();
+
         StartCoroutine("bgStart");
         //m_backGroundSound.PlayOneShot(오디오, 클립) 무조건한번 실행
-        MasterSound.onValueChanged.AddListener((x) => { m_mixer.SetFloat("Master", x); });//슬라이더연결
-        
-        BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", Mathf.Log10(x) * 20); });
-        SFXSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("SFX", x); });
+        MasterSound.onValueChanged.AddListener((x) => { m_mixer.SetFloat("Master", Mathf.Log10(x) * 20); });//슬라이더연결
 
+        //BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", x); });
+        //BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", Mathf.Log10(x) * 20); });
+        SFXSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("SFX", x); });
+        
     }
 
+    private void Update()
+    {
+        masterVolum = BackGroundSlider.value;
+        backVolum = BackGroundSlider.value;
+        SFXVolum = SFXSlider.value;
+    }
 
 
     IEnumerator bgStart()
@@ -61,16 +88,6 @@ public class SoundManager : MonoBehaviour
         {
             bgSoundPlay(m_battleBackGroundClip);
         }
-    }
-
-    public void BackGroundVolume(float _volume)
-    {
-        m_mixer.SetFloat("BackGround", Mathf.Log10(_volume) * 20);
-    }
-
-    public void SFXVolume(float _volume)
-    {
-        m_mixer.SetFloat("SFX", Mathf.Log10(_volume) * 20);
     }
 
 
@@ -93,10 +110,10 @@ public class SoundManager : MonoBehaviour
 
     public void bgSoundPlay(AudioClip clip)
     {
-        m_backGroundSound.outputAudioMixerGroup = m_mixer.FindMatchingGroups("BackGround")[0];
-        m_backGroundSound.clip = clip;
-        m_backGroundSound.loop = true;
-        m_backGroundSound.volume = 1f;
-        m_backGroundSound.Play();
+        m_backGroundSource.outputAudioMixerGroup = m_mixer.FindMatchingGroups("BackGround")[0];
+        m_backGroundSource.clip = clip;
+        m_backGroundSource.loop = true;
+        m_backGroundSource.volume = 1f;
+        m_backGroundSource.Play();
     }
 }
