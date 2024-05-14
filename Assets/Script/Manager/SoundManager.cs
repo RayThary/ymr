@@ -56,7 +56,6 @@ public class SoundManager : MonoBehaviour
         BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", Mathf.Log10(x) * 20); });//슬라이더연결
         SFXSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("SFX", Mathf.Log10(x) * 20); });//슬라이더연결
         
-        //SFXSlider.onValueChanged.AddListener((x) => { m_SFXAudioSource.volume = x; });
 
     }
 
