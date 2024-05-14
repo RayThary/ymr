@@ -8,20 +8,8 @@ using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-
-    public void BackGroundVolume(float _volume)
-    {
-        
-        m_backGroundSource.volume = _volume;
-    }
-
-    public void SFXVolume(float _volume)
-    {
-        m_mixer.SetFloat("SFX", Mathf.Log10(_volume) * 20);
-    }
-
-
     public static SoundManager instance;
+
     private AudioSource m_masterSource;
     [SerializeField] private AudioSource m_backGroundSource;
     [SerializeField] private AudioSource m_SFXAudioSource;
@@ -30,7 +18,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip m_battleBackGroundClip;
     [SerializeField] private AudioClip m_mainBackGroundClip;
 
-    [SerializeField] private Slider MasterSound;
+    [SerializeField] private Slider MasterSoundSlider;
     [SerializeField] private Slider BackGroundSlider;
     [SerializeField] private Slider SFXSlider;
 
@@ -60,15 +48,13 @@ public class SoundManager : MonoBehaviour
         m_masterSource = GetComponent<AudioSource>();
 
         StartCoroutine("bgStart");
-        //m_backGroundSound.PlayOneShot(오디오, 클립) 무조건한번 실행
-        
-        //MasterSound.onValueChanged.AddListener((x) => { m_mixer.SetFloat("Master", Mathf.Log10(x) * 20); });//슬라이더연결
-        MasterSound.onValueChanged.AddListener((x) => { m_backGroundSource.volume = x; });//슬라이더연결
 
-        //BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", x); });
-        //BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", Mathf.Log10(x) * 20); });
-        SFXSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("SFX", x); });
+        MasterSoundSlider.onValueChanged.AddListener((x) => { m_masterSource.volume = x; });//슬라이더연결
+        //BackGroundSlider.onValueChanged.AddListener((x) => { m_backGroundSource.volume = x; });//슬라이더연결
+        BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("Master", Mathf.Log10(x) * 20); });//슬라이더연결
         
+        //SFXSlider.onValueChanged.AddListener((x) => { m_SFXAudioSource.volume = x; });
+
     }
 
     private void Update()
