@@ -50,6 +50,7 @@ public class PoolingManager : MonoBehaviour
         RushCoolTimer,
         PlayerHpUI,
         CardSelectWindow,
+        CardButton,
         SFXAuiodSource,
     }
 
