@@ -12,7 +12,7 @@ public class SoundManager : MonoBehaviour
 
     private AudioSource m_masterSource;
     [SerializeField] private AudioSource m_backGroundSource;
-    [SerializeField] private AudioSource m_SFXAudioSource;
+    
     [SerializeField] private AudioMixer m_mixer;
 
     [SerializeField] private AudioClip m_battleBackGroundClip;
@@ -49,9 +49,10 @@ public class SoundManager : MonoBehaviour
 
         StartCoroutine("bgStart");
 
-        MasterSoundSlider.onValueChanged.AddListener((x) => { m_masterSource.volume = x; });//슬라이더연결
+        //MasterSoundSlider.onValueChanged.AddListener((x) => { m_masterSource.volume = x; });//슬라이더연결
+        MasterSoundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("Master", Mathf.Log10(x) * 20); });//슬라이더연결
         //BackGroundSlider.onValueChanged.AddListener((x) => { m_backGroundSource.volume = x; });//슬라이더연결
-        BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("Master", Mathf.Log10(x) * 20); });//슬라이더연결
+        BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", Mathf.Log10(x) * 20); });//슬라이더연결
         
         //SFXSlider.onValueChanged.AddListener((x) => { m_SFXAudioSource.volume = x; });
 
@@ -88,13 +89,24 @@ public class SoundManager : MonoBehaviour
     /// <param name="_volum">소리의 크기</param>
     public void SFXPlay(AudioClip clip, float _volum)
     {
-        m_SFXAudioSource.outputAudioMixerGroup = m_mixer.FindMatchingGroups("SFX")[0];
-        m_SFXAudioSource.clip = clip;
-        m_SFXAudioSource.loop = false;
-        m_SFXAudioSource.volume = _volum;
-        m_SFXAudioSource.Play();
-
+        StartCoroutine(SFXPlaying(clip, _volum));
     }
+
+    IEnumerator SFXPlaying(AudioClip clip, float _volum)
+    {
+        GameObject SFXSource = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.SFXAuiodSource, GameManager.instance.GetSFXParent);
+
+        AudioSource m_sfxaudiosource = SFXSource.GetComponent<AudioSource>();
+
+        m_sfxaudiosource.outputAudioMixerGroup = m_mixer.FindMatchingGroups("sfx")[0];
+        m_sfxaudiosource.clip = clip;
+        m_sfxaudiosource.loop = false;
+        m_sfxaudiosource.volume = _volum;
+        m_sfxaudiosource.Play();
+        yield return new WaitForSeconds(clip.length);
+        PoolingManager.Instance.RemovePoolingObject(SFXSource);
+    }
+
 
     public void bgSoundPlay(AudioClip clip)
     {

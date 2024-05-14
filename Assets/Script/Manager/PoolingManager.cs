@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PoolingManager : MonoBehaviour
@@ -49,6 +50,7 @@ public class PoolingManager : MonoBehaviour
         RushCoolTimer,
         PlayerHpUI,
         CardSelectWindow,
+        SFXAuiodSource,
     }
 
     [System.Serializable]
@@ -286,9 +288,10 @@ public class PoolingManager : MonoBehaviour
                 Destroy(_obj);
             }
         }
-
-        
-       
     }
 
+    
+
+
+    
 }
