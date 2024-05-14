@@ -10,7 +10,6 @@ class Data
     public float SFXVolume;
     public float backGroundVolume;
 
-
 }
 
 

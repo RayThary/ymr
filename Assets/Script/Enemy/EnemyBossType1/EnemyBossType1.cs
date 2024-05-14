@@ -41,7 +41,6 @@ public class EnemyBossType1 : Unit
     private Vector3 beforePlayerTrs;
 
     private bool deathCheck = false;
-    [SerializeField] private bool testHp;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -78,10 +77,7 @@ public class EnemyBossType1 : Unit
             Debug.LogError($"StageNumError , StageNum ={GameManager.instance.GetStageNum}");
         }
 
-        if (testHp)
-        {
-            hp = 4;
-        }
+       
 
         stat.SetHp(hp);
     }
