@@ -526,7 +526,8 @@ public class ComponentPain : IComponentObject
     }
     public void Enter(Collider other)
     {
-        other.GetComponent<Unit>()?.Hit(ComponentObject.Player, _damage);
+        if(1 << other.gameObject.layer == LayerMask.GetMask("Enemy") || 1 << other.gameObject.layer == LayerMask.GetMask("Wall"))
+            other.GetComponent<Unit>()?.Hit(ComponentObject.Player, _damage);
     }
 
     public void Fire(ComponentObject componentObject)
