@@ -551,7 +551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &144505493
 Transform:
   m_ObjectHideFlags: 0
@@ -951,6 +951,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179243650}
   m_CullTransparentMesh: 1
+--- !u!1 &201154595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 201154596}
+  m_Layer: 0
+  m_Name: SFXParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &201154596
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201154595}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2115881837}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &224968254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,6 +1049,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+<<<<<<< HEAD:Assets/Scenes/MainScene.unity
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &258896182
 GameObject:
@@ -1146,6 +1178,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1300130680}
   m_RootOrder: -1
+=======
+>>>>>>> young:Assets/Scenes/MainMeun.unity
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &280267657
 GameObject:
@@ -3162,6 +3196,9 @@ MonoBehaviour:
   - obj: {fileID: 3505574906619622956, guid: 19bcfbac6b439934b875cca71eec51cb, type: 3}
     count: 1
     description: "\uCE74\uB4DC \uACE0\uB97C\uB54C \uD654\uBA74\uC744 \uAC00\uB824\uC90C"
+  - obj: {fileID: 442403443871150810, guid: ce9e7cd95b3923b44ad43217a7bc7b57, type: 3}
+    count: 100
+    description: "SFX\uC758 \uC0AC\uC6B4\uB4DC\uC18C\uC2A4 "
   m_listSoundClip: []
 --- !u!4 &1195125830
 Transform:
@@ -3418,8 +3455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c88cbddb113bf43ba61a56ad76f05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_backGroundSource: {fileID: 144505494}
-  m_SFXAudioSource: {fileID: 258896183}
+  m_backGroundSource: {fileID: 1300130678}
   m_mixer: {fileID: 24100000, guid: cfda0f4beffce5e4e91848319930f574, type: 2}
   m_battleBackGroundClip: {fileID: 8300000, guid: 71f43bf5338c646409ac97770490e422, type: 3}
   m_mainBackGroundClip: {fileID: 8300000, guid: d4c3e022cdd22744cbf70202140eb33b, type: 3}
@@ -3442,7 +3478,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 144505493}
-  - {fileID: 258896184}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4341,6 +4376,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1180975655}
+<<<<<<< HEAD:Assets/Scenes/MainScene.unity
+=======
+  - {fileID: 201154596}
+>>>>>>> young:Assets/Scenes/MainMeun.unity
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

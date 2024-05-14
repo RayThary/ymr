@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     private Transform enemyAttackObj;
     public Transform GetEnemyAttackObjectPatten { get { return enemyAttackObj; } }
 
+    public Transform GetSFXParent { get { return transform.GetChild(1); } }
+
     public bool CardTest = false;
 
     public Transform GetenemyObjectBox { get { return transform.GetChild(0); } }
