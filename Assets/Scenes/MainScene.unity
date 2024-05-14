@@ -2994,190 +2994,6 @@ Transform:
   m_Father: {fileID: 2115881837}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1195125828
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1195125830}
-  - component: {fileID: 1195125829}
-  m_Layer: 0
-  m_Name: PoolingManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1195125829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1195125828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 629a3ffb7aa72b14c892db04223a9c61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_listPoolingObj:
-  - obj: {fileID: 5492400203126255093, guid: 8ca5e6424de61644688ac6d1368d28a2, type: 3}
-    count: 30
-    description: 
-  - obj: {fileID: 3941472888520298442, guid: eaac1e1c4573c6e43a40c9ab4c1d0823, type: 3}
-    count: 200
-    description: 
-  - obj: {fileID: 8107354721529028118, guid: c3868180b7d58d24085637668821ae3a, type: 3}
-    count: 100
-    description: 
-  - obj: {fileID: 3301765601838135123, guid: a708515fbeda533419072f0bb6a430fd, type: 3}
-    count: 100
-    description: 
-  - obj: {fileID: 7747638319077484056, guid: 9cc527392caf10b488479d13a1ba49cd, type: 3}
-    count: 10
-    description: 
-  - obj: {fileID: 362274270047863809, guid: 4e6f0c00ff4fab3458b02cdbc7535b7d, type: 3}
-    count: 4
-    description: 
-  - obj: {fileID: 3565470019859723336, guid: 69ca254bae895c946923751f747d1971, type: 3}
-    count: 1
-    description: "\uD0C0\uC7852\uC758 \uD328\uD1343"
-  - obj: {fileID: 6153932820646924346, guid: e6f7309bc0595c0408ca7ab6c0c85177, type: 3}
-    count: 30
-    description: "\uC721\uAC01\uD615\uC73C\uB85C \uB41C\uB808\uC774\uC800\uB97C\uC18C\uD658\uD55C\uB2E4(\uD55C\uACF3\uC740\uBE44\uC5B4\uC788\uC74C)"
-  - obj: {fileID: 2530674987839060628, guid: f90dea9e31f47604799dce078ef04da3, type: 3}
-    count: 30
-    description: "\uADFC\uC811\uACF5\uACA9\uC804 \uBC94\uC704\uB97C\uB098\uD0C0\uB0B4\uC8FC\uB294\uC624\uBE0C\uC81D\uD2B8
-      \uACF5\uACA9\uD0C0\uC774\uBC0D\uB54C \uBD88\uAC12\uC744\uC8FC\uBA74\n\uB300\uBBF8\uC9C0\uAC00\uB4E4\uC5B4\uAC10"
-  - obj: {fileID: 4602445676102275828, guid: 7cd4928c4edd36640b1c4316afbf963c, type: 3}
-    count: 30
-    description: "\uC77C\uBC18\uCD1D\uC54C(\uC801)"
-  - obj: {fileID: 6656935941279637534, guid: 7005241f161324b42a9a517d7d809b3d, type: 3}
-    count: 2000
-    description: "\uC62C\uB77C\uAC00\uB294\uB545"
-  - obj: {fileID: 6578840334332229284, guid: 9639e47cfef22414bb64ad9c7719349a, type: 3}
-    count: 2000
-    description: "\uB098\uBE44\uAC00 \uC0AC\uB77C\uC9C0\uBA74\uB098\uC624\uB294 \uD3ED\uBC1C\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 582911774159304142, guid: 60c64273d29865d468d05e61f83fffad, type: 3}
-    count: 5
-    description: "#\uC790\uBAA8\uC591\uC758 \uC6C0\uC9C1\uC774\uB294 \uB808\uC774\uC800\uD328\uD134\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 7214955833354621470, guid: c6ac3768dff538840ace14dff5bad6ad, type: 3}
-    count: 1
-    description: "\uD50C\uB808\uC774\uC5B4 \uBC29\uD5A5\uC73C\uB85C \uB808\uC774\uC800\uB97C\uC3D8\uB294
-      \uD328\uD134\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 2197413495656302470, guid: 8d9a7c02f2386d3478a7ada34ce82a4b, type: 3}
-    count: 100
-    description: "\uD50C\uB808\uC774\uC5B4\uB97C \uB530\uB77C\uAC00\uB294 \uB098\uBE44\uC785\uB2C8\uB2E4.
-      \uD130\uC9C0\uAE30\uC9C1\uC804\uC704\uCE58\uB97C\uC54C\uB824\uC8FC\uB294\uB290\uB08C\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 4824437571749046377, guid: 790e981a8b296cb4da40e6a0a6a56dd3, type: 3}
-    count: 20
-    description: "\uB098\uBE44\uAC00 \uC0AC\uB77C\uC9C0\uBA74\uB098\uC624\uB294 \uD3ED\uBC1C\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 4421554675009012390, guid: 5798832e1bc3a9b46a040a4444f8cf0f, type: 3}
-    count: 300
-    description: "\uB098\uBE44\uAC00 \uC0AC\uB77C\uC9C0\uBA74\uB098\uC624\uB294 \uD3ED\uBC1C\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 6434177829846946495, guid: d64e033a650b47c499f43386d6f461c0, type: 3}
-    count: 300
-    description: "\uB098\uBE44\uAC00 \uC0AC\uB77C\uC9C0\uBA74\uB098\uC624\uB294 \uD3ED\uBC1C\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 8777484850687557204, guid: d5f732fc1197fa04b8b07903c74200fd, type: 3}
-    count: 300
-    description: "\uBCBD\uC774 \uC62C\uB77C\uC628\uC774\uD6C4 \uD50C\uB808\uC774\uC5B4\uBC29\uD5A5\uC73C\uB85C
-      \uB808\uC774\uC800\uB97C \uBC1C\uC0AC\uD558\uB294 \uC624\uBE0C\uC81D\uD2B8
-      \uC785\uB2C8\uB2E4."
-  - obj: {fileID: 5374424623821559179, guid: ee651feca0331f74bb9c2ddf79bb9c88, type: 3}
-    count: 300
-    description: "\uD30C\uB780\uC0C9\uC73C\uB85C \uD3ED\uBC1C\uD558\uB294\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4"
-  - obj: {fileID: 1482343530345830081, guid: 5b370894cb5bf4740af545c958126f19, type: 3}
-    count: 20
-    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 6493498499687799739, guid: 871ccc98199f65043a4e17fa7b2132ca, type: 3}
-    count: 20
-    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 6262541214286973548, guid: bfee1974017b8e54f9bfce96c17f6e7b, type: 3}
-    count: 20
-    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 5844818256770461175, guid: a86ea25bf335bf7479736f400fc5a156, type: 3}
-    count: 20
-    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 8825187455068502706, guid: 07f189e8fa3ff8549b1cf951f962cd71, type: 3}
-    count: 20
-    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 7119898114536164336, guid: 10847f1db4f37474fbb6fb136ab01622, type: 3}
-    count: 20
-    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 3071920710562904978, guid: f5bc1c301bca7904e972b15dc0aa74dc, type: 3}
-    count: 20
-    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 5335465979247453477, guid: 7c087722d835210448dcfc4ceed43f63, type: 3}
-    count: 20
-    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 217232333790303287, guid: a9f44a46e61e09a46afec0cae0de38c6, type: 3}
-    count: 20
-    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 5213563467867851606, guid: 4dc19a01673a9b74e8ee74f76d398704, type: 3}
-    count: 20
-    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 7224039625729902101, guid: b7146b1f37d3a2b4fb5b42ae1a790c8a, type: 3}
-    count: 20
-    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 148522354681840747, guid: f52147cf7d435df47ac582790c5915d6, type: 3}
-    count: 20
-    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 4402205830951940465, guid: 869c3f0ff777da142a255400d85d8907, type: 3}
-    count: 20
-    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 7887480724389914703, guid: cb70046f6a2b90d40b4b9a5a78c63166, type: 3}
-    count: 20
-    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 1881190412761143920, guid: 82e45cb129169804fb47854486ba6720, type: 3}
-    count: 20
-    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 8106668794347856304, guid: 9157431aafe4e744fa133d0a389e77ce, type: 3}
-    count: 10
-    description: "\uB04C\uC5B4\uB2F9\uAE30\uB294 \uC624\uBE0C\uC81D\uD2B8"
-  - obj: {fileID: 1057547482111861689, guid: fb12cb24d272fa04596adbc2c4976b7a, type: 3}
-    count: 10
-    description: "* \uBAA8\uC591\uC73C\uB85C \uC870\uAE08\uC758\uB51C\uB808\uC774\uB97C
-      \uC8FC\uC5B4\uC11C \uCD1D\uC54C\uC744\uBC1C\uC0AC\uD558\uB294 \uC624\uBE0C\uC81D\uD2B8"
-  - obj: {fileID: 938011206624785263, guid: b60eaa6f09b912a4dbb1091412f2ff84, type: 3}
-    count: 10
-    description: "* \uBAA8\uC591\uC73C\uB85C \uC870\uAE08\uC758\uB51C\uB808\uC774\uB97C
-      \uC8FC\uC5B4\uC11C \uCD1D\uC54C\uC744\uBC1C\uC0AC\uD558\uB294 \uC624\uBE0C\uC81D\uD2B8"
-  - obj: {fileID: 1443800135365878629, guid: a72443df4153a1946856173fa6198aa8, type: 3}
-    count: 10
-    description: "* \uBAA8\uC591\uC73C\uB85C \uC870\uAE08\uC758\uB51C\uB808\uC774\uB97C
-      \uC8FC\uC5B4\uC11C \uCD1D\uC54C\uC744\uBC1C\uC0AC\uD558\uB294 \uC624\uBE0C\uC81D\uD2B8"
-  - obj: {fileID: 6009053421921428543, guid: 2435946b7ceb8e047a43bfb3e0c84242, type: 3}
-    count: 20
-    description: "\uD30C\uC774\uC5B4\uBCFC"
-  - obj: {fileID: 4493129744902347110, guid: b6c673a20e5eea14d8fedadccfd321a5, type: 3}
-    count: 1
-    description: "\uD50C\uB808\uC774\uC5B4\uC758 \uB300\uC26C\uC758 \uCFE8\uD0C0\uC784\uC744
-      \uD45C\uC2DC\uD574\uC90C"
-  - obj: {fileID: 5515080439169409439, guid: aae666dc726f74949924415461e78a2d, type: 3}
-    count: 1
-    description: "\uD50C\uB808\uC774\uC5B4\uC758 \uCCB4\uB825\uC744 \uD45C\uC2DC\uD574\uC90C"
-  - obj: {fileID: 3505574906619622956, guid: 19bcfbac6b439934b875cca71eec51cb, type: 3}
-    count: 1
-    description: "\uCE74\uB4DC \uACE0\uB97C\uB54C \uD654\uBA74\uC744 \uAC00\uB824\uC90C"
-  m_listSoundClip: []
---- !u!4 &1195125830
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1195125828}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1206974051
 GameObject:
   m_ObjectHideFlags: 0
@@ -3677,6 +3493,196 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520660501}
   m_CullTransparentMesh: 1
+--- !u!1 &1784393809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1784393811}
+  - component: {fileID: 1784393810}
+  m_Layer: 0
+  m_Name: PoolingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1784393810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784393809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629a3ffb7aa72b14c892db04223a9c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listPoolingObj:
+  - obj: {fileID: 5492400203126255093, guid: 8ca5e6424de61644688ac6d1368d28a2, type: 3}
+    count: 30
+    description: 
+  - obj: {fileID: 3941472888520298442, guid: eaac1e1c4573c6e43a40c9ab4c1d0823, type: 3}
+    count: 200
+    description: 
+  - obj: {fileID: 8107354721529028118, guid: c3868180b7d58d24085637668821ae3a, type: 3}
+    count: 100
+    description: 
+  - obj: {fileID: 3301765601838135123, guid: a708515fbeda533419072f0bb6a430fd, type: 3}
+    count: 100
+    description: 
+  - obj: {fileID: 7747638319077484056, guid: 9cc527392caf10b488479d13a1ba49cd, type: 3}
+    count: 10
+    description: 
+  - obj: {fileID: 362274270047863809, guid: 4e6f0c00ff4fab3458b02cdbc7535b7d, type: 3}
+    count: 4
+    description: 
+  - obj: {fileID: 3565470019859723336, guid: 69ca254bae895c946923751f747d1971, type: 3}
+    count: 1
+    description: "\uD0C0\uC7852\uC758 \uD328\uD1343"
+  - obj: {fileID: 6153932820646924346, guid: e6f7309bc0595c0408ca7ab6c0c85177, type: 3}
+    count: 30
+    description: "\uC721\uAC01\uD615\uC73C\uB85C \uB41C\uB808\uC774\uC800\uB97C\uC18C\uD658\uD55C\uB2E4(\uD55C\uACF3\uC740\uBE44\uC5B4\uC788\uC74C)"
+  - obj: {fileID: 2530674987839060628, guid: f90dea9e31f47604799dce078ef04da3, type: 3}
+    count: 30
+    description: "\uADFC\uC811\uACF5\uACA9\uC804 \uBC94\uC704\uB97C\uB098\uD0C0\uB0B4\uC8FC\uB294\uC624\uBE0C\uC81D\uD2B8
+      \uACF5\uACA9\uD0C0\uC774\uBC0D\uB54C \uBD88\uAC12\uC744\uC8FC\uBA74\n\uB300\uBBF8\uC9C0\uAC00\uB4E4\uC5B4\uAC10"
+  - obj: {fileID: 4602445676102275828, guid: 7cd4928c4edd36640b1c4316afbf963c, type: 3}
+    count: 30
+    description: "\uC77C\uBC18\uCD1D\uC54C(\uC801)"
+  - obj: {fileID: 6656935941279637534, guid: 7005241f161324b42a9a517d7d809b3d, type: 3}
+    count: 2000
+    description: "\uC62C\uB77C\uAC00\uB294\uB545"
+  - obj: {fileID: 6578840334332229284, guid: 9639e47cfef22414bb64ad9c7719349a, type: 3}
+    count: 2000
+    description: "\uB098\uBE44\uAC00 \uC0AC\uB77C\uC9C0\uBA74\uB098\uC624\uB294 \uD3ED\uBC1C\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 582911774159304142, guid: 60c64273d29865d468d05e61f83fffad, type: 3}
+    count: 5
+    description: "#\uC790\uBAA8\uC591\uC758 \uC6C0\uC9C1\uC774\uB294 \uB808\uC774\uC800\uD328\uD134\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 7214955833354621470, guid: c6ac3768dff538840ace14dff5bad6ad, type: 3}
+    count: 1
+    description: "\uD50C\uB808\uC774\uC5B4 \uBC29\uD5A5\uC73C\uB85C \uB808\uC774\uC800\uB97C\uC3D8\uB294
+      \uD328\uD134\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 2197413495656302470, guid: 8d9a7c02f2386d3478a7ada34ce82a4b, type: 3}
+    count: 100
+    description: "\uD50C\uB808\uC774\uC5B4\uB97C \uB530\uB77C\uAC00\uB294 \uB098\uBE44\uC785\uB2C8\uB2E4.
+      \uD130\uC9C0\uAE30\uC9C1\uC804\uC704\uCE58\uB97C\uC54C\uB824\uC8FC\uB294\uB290\uB08C\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 4824437571749046377, guid: 790e981a8b296cb4da40e6a0a6a56dd3, type: 3}
+    count: 20
+    description: "\uB098\uBE44\uAC00 \uC0AC\uB77C\uC9C0\uBA74\uB098\uC624\uB294 \uD3ED\uBC1C\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 4421554675009012390, guid: 5798832e1bc3a9b46a040a4444f8cf0f, type: 3}
+    count: 300
+    description: "\uB098\uBE44\uAC00 \uC0AC\uB77C\uC9C0\uBA74\uB098\uC624\uB294 \uD3ED\uBC1C\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 6434177829846946495, guid: d64e033a650b47c499f43386d6f461c0, type: 3}
+    count: 300
+    description: "\uB098\uBE44\uAC00 \uC0AC\uB77C\uC9C0\uBA74\uB098\uC624\uB294 \uD3ED\uBC1C\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 8777484850687557204, guid: d5f732fc1197fa04b8b07903c74200fd, type: 3}
+    count: 300
+    description: "\uBCBD\uC774 \uC62C\uB77C\uC628\uC774\uD6C4 \uD50C\uB808\uC774\uC5B4\uBC29\uD5A5\uC73C\uB85C
+      \uB808\uC774\uC800\uB97C \uBC1C\uC0AC\uD558\uB294 \uC624\uBE0C\uC81D\uD2B8
+      \uC785\uB2C8\uB2E4."
+  - obj: {fileID: 5374424623821559179, guid: ee651feca0331f74bb9c2ddf79bb9c88, type: 3}
+    count: 300
+    description: "\uD30C\uB780\uC0C9\uC73C\uB85C \uD3ED\uBC1C\uD558\uB294\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4"
+  - obj: {fileID: 1482343530345830081, guid: 5b370894cb5bf4740af545c958126f19, type: 3}
+    count: 20
+    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 6493498499687799739, guid: 871ccc98199f65043a4e17fa7b2132ca, type: 3}
+    count: 20
+    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 6262541214286973548, guid: bfee1974017b8e54f9bfce96c17f6e7b, type: 3}
+    count: 20
+    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 5844818256770461175, guid: a86ea25bf335bf7479736f400fc5a156, type: 3}
+    count: 20
+    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 8825187455068502706, guid: 07f189e8fa3ff8549b1cf951f962cd71, type: 3}
+    count: 20
+    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 7119898114536164336, guid: 10847f1db4f37474fbb6fb136ab01622, type: 3}
+    count: 20
+    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 3071920710562904978, guid: f5bc1c301bca7904e972b15dc0aa74dc, type: 3}
+    count: 20
+    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 5335465979247453477, guid: 7c087722d835210448dcfc4ceed43f63, type: 3}
+    count: 20
+    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 217232333790303287, guid: a9f44a46e61e09a46afec0cae0de38c6, type: 3}
+    count: 20
+    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 5213563467867851606, guid: 4dc19a01673a9b74e8ee74f76d398704, type: 3}
+    count: 20
+    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 7224039625729902101, guid: b7146b1f37d3a2b4fb5b42ae1a790c8a, type: 3}
+    count: 20
+    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 148522354681840747, guid: f52147cf7d435df47ac582790c5915d6, type: 3}
+    count: 20
+    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 4402205830951940465, guid: 869c3f0ff777da142a255400d85d8907, type: 3}
+    count: 20
+    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 7887480724389914703, guid: cb70046f6a2b90d40b4b9a5a78c63166, type: 3}
+    count: 20
+    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 1881190412761143920, guid: 82e45cb129169804fb47854486ba6720, type: 3}
+    count: 20
+    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
+  - obj: {fileID: 8106668794347856304, guid: 9157431aafe4e744fa133d0a389e77ce, type: 3}
+    count: 10
+    description: "\uB04C\uC5B4\uB2F9\uAE30\uB294 \uC624\uBE0C\uC81D\uD2B8"
+  - obj: {fileID: 1057547482111861689, guid: fb12cb24d272fa04596adbc2c4976b7a, type: 3}
+    count: 10
+    description: "* \uBAA8\uC591\uC73C\uB85C \uC870\uAE08\uC758\uB51C\uB808\uC774\uB97C
+      \uC8FC\uC5B4\uC11C \uCD1D\uC54C\uC744\uBC1C\uC0AC\uD558\uB294 \uC624\uBE0C\uC81D\uD2B8"
+  - obj: {fileID: 938011206624785263, guid: b60eaa6f09b912a4dbb1091412f2ff84, type: 3}
+    count: 10
+    description: "* \uBAA8\uC591\uC73C\uB85C \uC870\uAE08\uC758\uB51C\uB808\uC774\uB97C
+      \uC8FC\uC5B4\uC11C \uCD1D\uC54C\uC744\uBC1C\uC0AC\uD558\uB294 \uC624\uBE0C\uC81D\uD2B8"
+  - obj: {fileID: 1443800135365878629, guid: a72443df4153a1946856173fa6198aa8, type: 3}
+    count: 10
+    description: "* \uBAA8\uC591\uC73C\uB85C \uC870\uAE08\uC758\uB51C\uB808\uC774\uB97C
+      \uC8FC\uC5B4\uC11C \uCD1D\uC54C\uC744\uBC1C\uC0AC\uD558\uB294 \uC624\uBE0C\uC81D\uD2B8"
+  - obj: {fileID: 6009053421921428543, guid: 2435946b7ceb8e047a43bfb3e0c84242, type: 3}
+    count: 20
+    description: "\uD30C\uC774\uC5B4\uBCFC"
+  - obj: {fileID: 4493129744902347110, guid: b6c673a20e5eea14d8fedadccfd321a5, type: 3}
+    count: 1
+    description: "\uD50C\uB808\uC774\uC5B4\uC758 \uB300\uC26C\uC758 \uCFE8\uD0C0\uC784\uC744
+      \uD45C\uC2DC\uD574\uC90C"
+  - obj: {fileID: 5515080439169409439, guid: aae666dc726f74949924415461e78a2d, type: 3}
+    count: 1
+    description: "\uD50C\uB808\uC774\uC5B4\uC758 \uCCB4\uB825\uC744 \uD45C\uC2DC\uD574\uC90C"
+  - obj: {fileID: 3505574906619622956, guid: 19bcfbac6b439934b875cca71eec51cb, type: 3}
+    count: 1
+    description: "\uCE74\uB4DC \uACE0\uB97C\uB54C \uD654\uBA74\uC744 \uAC00\uB824\uC90C"
+  - obj: {fileID: 3794285619436556216, guid: 40a79ad76d62331468d07c2e67c3c649, type: 3}
+    count: 3
+    description: "\uCE74\uB4DC \uACE0\uB974\uB294 \uBC84\uD2BC"
+  - obj: {fileID: 442403443871150810, guid: ce9e7cd95b3923b44ad43217a7bc7b57, type: 3}
+    count: 100
+    description: "SFX\uC18C\uC2A4"
+  m_listSoundClip: []
+--- !u!4 &1784393811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784393809}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1877085890
 GameObject:
   m_ObjectHideFlags: 0
