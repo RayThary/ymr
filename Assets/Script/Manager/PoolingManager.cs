@@ -50,12 +50,8 @@ public class PoolingManager : MonoBehaviour
         RushCoolTimer,
         PlayerHpUI,
         CardSelectWindow,
-<<<<<<< HEAD
         CardButton,
-
-=======
         SFXAuiodSource,
->>>>>>> young
     }
 
     [System.Serializable]
