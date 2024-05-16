@@ -7,6 +7,8 @@ public class PlayerHpUI : MonoBehaviour
 {
     public Image hp;
     private Stat _stat;
+    public Stat Stat { get { return _stat; } set { _stat = value; } }
+
     // Start is called before the first frame update
     void Start()
     {
