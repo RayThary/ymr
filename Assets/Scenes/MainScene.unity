@@ -3949,7 +3949,7 @@ MonoBehaviour:
   - obj: {fileID: 3505574906619622956, guid: 19bcfbac6b439934b875cca71eec51cb, type: 3}
     count: 1
     description: "\uCE74\uB4DC \uACE0\uB97C\uB54C \uD654\uBA74\uC744 \uAC00\uB824\uC90C"
-  - obj: {fileID: 442403443871150810, guid: ce9e7cd95b3923b44ad43217a7bc7b57, type: 3}
+  - obj: {fileID: 3794285619436556216, guid: 40a79ad76d62331468d07c2e67c3c649, type: 3}
     count: 3
     description: "\uCE74\uB4DC \uACE0\uB974\uB294 \uBC84\uD2BC"
   - obj: {fileID: 442403443871150810, guid: ce9e7cd95b3923b44ad43217a7bc7b57, type: 3}
