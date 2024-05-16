@@ -325,7 +325,9 @@ public class BossEnemyEndType : Unit
 
             anim.SetTrigger("Die");
             PoolingManager.Instance.RemoveAllPoolingObject(GameManager.instance.GetEnemyAttackObjectPatten.gameObject);
-
+            SoundManager.instance.bgSoundPause();
+            //보스죽었을때 어떻게할지 생각해보고 여기다작성
+            Debug.Log("끗");
         }
     }
 

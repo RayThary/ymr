@@ -52,6 +52,7 @@ public class PoolingManager : MonoBehaviour
         CardSelectWindow,
         CardButton,
         SFXAuiodSource,
+        NextStage,
     }
 
     [System.Serializable]
@@ -95,7 +96,7 @@ public class PoolingManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         DontDestroyOnLoad(this);
         initPoolingParents();

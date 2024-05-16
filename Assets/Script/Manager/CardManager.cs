@@ -87,8 +87,6 @@ public class CardManager : MonoBehaviour
     public void ViewCards()
     {
         CardInit();
-        Debug.Log(selectCards.Count);
-        Debug.Log(publicCards.Count);
         List<Card> list = publicCards.Except(selectCards).ToList();
         Card[] cards = AngleCalculator.GetRandomCards(list, view.Length);
         if (cards == null)

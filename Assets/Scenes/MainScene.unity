@@ -1936,6 +1936,59 @@ MonoBehaviour:
   m_btnOption: {fileID: 0}
   m_btnOptionClose: {fileID: 0}
   m_btnEnd: {fileID: 0}
+--- !u!1 &630232190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 630232191}
+  - component: {fileID: 630232192}
+  m_Layer: 0
+  m_Name: StageMapBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &630232191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630232190}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 14.5, y: 0, z: 14.5}
+  m_LocalScale: {x: 1, y: 0, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2115881837}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &630232192
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630232190}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 29, y: 0, z: 29}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &637673596
 GameObject:
   m_ObjectHideFlags: 0
@@ -3387,6 +3440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c88cbddb113bf43ba61a56ad76f05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_masterSource: {fileID: 0}
   m_backGroundSource: {fileID: 144505494}
   m_mixer: {fileID: 24100000, guid: cfda0f4beffce5e4e91848319930f574, type: 2}
   m_battleBackGroundClip: {fileID: 8300000, guid: 71f43bf5338c646409ac97770490e422, type: 3}
@@ -3953,6 +4007,9 @@ MonoBehaviour:
     count: 3
     description: "\uCE74\uB4DC \uACE0\uB974\uB294 \uBC84\uD2BC"
   - obj: {fileID: 442403443871150810, guid: ce9e7cd95b3923b44ad43217a7bc7b57, type: 3}
+    count: 100
+    description: "SFX\uC18C\uC2A4"
+  - obj: {fileID: 3969537276031431214, guid: 7373d57ac1d320c4791469a0c48e8a05, type: 3}
     count: 100
     description: "SFX\uC18C\uC2A4"
   m_listSoundClip: []
@@ -4614,8 +4671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5c5c8dd01d3fb4a8756f611ca849ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardManager: {fileID: 0}
-  CardTest: 0
+  CardSelect: 0
   playerDeadButton: {fileID: 8756934176217659321, guid: a4618d7a503ca8a468d5ebafa88f6886, type: 3}
   stage: {fileID: 0}
   stageNum: 1
@@ -4634,6 +4690,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1180975655}
+  - {fileID: 630232191}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

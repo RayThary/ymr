@@ -21089,11 +21089,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 23018044173033137, guid: 7bc9c3fa2e3146046b62348320b7c2f1, type: 3}
       propertyPath: travel
-      value: 0.3
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 23018044173033137, guid: 7bc9c3fa2e3146046b62348320b7c2f1, type: 3}
       propertyPath: spaceDis
-      value: 1.2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 23018044173033137, guid: 7bc9c3fa2e3146046b62348320b7c2f1, type: 3}
       propertyPath: spacePre
@@ -52567,8 +52567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5c5c8dd01d3fb4a8756f611ca849ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardManager: {fileID: 1607198114}
-  CardTest: 0
+  CardSelect: 0
   playerDeadButton: {fileID: 8756934176217659321, guid: a4618d7a503ca8a468d5ebafa88f6886, type: 3}
   stage: {fileID: 0}
   stageNum: 1
@@ -64653,6 +64652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c88cbddb113bf43ba61a56ad76f05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_masterSource: {fileID: 0}
   m_backGroundSource: {fileID: 0}
   m_mixer: {fileID: 24100000, guid: cfda0f4beffce5e4e91848319930f574, type: 2}
   m_battleBackGroundClip: {fileID: 0}

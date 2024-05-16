@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public CardManager cardManager;
+    private CardManager cardManager;
     public static GameManager instance;
 
     private Player player;
-    public Player GetPlayer { get { return player; } }
+    public Player GetPlayer { get { if (player == null) { player = FindObjectOfType<Player>(); } return player; } }
     public Transform GetPlayerTransform { get { return player.transform; } }
 
     private Transform enemyAttackObj;
@@ -18,14 +18,14 @@ public class GameManager : MonoBehaviour
 
     public Transform GetSFXParent { get { return transform.GetChild(1); } }
 
-    public bool CardTest = false;
+    public bool CardSelect = false;
 
     public Transform GetenemyObjectBox { get { return transform.GetChild(0); } }
 
     public GameObject playerDeadButton;
 
     [SerializeField] private BoxCollider stage;
-    public BoxCollider GetStage { get { return stage; } }
+    public BoxCollider GetStage { get { if (stage == null) { stage = GetComponentInChildren<BoxCollider>(); } return stage; } }
 
     [SerializeField] private int stageNum = 1;
     public int GetStageNum { get { return stageNum; } }
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
 
         DontDestroyOnLoad(this);
@@ -82,10 +82,18 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (CardTest)
+
+        if (CardSelect)
         {
-            CardTest = false;
+            CardSelect = false;
+
+            if (cardManager == null)
+            {
+                cardManager = CardManager.Instance;
+            }
+
             cardManager.ViewCards();
+
         }
     }
 
@@ -109,7 +117,7 @@ public class GameManager : MonoBehaviour
             //화면 가려주고
             cardSelectWindow.rectTransform.sizeDelta = new Vector2(width, height);
             //카드 보여주고
-            CardTest = true;
+            CardSelect = true;
         }
         else
         {
@@ -138,7 +146,7 @@ public class GameManager : MonoBehaviour
         if (stageNum == 3)
         {
             //마지막 보스 스테이지 로드
-            SceneManager.LoadScene("Type" + "Boss" + "Stage");
+            SceneManager.LoadScene("Type" + "End" + "Stage");
         }
         else
         {
