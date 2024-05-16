@@ -64654,7 +64654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_backGroundSource: {fileID: 0}
-  m_SFXAudioSource: {fileID: 1210960922}
+  m_SFXAudioSource: {fileID: 0}
   m_mixer: {fileID: 24100000, guid: cfda0f4beffce5e4e91848319930f574, type: 2}
   m_battleBackGroundClip: {fileID: 0}
   m_mainBackGroundClip: {fileID: 0}
