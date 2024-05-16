@@ -28,6 +28,7 @@ public class ComponentExplosion : IComponentObject
 
     public void Enter(Collider other)
     {
-        Explosion();
+        if(1 << other.gameObject.layer == LayerMask.GetMask("Enemy") || 1 << other.gameObject.layer == LayerMask.GetMask("Wall"))
+            Explosion();
     }
 }

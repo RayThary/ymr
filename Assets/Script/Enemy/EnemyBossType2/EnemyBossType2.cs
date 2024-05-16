@@ -419,6 +419,9 @@ public class EnemyBossType2 : Unit
 
             PoolingManager.Instance.RemoveAllPoolingObject(GameManager.instance.GetEnemyAttackObjectPatten.gameObject);
 
+            SoundManager.instance.bgSoundPause();
+            GameObject potal = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.NextStage, null);
+            potal.transform.position = new Vector3(14.5f, 0, 14.5f);
         }
     }
 

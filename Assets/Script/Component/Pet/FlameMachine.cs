@@ -1,27 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FlameMachine : Pet
 {
+    //적을 찾았는지 표시하기
     //공격 사거리
     [SerializeField]
     private float _range;
     //움직일지 (너무 가까우면 더이상 다가가지 않도록)
     private bool _move;
     //공격처럼 보이게 해줄 오브젝트
-    private GameObject _flame;
+    private GameObject _canvas;
+    [SerializeField]
     private float _angle;
-    private float _radius;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         _move = true;
-        _flame = transform.GetChild(1).gameObject;
-        _angle = _flame.transform.GetChild(0).GetComponent<Image>().fillAmount * 360;
-        _radius = _flame.transform.GetChild(0).GetComponent<Image>().rectTransform.rect.width * 0.5f;
+        _canvas = transform.GetChild(1).gameObject;
+        _angle = _canvas.transform.GetChild(0).GetComponent<Image>().fillAmount * 360;
+        _senser = 8;
+        animator = GetComponent<Animator>();
     }
 
     //// Update is called once per frame
@@ -47,6 +51,36 @@ public class FlameMachine : Pet
             transform.eulerAngles += new Vector3(0, Rotate(10, _target.transform) * 0.1f, 0);
         }
     }
+    //적을 찾기
+    public override void Find()
+    {
+        //주인과 너무 멀어졌으니 적을 찾지 말고 주인에게 돌아가
+        if(Vector3.Distance(transform.position, _master.transform.position) > _senser)
+        {
+            _target = null;
+            return;
+        }
+        List<Collider> colliders = new List<Collider>(Physics.OverlapSphere(_master.transform.position, _senser, LayerMask.GetMask("Enemy")));
+        Collider nearby = GameManager.instance.NearbyTrnasform(colliders.ToArray(), _master.transform);
+        while (colliders.Count > 0)
+        {
+            if (nearby.GetComponent<Unit>() != null)
+            {
+                break;
+            }
+            else
+            {
+                colliders.Remove(nearby);
+                nearby = GameManager.instance.NearbyTrnasform(colliders.ToArray(), _master.transform);
+            }
+        }
+        if (nearby != null)
+        {
+            _target = nearby.GetComponent<Unit>();
+        }
+        else
+        { _target = null; }
+    }
     //공격
     public override void Action()
     {
@@ -60,9 +94,10 @@ public class FlameMachine : Pet
                 if (Vector3.Distance(transform.position, _target.transform.position) < _range)
                 {
                     //공격
+                    animator.SetBool("Attack", true);
                     _timer = 0;
-                    if (!_flame.activeSelf)
-                        _flame.SetActive(true);
+                    if (!_canvas.activeSelf)
+                        _canvas.SetActive(true);
                     Collider[] colliders = FindTarget();
                     for (int i = 0; i < colliders.Length; i++)
                     {
@@ -71,19 +106,30 @@ public class FlameMachine : Pet
                 }
                 else
                 {
+                    animator.SetBool("Attack", false);
                     //멀어서 공격 하지 않음
-                    if (_flame.activeSelf)
-                        _flame.SetActive(false);
+                    if (_canvas.activeSelf)
+                    {
+                        _canvas.SetActive(false);
+                    }
                 }
             }
 
-            if (Vector3.Distance(transform.position, _target.transform.position) < 1f)
+            if (Vector3.Distance(transform.position, _target.transform.position) < 1.5f)
             {
                 _move = false;
             }
             else
             {
                 _move = true;
+            }
+        }
+        else
+        {
+            animator.SetBool("Attack", true);
+            if (_canvas.activeSelf)
+            {
+                _canvas.SetActive(false);
             }
         }
     }
@@ -120,7 +166,7 @@ public class FlameMachine : Pet
     private Collider[] FindTarget()
     {
         List<Collider> colliders = new ();
-        colliders.AddRange(Physics.OverlapSphere(transform.position, _radius, LayerMask.GetMask("Enemy")));
+        colliders.AddRange(Physics.OverlapSphere(transform.position, _range * 2, LayerMask.GetMask("Enemy")));
         for (int i = 0; i < colliders.Count; i++)
         {
             if (!(GetAngle(colliders[i].transform) < _angle))
@@ -128,13 +174,21 @@ public class FlameMachine : Pet
                 colliders.RemoveAt(i);
             }
         }
-        Debug.Log(colliders.Count);
-        return colliders.ToArray    ();
+        return colliders.ToArray();
     }
     private float GetAngle(Transform target)
     {
         Vector3 dir = (target.position - transform.position).normalized;
         float dot = Vector3.Dot(transform.forward, dir);
-        return Mathf.Acos(dot) * Mathf.Rad2Deg;
+        if (dot > 0.99f)
+        {
+            // 두 벡터가 거의 같은 방향을 가리킴
+            return 0;
+        }
+        else
+        {
+            // 두 벡터가 다른 방향을 가리킴
+            return Mathf.Acos(dot) * Mathf.Rad2Deg;
+        }
     }
 }

@@ -1620,7 +1620,6 @@ MonoBehaviour:
   nextBombingTime: 0.5
   pullObject: []
   attackTrs: {fileID: 6992006303454770055}
-  testHp: 0
 --- !u!114 &3272973751995671131
 MonoBehaviour:
   m_ObjectHideFlags: 0

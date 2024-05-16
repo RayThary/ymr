@@ -37,8 +37,10 @@ public class CardManager : MonoBehaviour
 
     }
 
-    [SerializeField]
+
     private CardVeiw[] view;
+    [SerializeField]
+    private Canvas canvas;
     private List<Card> publicCards = new();
     public List<Card> PublicCards { get { return publicCards; } }
     private List<Card> selectCards = new();
@@ -55,30 +57,26 @@ public class CardManager : MonoBehaviour
     private void Start()
     {
         player = GameManager.instance.GetPlayer;
-        for (int i = 0; i < view.Length; i++)
-        {
-            view[i].Init(this);
-        }
-        //publicCards.Add(new QuickAttackCard(player));
-        //publicCards.Add(new PenetrationCard(player));
-        //publicCards.Add(new MineCard(player));
-        //publicCards.Add(new DrainCard(player));
-        //publicCards.Add(new ExplosionCard(player));
-        //publicCards.Add(new GuidedCard(player));
-        //publicCards.Add(new PoisonCard(player));
-        //publicCards.Add(new FastCard(player));
-        //publicCards.Add(new HealthCard(player));
-        //publicCards.Add(new MoveCard(player));
-        //publicCards.Add(new CutCard(player));
-        //publicCards.Add(new ThornCard(player));
-        //publicCards.Add(new NaturalCard(player));
-        //publicCards.Add(new DashCard(player));
-        //publicCards.Add(new EnhanceCard(player));
-        //publicCards.Add(new MineMachineCard(player));
-        //publicCards.Add(new GunMachineCard(player));
-        //publicCards.Add(new FlameMachineCard(player));
-        //publicCards.Add(new DefenceMachineCard(player));
-        //publicCards.Add(new Evolution(player));
+        publicCards.Add(new QuickAttackCard(player));
+        publicCards.Add(new PenetrationCard(player));
+        publicCards.Add(new MineCard(player));
+        publicCards.Add(new DrainCard(player));
+        publicCards.Add(new ExplosionCard(player));
+        publicCards.Add(new GuidedCard(player));
+        publicCards.Add(new PoisonCard(player));
+        publicCards.Add(new FastCard(player));
+        publicCards.Add(new HealthCard(player));
+        publicCards.Add(new MoveCard(player));
+        publicCards.Add(new CutCard(player));
+        publicCards.Add(new ThornCard(player));
+        publicCards.Add(new NaturalCard(player));
+        publicCards.Add(new DashCard(player));
+        publicCards.Add(new EnhanceCard(player));
+        publicCards.Add(new MineMachineCard(player));
+        publicCards.Add(new GunMachineCard(player));
+        publicCards.Add(new FlameMachineCard(player));
+        publicCards.Add(new DefenceMachineCard(player));
+        publicCards.Add(new Evolution(player));
         //총만 가능할지도
         publicCards.Add(new ShotgunCard(player));
         publicCards.Add(new Quickly(player));
@@ -88,6 +86,7 @@ public class CardManager : MonoBehaviour
 
     public void ViewCards()
     {
+        CardInit();
         List<Card> list = publicCards.Except(selectCards).ToList();
         Card[] cards = AngleCalculator.GetRandomCards(list, view.Length);
         if (cards == null)
@@ -96,7 +95,6 @@ public class CardManager : MonoBehaviour
         {
             view[i].gameObject.SetActive(true);
             view[i].Card = cards[i];
-            view[i].transform.GetChild(0).GetComponent<Text>().text = view[i].Card.ToString();
         }
     }
 
@@ -111,6 +109,27 @@ public class CardManager : MonoBehaviour
         }
         GameManager.instance.CardSelected();
     }
+
+    public void CardInit()
+    {
+        if (canvas == null)
+            canvas = FindAnyObjectByType<Canvas>();
+        if (view == null)
+            view = new CardVeiw[3];
+        if (view.Length == 0 || view[0] == null)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                view[i] = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.CardButton, canvas.transform).GetComponent<CardVeiw>();
+                view[i].transform.position = new Vector3(660 + (i * 300), 540, 0);
+            }
+        }
+        
+        for (int i = 0; i < view.Length; i++)
+        {
+            view[i].Init(this);
+        }
+    }
 }
 
 
@@ -120,6 +139,7 @@ public class QuickAttackCard : Card
     public QuickAttackCard(Player player) : base(player)
     {
         exp = "공격속도가 빨라집니다";
+        _name = "빨리뽑기";
         sprite = CardManager.CardSprite.Attack;
     }
 
@@ -146,6 +166,7 @@ public class PenetrationCard : Card
     public PenetrationCard(Player player) : base(player)
     {
         exp = "공격이 대상에게 명중했을때 더이상 사라지지 않습니다.";
+        _name = "관통";
         sprite = CardManager.CardSprite.Attack;
     }
     public override void Activation()
@@ -164,6 +185,7 @@ public class MineCard : Card
     public MineCard(Player player) : base(player)
     {
         exp = "대상에게 공격명중 3번째마다 지뢰를 소환합니다.";
+        _name = "설치";
         sprite = CardManager.CardSprite.Attack;
     }
     public override void Activation()
@@ -183,6 +205,7 @@ public class DrainCard : Card
     public DrainCard(Player player) : base(player)
     {
         exp = "공격이 명중할 때마다 체력을 1 회복합니다.";
+        _name = "흡혈";
         sprite = CardManager.CardSprite.Defence;
     }
 
@@ -203,6 +226,7 @@ public class ExplosionCard : Card
     public ExplosionCard(Player player) : base(player)
     {
         exp = "매 공격이 폭발을 일으킵니다.";
+        _name = "폭발";
         sprite = CardManager.CardSprite.Attack;
     }
 
@@ -223,6 +247,7 @@ public class GuidedCard : Card
     public GuidedCard(Player player) : base(player)
     {
         exp = "공격이 상대를 향해 회전합니다.";
+        _name = "유도";
         sprite = CardManager.CardSprite.Attack;
     }
 
@@ -243,6 +268,7 @@ public class PoisonCard : Card
     public PoisonCard(Player player) : base(player)
     {
         exp = "공격이 명중할 때마다 대상에게 독상태를 부여합니다.";
+        _name = "독";
         sprite = CardManager.CardSprite.Attack;
     }
 
@@ -262,6 +288,7 @@ public class FastCard : Card
     public FastCard(Player player) : base(player)
     {
         exp = "이동속도가 상승합니다.";
+        _name = "스피드 업";
         sprite = CardManager.CardSprite.Speed;
     }
 
@@ -281,6 +308,7 @@ public class HealthCard : Card
     public HealthCard(Player player) : base(player)
     {
         exp = "최대 체력이 상승합니다.";
+        _name = "돼지";
         sprite = CardManager.CardSprite.Defence;
     }
     public override void Activation()
@@ -299,6 +327,7 @@ public class MoveCard : Card
     public MoveCard(Player player) : base(player)
     {
         exp = "공격이 상대를 향해 이동합니다.";
+        _name = "공격에 눈 달기";
         sprite = CardManager.CardSprite.Attack;
     }
 
@@ -318,6 +347,7 @@ public class CutCard : Card
     public CutCard(Player player) : base(player)
     {
         exp = "공격이 상대방의 공격을 없앱니다.";
+        _name = "개초딩 공격";
         sprite = CardManager.CardSprite.Defence;
     }
 
@@ -337,6 +367,7 @@ public class ThornCard : Card
     public ThornCard(Player player) : base(player)
     {
         exp = "공격을 받을 때 상대에게 대미지를 1 줍니다.";
+        _name = "반사";
         sprite = CardManager.CardSprite.Attack;
     }
 
@@ -357,6 +388,7 @@ public class NaturalCard : Card
     public NaturalCard(Player player) : base(player)
     {
         exp = "자연회복을 시작합니다.";
+        _name = "드루이드";
         sprite = CardManager.CardSprite.Defence;
     }
 
@@ -376,6 +408,7 @@ public class DashCard : Card
     public DashCard(Player player) : base(player)
     {
         exp = "공격 시 공격 방향으로 대쉬합니다.";
+        _name = "자살 돌격";
         sprite = CardManager.CardSprite.Speed;
     }
 
@@ -395,6 +428,7 @@ public class EnhanceCard : Card
     public EnhanceCard(Player player) : base(player)
     {
         exp = "대쉬 후 공격이 1회 강회됩니다.";
+        _name = "숨고르기";
         sprite = CardManager.CardSprite.Attack;
     }
 
@@ -415,6 +449,7 @@ public class MineMachineCard : Card
     public MineMachineCard(Player player) : base(player)
     {
         exp = "플레이어를 따라다니며 지뢰를 설치합니다.";
+        _name = "테러범";
         sprite = CardManager.CardSprite.MinePet;
     }
 
@@ -444,6 +479,7 @@ public class GunMachineCard : Card
     public GunMachineCard(Player player) : base(player)
     {
         exp = "플레이어를 따라다니며 적에게 총을 발사합니다.";
+        _name = "친구";
         sprite = CardManager.CardSprite.GunPet;
     }
 
@@ -473,6 +509,7 @@ public class FlameMachineCard : Card
     public FlameMachineCard(Player player) : base(player)
     {
         exp = "적에게 다가가 공격합니다.";
+        _name = "스토커";
         sprite = CardManager.CardSprite.FlamePet;
     }
 
@@ -502,6 +539,7 @@ public class DefenceMachineCard : Card
     public DefenceMachineCard(Player player) : base(player)
     {
         exp = "일정시간마다 플레이어에게 보호막을 걸어줍니다.";
+        _name = "수호천사";
         sprite = CardManager.CardSprite.DefencePet;
     }
 
@@ -529,6 +567,7 @@ public class Evolution : Card
     public Evolution(Player player) : base(player)
     {
         exp = "체력 10증가 공격력 2증가.";
+        _name = "진화";
         sprite = CardManager.CardSprite.Attack;
     }
 
@@ -566,6 +605,7 @@ public class ShotgunCard : Card
         rate = 1;
         timer = 5;
         exp = "사거리가 짧고 공격속도가 느린 공격이 2발 추가됩니다.";
+        _name = "더 많은 공격";
         sprite = CardManager.CardSprite.Attack;
     }
 
@@ -588,6 +628,7 @@ public class Quickly : Card
     public Quickly(Player player) : base(player)
     {
         exp = "공격속도가 0.1초 빨라집니다. 총알의 속도도 빨라집니다.";
+        _name = "더 빠른 공격";
         depot = player.GetComponent<WeaponDepot>();
         sprite = CardManager.CardSprite.Attack;
     }
@@ -626,6 +667,7 @@ public class FireB : Card
     public FireB(Player player) : base(player)
     {
         exp = "새로운 공격인 파이어 볼이 추가됩니다";
+        _name = "이게 마법이지";
         //파이어볼의 공격속도는 아무 의미가 없음 (rate)
         fireBall = new FireBall(player.GetComponent<WeaponDepot>().Launcher, player, player.GetComponent<WeaponDepot>().Muzzle, 1f, 10);
         fireBall.Speed = 5;

@@ -45,7 +45,6 @@ public class WeaponDepot : MonoBehaviour
         if(Input.GetMouseButton(0))
         {
             _launcher.LeftDown();
-            Debug.Log(_launcher.AttackTypes.Count);
         }
         else if(Input.GetMouseButtonUp(0))
         {
@@ -527,7 +526,8 @@ public class ComponentPain : IComponentObject
     }
     public void Enter(Collider other)
     {
-        other.GetComponent<Unit>()?.Hit(ComponentObject.Player, _damage);
+        if(1 << other.gameObject.layer == LayerMask.GetMask("Enemy") || 1 << other.gameObject.layer == LayerMask.GetMask("Wall"))
+            other.GetComponent<Unit>()?.Hit(ComponentObject.Player, _damage);
     }
 
     public void Fire(ComponentObject componentObject)

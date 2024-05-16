@@ -10,9 +10,9 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    private AudioSource m_masterSource;
+    [SerializeField] private AudioSource m_masterSource;
     [SerializeField] private AudioSource m_backGroundSource;
-    
+
     [SerializeField] private AudioMixer m_mixer;
 
     [SerializeField] private AudioClip m_battleBackGroundClip;
@@ -26,7 +26,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private float backVolum;
     [SerializeField] private float SFXVolum;
 
-    
+
 
 
     private void Awake()
@@ -40,6 +40,7 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        DontDestroyOnLoad(gameObject);
 
     }
 
@@ -50,18 +51,18 @@ public class SoundManager : MonoBehaviour
         StartCoroutine("bgStart");
 
 
-      
+
         MasterSoundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("Master", Mathf.Log10(x) * 20); });//슬라이더연결
         BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", Mathf.Log10(x) * 20); });//슬라이더연결
         SFXSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("SFX", Mathf.Log10(x) * 20); });//슬라이더연결
-        
-        
+
+
 
     }
 
     private void Update()
     {
-        masterVolum = BackGroundSlider.value;
+        masterVolum = MasterSoundSlider.value;
         backVolum = BackGroundSlider.value;
         SFXVolum = SFXSlider.value;
     }
@@ -69,10 +70,14 @@ public class SoundManager : MonoBehaviour
 
     IEnumerator bgStart()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
         if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 1)
         {
-            bgSoundPlay(m_mainBackGroundClip);
+            if (m_backGroundSource.clip != m_mainBackGroundClip)
+            {
+                bgSoundPlay(m_mainBackGroundClip);
+            }
+            
         }
         else
         {
@@ -82,7 +87,7 @@ public class SoundManager : MonoBehaviour
 
     private void OnEnable()
     {
-        SceneManager.sceneLoaded+= OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -130,5 +135,10 @@ public class SoundManager : MonoBehaviour
         m_backGroundSource.loop = true;
         m_backGroundSource.volume = 1f;
         m_backGroundSource.Play();
+    }
+
+    public void bgSoundPause()
+    {
+        m_backGroundSource.Pause();
     }
 }

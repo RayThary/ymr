@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21089,11 +21089,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 23018044173033137, guid: 7bc9c3fa2e3146046b62348320b7c2f1, type: 3}
       propertyPath: travel
-      value: 0.3
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 23018044173033137, guid: 7bc9c3fa2e3146046b62348320b7c2f1, type: 3}
       propertyPath: spaceDis
-      value: 1.2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 23018044173033137, guid: 7bc9c3fa2e3146046b62348320b7c2f1, type: 3}
       propertyPath: spacePre
@@ -32791,6 +32791,9 @@ MonoBehaviour:
   - obj: {fileID: 3505574906619622956, guid: 19bcfbac6b439934b875cca71eec51cb, type: 3}
     count: 1
     description: "\uCE74\uB4DC \uACE0\uB97C\uB54C \uD654\uBA74\uC744 \uAC00\uB824\uC90C"
+  - obj: {fileID: 3794285619436556216, guid: 40a79ad76d62331468d07c2e67c3c649, type: 3}
+    count: 3
+    description: "\uCE74\uB4DC \uACE0\uB974\uB294 \uBC84\uD2BC"
   m_listSoundClip: []
 --- !u!1 &609269175
 GameObject:
@@ -52564,8 +52567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5c5c8dd01d3fb4a8756f611ca849ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardManager: {fileID: 1607198114}
-  CardTest: 0
+  CardSelect: 0
   playerDeadButton: {fileID: 8756934176217659321, guid: a4618d7a503ca8a468d5ebafa88f6886, type: 3}
   stage: {fileID: 0}
   stageNum: 1
@@ -64650,14 +64652,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c88cbddb113bf43ba61a56ad76f05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_backGroundSound: {fileID: 1210960922}
-  m_SFXAudioSource: {fileID: 1210960922}
+  m_masterSource: {fileID: 0}
+  m_backGroundSource: {fileID: 0}
   m_mixer: {fileID: 24100000, guid: cfda0f4beffce5e4e91848319930f574, type: 2}
   m_battleBackGroundClip: {fileID: 0}
   m_mainBackGroundClip: {fileID: 0}
-  MasterSound: {fileID: 0}
+  MasterSoundSlider: {fileID: 0}
   BackGroundSlider: {fileID: 0}
   SFXSlider: {fileID: 0}
+  masterVolum: 0
+  backVolum: 0
+  SFXVolum: 0
 --- !u!4 &1210960921
 Transform:
   m_ObjectHideFlags: 0
@@ -79115,7 +79120,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 200}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1505840195
@@ -84066,10 +84071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ab63f61e498f9478182c580fe2f7a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  view:
-  - {fileID: 314813437}
-  - {fileID: 2022394387}
-  - {fileID: 1084563462}
+  canvas: {fileID: 586838823}
   sprites:
   - {fileID: 1113496637887592600, guid: 38e5fdbb5e3ac0c4b9e9f60cc92147ad, type: 3}
   - {fileID: -7284573488482055079, guid: 38e5fdbb5e3ac0c4b9e9f60cc92147ad, type: 3}
@@ -101999,37 +102001,6 @@ Transform:
   m_Father: {fileID: 17287134}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1 &1932766712
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1932766713}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1932766713
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932766712}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32.021667, y: -36.5374, z: 9.563736}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1934531838
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class CardVeiw : MonoBehaviour , IPointerEnterHandler, IPointerExitHandle
             if(_card != null)
             {
                 explan.text = _card.Explanation;
+                _name.text = _card.Name;
                 GetComponent<Image>().sprite = CardManager.Sprites[(int)_card.Sprite];
             }
         } 
@@ -24,6 +25,8 @@ public class CardVeiw : MonoBehaviour , IPointerEnterHandler, IPointerExitHandle
     //Ό³Έν
     [SerializeField]
     private Text explan;
+    [SerializeField]
+    private Text _name;
 
     public void Init(CardManager c)
     {

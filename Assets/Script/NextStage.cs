@@ -4,6 +4,7 @@ public class NextStage : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        GameManager.instance.CardSelectStep();
+        if(other.CompareTag("Player"))
+            GameManager.instance.CardSelectStep();
     }
 }
