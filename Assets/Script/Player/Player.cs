@@ -106,7 +106,9 @@ public class Player : Unit
         spaceCanvas = FindObjectOfType<Canvas>();
         spaceImage = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.RushCoolTimer, spaceCanvas.transform).GetComponent<Image>();
         spaceImage.rectTransform.anchoredPosition = new Vector2(-100, 100);
-        PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.PlayerHpUI, spaceCanvas.transform).GetComponent<RectTransform>().anchoredPosition = new Vector2(100, 100);
+        PlayerHpUI playerHpUI = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.PlayerHpUI, spaceCanvas.transform).GetComponent<PlayerHpUI>();
+        playerHpUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(100, 100);
+        playerHpUI.Stat = stat;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
