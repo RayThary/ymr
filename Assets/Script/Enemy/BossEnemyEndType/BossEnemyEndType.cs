@@ -90,7 +90,7 @@ public class BossEnemyEndType : Unit
 
         BossUI.Instance.StatBoss = stat;
         
-        stat.SetHp(10);//보스hp
+        stat.SetHp(200);//보스hp
         
     }
 

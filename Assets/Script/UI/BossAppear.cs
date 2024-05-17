@@ -37,14 +37,14 @@ public class BossAppear : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
-            if (i == bulidNum - 1)
+            if (i + 2 == bulidNum)
             {
                 bossImage.sprite = bossSprite[i];
             }
         }
 
-        
-        
+
+
 
         anyKeyText = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         anyKeyText.text = string.Empty;
@@ -64,7 +64,7 @@ public class BossAppear : MonoBehaviour
             return;
         }
 
-        if (rectTrs.localPosition.x ==  -47)
+        if (rectTrs.localPosition.x == -47)
         {
             anyKeyText.text = "Press Any Key";
             stopCheck = true;
@@ -76,7 +76,7 @@ public class BossAppear : MonoBehaviour
     {
         if (readyCheck)
         {
-            if(Input.anyKey==true)
+            if (Input.anyKey == true)
             {
                 readyCheck = false;
                 anyKeyText.text = string.Empty;
@@ -93,5 +93,5 @@ public class BossAppear : MonoBehaviour
     {
         GameManager.instance.SetStart(true);
     }
-   
+
 }

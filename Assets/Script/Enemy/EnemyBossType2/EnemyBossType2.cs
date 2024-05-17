@@ -333,9 +333,7 @@ public class EnemyBossType2 : Unit
     {
         GameObject bigBulletObj;
         bigBulletObj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.BigBullet, GameManager.instance.GetEnemyAttackObjectPatten);
-        bigBulletObj.GetComponent<BigBulletPatten>().Boss = this;
         bigBulletObj.transform.position = transform.position;
-        bigBulletObj.GetComponent<BigBulletPatten>().Operation();
         Vector3 player = playerTrs.transform.position - transform.position;
 
         bigBulletObj.transform.rotation = Quaternion.LookRotation(player);

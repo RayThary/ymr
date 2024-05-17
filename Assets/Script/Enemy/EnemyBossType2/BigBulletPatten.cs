@@ -4,27 +4,14 @@ using UnityEngine;
 
 public class BigBulletPatten : MonoBehaviour
 {
-    /// <summary> 큰총알을발사하는패턴 돌면서 4방향으로 총알을발사하는패턴
-    ///
-    /// </summary>
-
-
     [SerializeField] private float moveSpeed;
     [SerializeField] private float rotateSpeed;
 
-    private int bulletCount = 0;
-    private Launcher[] launcher;
-    private Coroutine operationCoroutine = null;
-
-    private bool spawnCheck = false;
-
-
-    [SerializeField] private Transform[] muzzles;
+    private SpriteRenderer spr;
     private Transform sprTrs;
-    [SerializeField] private Unit boss;
-    public Unit Boss { set => boss = value; }
 
-    public float rate;
+    [SerializeField] private float launchDelay = 1;
+    private float launchtimer = 0.0f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -36,7 +23,9 @@ public class BigBulletPatten : MonoBehaviour
 
     void Start()
     {
-       
+        spr = GetComponentInChildren<SpriteRenderer>();
+        sprTrs = spr.GetComponent<Transform>();
+
 
     }
 
@@ -44,6 +33,7 @@ public class BigBulletPatten : MonoBehaviour
     void Update()
     {
         bigBulletMove();
+        bigBulletlaunch();
     }
     private void bigBulletMove()
     {
@@ -51,40 +41,60 @@ public class BigBulletPatten : MonoBehaviour
         sprTrs.transform.Rotate(new Vector3(0, 0, -1) * rotateSpeed * Time.deltaTime);
     }
 
-    public void Operation()
+    private void bigBulletlaunch()
     {
-        SpriteRenderer spr = GetComponentInChildren<SpriteRenderer>();
-        sprTrs = spr.GetComponent<Transform>();
-
-        launcher = new Launcher[muzzles.Length];
-        for (int i = 0; i < muzzles.Length; i++)
+        launchtimer += Time.deltaTime;
+        if(launchtimer > launchDelay)
         {
-            launcher[i] = new Launcher(boss, sprTrs, muzzles[i], 0, rate, GameManager.instance.GetEnemyAttackObjectPatten);
-            launcher[i].BulletPool = PoolingManager.ePoolingObject.Type2RedBullet;
-
-        }
-        operationCoroutine = StartCoroutine(OperationCoroutine());
-    }
-
-    //작동 중지
-    public void OperationStop()
-    {
-        if (operationCoroutine != null)
-            StopCoroutine(operationCoroutine);
-    }
-
-    //자동 발사
-    private IEnumerator OperationCoroutine()
-    {
-        while (true)
-        {
-            for (int i = 0; i < launcher.Length; i++)
+            float z = sprTrs.eulerAngles.y;
+            
+            for (int i = 0; i < 4; i++)
             {
-                launcher[i].angle = muzzles[i].eulerAngles.y;
-                launcher[i].Fire();
-                
+                GameObject obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.Type2RedBullet, GameManager.instance.GetEnemyAttackObjectPatten);
+                obj.transform.rotation = Quaternion.Euler(0, z, 0);
+                obj.transform.position = transform.position;
+                z += 90;
             }
-            yield return new WaitForSeconds(0.5f);
-        }
+            launchtimer = 0;
+        } 
     }
+
+    #region
+    //public void Operation()
+    //{
+    //    SpriteRenderer spr = GetComponentInChildren<SpriteRenderer>();
+    //    sprTrs = spr.GetComponent<Transform>();
+
+    //    launcher = new Launcher[muzzles.Length];
+    //    for (int i = 0; i < muzzles.Length; i++)
+    //    {
+    //        launcher[i] = new Launcher(boss, sprTrs, muzzles[i], 0, rate, GameManager.instance.GetEnemyAttackObjectPatten);
+    //        launcher[i].BulletPool = PoolingManager.ePoolingObject.Type2RedBullet;
+
+    //    }
+    //    operationCoroutine = StartCoroutine(OperationCoroutine());
+    //}
+
+    ////작동 중지
+    //public void OperationStop()
+    //{
+    //    if (operationCoroutine != null)
+    //        StopCoroutine(operationCoroutine);
+    //}
+
+    ////자동 발사
+    //private IEnumerator OperationCoroutine()
+    //{
+    //    while (true)
+    //    {
+    //        for (int i = 0; i < launcher.Length; i++)
+    //        {
+    //            launcher[i].angle = muzzles[i].eulerAngles.y;
+    //            launcher[i].Fire();
+
+    //        }
+    //        yield return new WaitForSeconds(0.5f);
+    //    }
+    //}
+    #endregion
 }
