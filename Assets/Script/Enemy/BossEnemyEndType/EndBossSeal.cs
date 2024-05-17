@@ -36,6 +36,10 @@ public class EndBossSeal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (boss.STAT.HP <= 0)
+        {
+            return;
+        }
         attackPatten();
         sealRotation();
 
