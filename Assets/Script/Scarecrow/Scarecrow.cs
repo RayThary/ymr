@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Scarecrow : Unit
 {
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     new void Start()
@@ -24,5 +26,6 @@ public class Scarecrow : Unit
         {
             stat.RecoveryHP(stat.MAXHP, null);
         }
+        spriteRenderer.transform.localScale = new Vector3(stat.HP, 1, 1);
     }
 }
