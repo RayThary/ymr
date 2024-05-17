@@ -21089,11 +21089,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 23018044173033137, guid: 7bc9c3fa2e3146046b62348320b7c2f1, type: 3}
       propertyPath: travel
-      value: 0.15
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 23018044173033137, guid: 7bc9c3fa2e3146046b62348320b7c2f1, type: 3}
       propertyPath: spaceDis
-      value: 2.5
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 23018044173033137, guid: 7bc9c3fa2e3146046b62348320b7c2f1, type: 3}
       propertyPath: spacePre

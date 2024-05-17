@@ -318,12 +318,10 @@ public class ComponentFastCreator : IComponentController
     public void Install(Player player) 
     {
         player.MoveSpeed += 1;
-        Debug.Log("속도 증가");
     }
     public void Uninstall(Player player)
     {
         player.MoveSpeed -= 1;
-        Debug.Log("속도 감소");
     }
 }
 //
@@ -415,6 +413,10 @@ public class ComponentThornCreator : IComponentController
 
     public void Hit(Unit unit, ref float figure)
     {
+        //누군가 플레이어를 때려서 들어온거임
+        //근데 누군지 입력이 안들어오면 그냥 리턴
+        if(unit == null) return;
+        //누군지 들어왔다면 효과로 상대에게 대미지
         unit.Hit(_player, _damage);
     }
 
