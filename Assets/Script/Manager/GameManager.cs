@@ -210,6 +210,11 @@ public class GameManager : MonoBehaviour
 
     public void MainMenitScenesLoad()
     {
+        if (GetPlayer != null)
+        {
+            SceneManager.sceneLoaded -= GetPlayer.OnSceneLoaded;
+            Destroy(GetPlayer.gameObject);
+        }
         SceneManager.LoadScene("MainScene");
     }
 
@@ -221,7 +226,16 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        //NextStageStep 에서 선택한 씬을 다시 로드
+        //NextStageStep 에서 선택한 씬을 다시 로드 
+        //0이나 1인 경우 플레이어를 삭제 해야함
+        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            if(GetPlayer != null)
+            {
+                SceneManager.sceneLoaded -= GetPlayer.OnSceneLoaded;
+                Destroy(GetPlayer.gameObject);
+            }
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //플레이어의 스탯을 다시 로드
         player.STAT.Init();

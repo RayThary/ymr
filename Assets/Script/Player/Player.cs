@@ -110,15 +110,28 @@ public class Player : Unit
 
     private void CreatePlayerUI()
     {
-        spaceCanvas = FindObjectOfType<Canvas>();
-        spaceImage = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.RushCoolTimer, spaceCanvas.transform).GetComponent<Image>();
-        spaceImage.rectTransform.anchoredPosition = new Vector2(-100, 100);
-        PlayerHpUI playerHpUI = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.PlayerHpUI, spaceCanvas.transform).GetComponent<PlayerHpUI>();
-        playerHpUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(100, 100);
-        playerHpUI.Stat = stat;
+        if(spaceCanvas == null)
+        {
+            spaceCanvas = FindObjectOfType<Canvas>();
+        }
+
+        spaceImage = spaceCanvas.transform.Find("RushCoolTimer")?.GetComponent<Image>();
+        if (spaceImage == null)
+        {
+            spaceImage = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.RushCoolTimer, spaceCanvas.transform).GetComponent<Image>();
+            spaceImage.rectTransform.anchoredPosition = new Vector2(-100, 100);
+        }
+
+        PlayerHpUI playerHpUI = FindObjectOfType<PlayerHpUI>();
+        if(playerHpUI == null)
+        {
+            playerHpUI = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.PlayerHpUI, spaceCanvas.transform).GetComponent<PlayerHpUI>();
+            playerHpUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(100, 100);
+            playerHpUI.Stat = stat;
+        }
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         CreatePlayerUI();
         transform.position = new Vector3(14.5f, 0, 3);
