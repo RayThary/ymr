@@ -39,6 +39,10 @@ public class Player : Unit
     //플레이어가 움직일 수 있는지
     private bool canMove = true;
     public bool CanMove { get { return canMove; } set { canMove = value; } }
+
+    [SerializeField]
+    private bool inputKey = true;
+    public bool InputKey { get { return inputKey; } set {  inputKey = value; } }
     
     [SerializeField]
     //맞고 나서 무적시간
@@ -73,45 +77,61 @@ public class Player : Unit
 
     private void Update()
     {
-        moveVelocity = Vector3.zero;
-
-        //움직임을 계산
-        MoveCalculate();
-        //움직임에 당기는 힘을 계산
-        
-        pull?.Invoke();
-        
-        //움직임
-        Move();
-        MoveAnimation();
-
-        Vector3 look = Camera.main.WorldToScreenPoint(transform.position);
-        UnitLook(Input.mousePosition - look);
-
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(inputKey)
         {
-            Space(moveVelocity);
-        }
+            moveVelocity = Vector3.zero;
 
-        if (spaceTimer >= 0)
-        {
-            spaceTimer -= Time.deltaTime;
-            spaceImage.fillAmount = spaceTimer / spaceCooltime;
+            //움직임을 계산
+            MoveCalculate();
+            //움직임에 당기는 힘을 계산
+
+            pull?.Invoke();
+
+            //움직임
+            Move();
+            MoveAnimation();
+
+            Vector3 look = Camera.main.WorldToScreenPoint(transform.position);
+            UnitLook(Input.mousePosition - look);
+
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Space(moveVelocity);
+            }
+
+            if (spaceTimer >= 0)
+            {
+                spaceTimer -= Time.deltaTime;
+                spaceImage.fillAmount = spaceTimer / spaceCooltime;
+            }
         }
     }
 
     private void CreatePlayerUI()
     {
-        spaceCanvas = FindObjectOfType<Canvas>();
-        spaceImage = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.RushCoolTimer, spaceCanvas.transform).GetComponent<Image>();
-        spaceImage.rectTransform.anchoredPosition = new Vector2(-100, 100);
-        PlayerHpUI playerHpUI = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.PlayerHpUI, spaceCanvas.transform).GetComponent<PlayerHpUI>();
-        playerHpUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(100, 100);
-        playerHpUI.Stat = stat;
+        if(spaceCanvas == null)
+        {
+            spaceCanvas = FindObjectOfType<Canvas>();
+        }
+
+        spaceImage = spaceCanvas.transform.Find("RushCoolTimer")?.GetComponent<Image>();
+        if (spaceImage == null)
+        {
+            spaceImage = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.RushCoolTimer, spaceCanvas.transform).GetComponent<Image>();
+            spaceImage.rectTransform.anchoredPosition = new Vector2(-100, 100);
+        }
+
+        PlayerHpUI playerHpUI = FindObjectOfType<PlayerHpUI>();
+        if(playerHpUI == null)
+        {
+            playerHpUI = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.PlayerHpUI, spaceCanvas.transform).GetComponent<PlayerHpUI>();
+            playerHpUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(100, 100);
+            playerHpUI.Stat = stat;
+        }
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         CreatePlayerUI();
         transform.position = new Vector3(14.5f, 0, 3);

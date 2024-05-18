@@ -4000,6 +4000,7 @@ MonoBehaviour:
   spaceCooltime: 1
   spaceDis: 2.5
   travel: 0.1
+  inputKey: 1
   hit_invincibility: 1
 --- !u!114 &543539494286466918
 MonoBehaviour:
@@ -4013,7 +4014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fbb20733e52a75459faa1892d60048a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTestPlayer: 0
   muzzle: {fileID: 9168988903682186009}
   bow: {fileID: 3647343455650780053}
   wand: {fileID: 376045189595538398}

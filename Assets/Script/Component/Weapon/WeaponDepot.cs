@@ -5,8 +5,6 @@ using UnityEngine;
 //player라 생각하고 
 public class WeaponDepot : MonoBehaviour
 {
-    [SerializeField]
-    private bool isTestPlayer = false; //나중에 지워주세요
     private NewLauncher _launcher;
     public NewLauncher Launcher { get => _launcher; }
     [SerializeField]
@@ -31,24 +29,22 @@ public class WeaponDepot : MonoBehaviour
 
 
         //player.Hit(null, 10);
-
-        if (isTestPlayer)
-        {
-            EquipBow();
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        muzzle.eulerAngles = new Vector3(0, Direction_Calculation_Screen(Input.mousePosition), 0);
-        if(Input.GetMouseButton(0))
+        if (player.InputKey)
         {
-            _launcher.LeftDown();
-        }
-        else if(Input.GetMouseButtonUp(0))
-        {
-            _launcher.LeftUp();
+            muzzle.eulerAngles = new Vector3(0, Direction_Calculation_Screen(Input.mousePosition), 0);
+            if (Input.GetMouseButton(0))
+            {
+                _launcher.LeftDown();
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                _launcher.LeftUp();
+            }
         }
     }
 

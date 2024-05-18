@@ -20,7 +20,7 @@ public class MainUI : MonoBehaviour
     void Start()
     {
         m_btnParent = transform.Find("Button").gameObject;
-        m_optinWindow = transform.Find("OptionWindow").gameObject;
+        m_optinWindow = transform.Find("SoundWindow").gameObject;
 
         m_btnStart = m_btnParent.transform.Find("Start").GetComponent<Button>();
         m_btnOption = m_btnParent.transform.Find("Option").GetComponent<Button>();
