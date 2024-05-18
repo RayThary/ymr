@@ -22,6 +22,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip m_battleBackGroundClip;
     [SerializeField] private AudioClip m_mainBackGroundClip;
 
+    [SerializeField]private GameObject optionObj;
+
     //없어지면찾아주는거 설정해줄필요있음
     [SerializeField] private Slider MasterSoundSlider;
     [SerializeField] private Slider BackGroundSlider;
@@ -54,6 +56,12 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         m_backGroundSource = GetComponent<AudioSource>();
+        optionObj = GameObject.Find("Canvas");
+        Transform option = optionObj.transform.Find("SoundWindow");
+
+        MasterSoundSlider = option.Find("MasterSound").GetComponentInChildren<Slider>();
+        BackGroundSlider= option.Find("BackGroundSound").GetComponentInChildren<Slider>();
+        SFXSlider = option.Find("SFXSound").GetComponentInChildren<Slider>();
 
         StartCoroutine("bgStart");
 
@@ -69,6 +77,30 @@ public class SoundManager : MonoBehaviour
 
     private void Update()
     {
+        if (optionObj == null)
+        {
+            optionObj = GameObject.Find("Canvas");
+            if (optionObj == null)
+            {
+                Debug.LogError("캔버스가없음");
+            }
+
+            Transform option = optionObj.transform.Find("SoundWindow");
+
+            if (option == null)
+            {
+                Debug.LogError("SoundWindow");
+            }
+
+            MasterSoundSlider = option.Find("MasterSound").GetComponentInChildren<Slider>();
+            BackGroundSlider = option.Find("BackGroundSound").GetComponentInChildren<Slider>();
+            SFXSlider = option.Find("SFXSound").GetComponentInChildren<Slider>();
+
+            MasterSoundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("Master", Mathf.Log10(x) * 20); });//슬라이더연결
+            BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", Mathf.Log10(x) * 20); });//슬라이더연결
+            SFXSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("SFX", Mathf.Log10(x) * 20); });//슬라이더연결
+        }
+
         masterVolum = MasterSoundSlider.value;
         backVolum = BackGroundSlider.value;
         SFXVolum = SFXSlider.value;
