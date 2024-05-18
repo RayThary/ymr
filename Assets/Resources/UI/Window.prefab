@@ -1302,7 +1302,7 @@ GameObject:
   - component: {fileID: 3767354328634214055}
   - component: {fileID: 2694104441285493169}
   m_Layer: 5
-  m_Name: OptionWindow
+  m_Name: Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
