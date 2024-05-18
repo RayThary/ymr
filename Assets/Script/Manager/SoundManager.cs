@@ -10,7 +10,11 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    [SerializeField] private AudioSource m_masterSource;
+    public enum Clips
+    {
+        Arrow,
+    }
+
     [SerializeField] private AudioSource m_backGroundSource;
 
     [SerializeField] private AudioMixer m_mixer;
@@ -18,14 +22,18 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip m_battleBackGroundClip;
     [SerializeField] private AudioClip m_mainBackGroundClip;
 
-    [SerializeField] private Slider MasterSoundSlider;
-    [SerializeField] private Slider BackGroundSlider;
-    [SerializeField] private Slider SFXSlider;
+    private GameObject optionObj;
 
-    [SerializeField] private float masterVolum;
-    [SerializeField] private float backVolum;
-    [SerializeField] private float SFXVolum;
+    private Slider MasterSoundSlider;
+    private Slider BackGroundSlider;
+    private Slider SFXSlider;
 
+    private float masterVolum;
+    private float backVolum;
+    private float SFXVolum;
+
+
+    [SerializeField] private List<AudioClip> clips = new List<AudioClip>();
 
 
 
@@ -46,25 +54,13 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        m_masterSource = GetComponent<AudioSource>();
-
-        StartCoroutine("bgStart");
-
-
-
-        MasterSoundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("Master", Mathf.Log10(x) * 20); });//슬라이더연결
-        BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", Mathf.Log10(x) * 20); });//슬라이더연결
-        SFXSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("SFX", Mathf.Log10(x) * 20); });//슬라이더연결
-
-
-
-    }
-
-    private void Update()
-    {
-        masterVolum = MasterSoundSlider.value;
-        backVolum = BackGroundSlider.value;
-        SFXVolum = SFXSlider.value;
+        m_backGroundSource = GetComponent<AudioSource>();
+        masterVolum = 0.5f;
+        backVolum = 0.5f;
+        SFXVolum = 0.5f;
+        MasterSoundSlider.value = masterVolum;
+        BackGroundSlider.value = backVolum;
+        SFXSlider.value = SFXVolum;
     }
 
 
@@ -77,7 +73,7 @@ public class SoundManager : MonoBehaviour
             {
                 bgSoundPlay(m_mainBackGroundClip);
             }
-            
+
         }
         else
         {
@@ -93,32 +89,76 @@ public class SoundManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         StartCoroutine(bgStart());
+        if (optionObj == null)
+        {
+            optionObj = GameObject.Find("Canvas");
+            if (optionObj == null)
+            {
+                Debug.LogError("캔버스가없음");
+            }
+            Transform option;
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                option = optionObj.transform.Find("SoundWindow");
+            }
+            else
+            {
+                Transform optionParent = optionObj.transform.Find("OptionWindow");
+                option = optionParent.transform.Find("SoundWindow");
+            }
+
+
+            MasterSoundSlider = option.Find("MasterSound").GetComponentInChildren<Slider>();
+            BackGroundSlider = option.Find("BackGroundSound").GetComponentInChildren<Slider>();
+            SFXSlider = option.Find("SFXSound").GetComponentInChildren<Slider>();
+            
+            
+
+            MasterSoundSlider.onValueChanged.AddListener(x => m_mixer.SetFloat("Master", Mathf.Log10(x) * 20));//슬라이더연결
+            MasterSoundSlider.onValueChanged.AddListener((x) => { masterVolum = x; });
+            BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", Mathf.Log10(x) * 20); });//슬라이더연결
+            BackGroundSlider.onValueChanged.AddListener((x) => { backVolum = x; });
+            SFXSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("SFX", Mathf.Log10(x) * 20); });//슬라이더연결
+            SFXSlider.onValueChanged.AddListener((x) => { SFXVolum = x; });
+        }
+
+        MasterSoundSlider.value = masterVolum;
+        BackGroundSlider.value = backVolum;
+        SFXSlider.value = SFXVolum;
+
     }
 
+   
+    
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
-
 
     /// <summary>
     /// 외부에서 불러서 clip 을 넣어서 사용하면된다. 
     /// </summary>
     /// <param name="clip">사용될 소리</param>
     /// <param name="_volum">소리의 크기</param>
-    public void SFXPlay(AudioClip clip, float _volum)
+    public void SFXCreate(Clips _clip, float _volum)
+    {
+        AudioClip clip = clips.Find(x => x.name == _clip.ToString());
+
+        SFXPlay(clip, _volum);
+    }
+
+    private void SFXPlay(AudioClip clip, float _volum)
     {
         StartCoroutine(SFXPlaying(clip, _volum));
     }
 
     IEnumerator SFXPlaying(AudioClip clip, float _volum)
     {
-        GameObject SFXSource = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.SFXAuiodSource, GameManager.instance.GetSFXParent);
+        GameObject SFXSource = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.SFXSource, GameManager.instance.GetSFXParent);
 
         AudioSource m_sfxaudiosource = SFXSource.GetComponent<AudioSource>();
 
-        m_sfxaudiosource.outputAudioMixerGroup = m_mixer.FindMatchingGroups("sfx")[0];
+        m_sfxaudiosource.outputAudioMixerGroup = m_mixer.FindMatchingGroups("SFX")[0];
         m_sfxaudiosource.clip = clip;
         m_sfxaudiosource.loop = false;
         m_sfxaudiosource.volume = _volum;
@@ -141,4 +181,12 @@ public class SoundManager : MonoBehaviour
     {
         m_backGroundSource.Pause();
     }
+
+    public void soundrVolums(float _master, float _backGround, float _SFX)
+    {
+        _master = masterVolum;
+        _backGround = backVolum;
+        _SFX = SFXVolum;
+    }
+
 }

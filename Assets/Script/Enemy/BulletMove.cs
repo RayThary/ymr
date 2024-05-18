@@ -11,7 +11,7 @@ public class BulletMove : MonoBehaviour
     [SerializeField] private float Damge = 2;
     [SerializeField] private float Speed;
 
-    private Player player;
+    [SerializeField]private Player player;
 
 
     private void OnTriggerEnter(Collider other)

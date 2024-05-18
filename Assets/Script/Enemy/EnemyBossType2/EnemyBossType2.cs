@@ -200,9 +200,8 @@ public class EnemyBossType2 : Unit
                     basicAttackTime = 3;
                 }
             }
-
-
         }
+
         else
         {
             if (dis < 3)
@@ -279,9 +278,6 @@ public class EnemyBossType2 : Unit
         Vector3 basicPos = new Vector3(14.5f, 0, 14.5f);
         Vector3 size = meteorBoxSize;
 
-
-
-
         int count = 0;
         float posX = basicPos.x + Random.Range(-size.x / 2, size.x / 2);
         float posZ = basicPos.x + Random.Range(-size.z / 2, size.z / 2);
@@ -333,9 +329,7 @@ public class EnemyBossType2 : Unit
     {
         GameObject bigBulletObj;
         bigBulletObj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.BigBullet, GameManager.instance.GetEnemyAttackObjectPatten);
-        bigBulletObj.GetComponent<BigBulletPatten>().Boss = this;
         bigBulletObj.transform.position = transform.position;
-        bigBulletObj.GetComponent<BigBulletPatten>().Operation();
         Vector3 player = playerTrs.transform.position - transform.position;
 
         bigBulletObj.transform.rotation = Quaternion.LookRotation(player);
