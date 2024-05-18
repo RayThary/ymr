@@ -42,10 +42,14 @@ public class OptionWindow : MonoBehaviour
     public void Again()
     {
         GameManager.instance.RestartGame();
+        GameManager.instance.GamePlay();
+        GameManager.instance.GetPlayer.InputKey = true;
     }
     public void MainMenu()
     {
-        GameManager.instance.MainMenitScenesLoad();
+        GameManager.instance.MainMenitScenesLoad(); 
+        GameManager.instance.GamePlay();
+        GameManager.instance.GetPlayer.InputKey = true;
     }
     public void Sound()
     {
