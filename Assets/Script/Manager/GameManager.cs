@@ -195,10 +195,23 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDead()
     {
-        Time.timeScale = 0;
+        GameStop();
         playerDeadButton.SetActive(true);
     }
 
+    public void GameStop()
+    {
+        Time.timeScale = 0;
+    }
+    public void GamePlay()
+    {
+        Time.timeScale = 1;
+    }
+
+    public void MainMenitScenesLoad()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
 
     public void ExitGame()
     {
@@ -209,7 +222,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         //NextStageStep 에서 선택한 씬을 다시 로드
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //플레이어의 스탯을 다시 로드
         player.STAT.Init();
     }
