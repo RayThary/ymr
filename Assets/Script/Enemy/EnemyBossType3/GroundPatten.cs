@@ -68,7 +68,6 @@ public class GroundPatten : MonoBehaviour
     {
         nowMapCheck();
         groundPatten();
-
     }
 
     private void nowMapCheck()
@@ -92,8 +91,10 @@ public class GroundPatten : MonoBehaviour
 
     private void groundPatten()
     {
+
         if (pattenStart)
         {
+            
             if (pattenName == PattenName.HorizontalAndVerticalPatten)
             {
                 if (Horizontal)
@@ -155,6 +156,7 @@ public class GroundPatten : MonoBehaviour
         while (true)
         {
             findText = $"{{{findNum},";
+    
             mapUnderTrs.AddRange(mapUnder.FindAll((x) => x.name.Contains(findText) == true));
             findNum += add;
             if (findNum > limitLine)
@@ -162,7 +164,7 @@ public class GroundPatten : MonoBehaviour
                 break;
             }
         }
-
+        
         for (int i = 0; i < mapUnderTrs.Count; i++)
         {
             GameObject obj;
@@ -227,6 +229,7 @@ public class GroundPatten : MonoBehaviour
             objTrs.Clear();
 
             objTrs = mapUnder.FindAll((x) => x.name.Contains($"{{{i},") == true);
+
             for (int j = 0; j < objTrs.Count; j++)
             {
                 obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectPatten);

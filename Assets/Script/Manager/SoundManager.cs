@@ -22,12 +22,11 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip m_battleBackGroundClip;
     [SerializeField] private AudioClip m_mainBackGroundClip;
 
-    [SerializeField]private GameObject optionObj;
+    private GameObject optionObj;
 
-    //없어지면찾아주는거 설정해줄필요있음
-    [SerializeField] private Slider MasterSoundSlider;
-    [SerializeField] private Slider BackGroundSlider;
-    [SerializeField] private Slider SFXSlider;
+    private Slider MasterSoundSlider;
+    private Slider BackGroundSlider;
+    private Slider SFXSlider;
 
     private float masterVolum;
     private float backVolum;
@@ -56,54 +55,12 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         m_backGroundSource = GetComponent<AudioSource>();
-        optionObj = GameObject.Find("Canvas");
-        Transform option = optionObj.transform.Find("SoundWindow");
-
-        MasterSoundSlider = option.Find("MasterSound").GetComponentInChildren<Slider>();
-        BackGroundSlider= option.Find("BackGroundSound").GetComponentInChildren<Slider>();
-        SFXSlider = option.Find("SFXSound").GetComponentInChildren<Slider>();
-
-        StartCoroutine("bgStart");
-
-
-
-        MasterSoundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("Master", Mathf.Log10(x) * 20); });//슬라이더연결
-        BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", Mathf.Log10(x) * 20); });//슬라이더연결
-        SFXSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("SFX", Mathf.Log10(x) * 20); });//슬라이더연결
-
-
-
-    }
-
-    private void Update()
-    {
-        if (optionObj == null)
-        {
-            optionObj = GameObject.Find("Canvas");
-            if (optionObj == null)
-            {
-                Debug.LogError("캔버스가없음");
-            }
-
-            Transform option = optionObj.transform.Find("SoundWindow");
-
-            if (option == null)
-            {
-                Debug.LogError("SoundWindow");
-            }
-
-            MasterSoundSlider = option.Find("MasterSound").GetComponentInChildren<Slider>();
-            BackGroundSlider = option.Find("BackGroundSound").GetComponentInChildren<Slider>();
-            SFXSlider = option.Find("SFXSound").GetComponentInChildren<Slider>();
-
-            MasterSoundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("Master", Mathf.Log10(x) * 20); });//슬라이더연결
-            BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", Mathf.Log10(x) * 20); });//슬라이더연결
-            SFXSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("SFX", Mathf.Log10(x) * 20); });//슬라이더연결
-        }
-
-        masterVolum = MasterSoundSlider.value;
-        backVolum = BackGroundSlider.value;
-        SFXVolum = SFXSlider.value;
+        masterVolum = 0.5f;
+        backVolum = 0.5f;
+        SFXVolum = 0.5f;
+        MasterSoundSlider.value = masterVolum;
+        BackGroundSlider.value = backVolum;
+        SFXSlider.value = SFXVolum;
     }
 
 
@@ -132,8 +89,47 @@ public class SoundManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         StartCoroutine(bgStart());
+        if (optionObj == null)
+        {
+            optionObj = GameObject.Find("Canvas");
+            if (optionObj == null)
+            {
+                Debug.LogError("캔버스가없음");
+            }
+            Transform option;
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                option = optionObj.transform.Find("SoundWindow");
+            }
+            else
+            {
+                Transform optionParent = optionObj.transform.Find("OptionWindow");
+                option = optionParent.transform.Find("SoundWindow");
+            }
+
+
+            MasterSoundSlider = option.Find("MasterSound").GetComponentInChildren<Slider>();
+            BackGroundSlider = option.Find("BackGroundSound").GetComponentInChildren<Slider>();
+            SFXSlider = option.Find("SFXSound").GetComponentInChildren<Slider>();
+            
+            
+
+            MasterSoundSlider.onValueChanged.AddListener(x => m_mixer.SetFloat("Master", Mathf.Log10(x) * 20));//슬라이더연결
+            MasterSoundSlider.onValueChanged.AddListener((x) => { masterVolum = x; });
+            BackGroundSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("BackGround", Mathf.Log10(x) * 20); });//슬라이더연결
+            BackGroundSlider.onValueChanged.AddListener((x) => { backVolum = x; });
+            SFXSlider.onValueChanged.AddListener((x) => { m_mixer.SetFloat("SFX", Mathf.Log10(x) * 20); });//슬라이더연결
+            SFXSlider.onValueChanged.AddListener((x) => { SFXVolum = x; });
+        }
+
+        MasterSoundSlider.value = masterVolum;
+        BackGroundSlider.value = backVolum;
+        SFXSlider.value = SFXVolum;
+
     }
 
+   
+    
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
