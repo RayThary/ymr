@@ -65,10 +65,6 @@ public class PoolingManager : MonoBehaviour
 
     [SerializeField] private List<cPoolingObject> m_listPoolingObj;
 
-    public enum soundPoolingClip
-    {
-
-    }
 
     //  오브젝트에 사운드클립을 박아넣고 모든클립은 재생끝났을때 자동리무브 해주는걸로 만들예정
 

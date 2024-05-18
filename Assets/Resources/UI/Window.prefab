@@ -1321,7 +1321,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 684959952535975204}
-  - {fileID: 1810722182048424360}
+  - {fileID: 7291401976784462113}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1343,7 +1343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backGround: {fileID: 3052656142004110852}
-  soundOption: {fileID: 5544429734555071129}
+  soundOption: {fileID: 3949954963376009004}
 --- !u!1 &8832846008168166989
 GameObject:
   m_ObjectHideFlags: 0
@@ -1644,13 +1644,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
---- !u!224 &1810722182048424360 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2284205527155027157, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
+--- !u!1 &3949954963376009004 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3477577109339431505, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
   m_PrefabInstance: {fileID: 473963076843310461}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5544429734555071129 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5359881278405558244, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
+--- !u!224 &7291401976784462113 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7179751140667698268, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
   m_PrefabInstance: {fileID: 473963076843310461}
   m_PrefabAsset: {fileID: 0}
