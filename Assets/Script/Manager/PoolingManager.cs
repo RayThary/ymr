@@ -51,7 +51,7 @@ public class PoolingManager : MonoBehaviour
         PlayerHpUI,
         CardSelectWindow,
         CardButton,
-        SFXAuiodSource,
+        SFXSource,
         NextStage,
     }
 

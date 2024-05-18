@@ -10,7 +10,11 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    [SerializeField] private AudioSource m_masterSource;
+    public enum Clips
+    {
+        Arrow,
+    }
+
     [SerializeField] private AudioSource m_backGroundSource;
 
     [SerializeField] private AudioMixer m_mixer;
@@ -18,14 +22,17 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip m_battleBackGroundClip;
     [SerializeField] private AudioClip m_mainBackGroundClip;
 
+    //없어지면찾아주는거 설정해줄필요있음
     [SerializeField] private Slider MasterSoundSlider;
     [SerializeField] private Slider BackGroundSlider;
     [SerializeField] private Slider SFXSlider;
 
-    [SerializeField] private float masterVolum;
-    [SerializeField] private float backVolum;
-    [SerializeField] private float SFXVolum;
+    private float masterVolum;
+    private float backVolum;
+    private float SFXVolum;
 
+
+    [SerializeField] private List<AudioClip> clips = new List<AudioClip>();
 
 
 
@@ -46,7 +53,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        m_masterSource = GetComponent<AudioSource>();
+        m_backGroundSource = GetComponent<AudioSource>();
 
         StartCoroutine("bgStart");
 
@@ -77,7 +84,7 @@ public class SoundManager : MonoBehaviour
             {
                 bgSoundPlay(m_mainBackGroundClip);
             }
-            
+
         }
         else
         {
@@ -100,25 +107,30 @@ public class SoundManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-
-
     /// <summary>
     /// 외부에서 불러서 clip 을 넣어서 사용하면된다. 
     /// </summary>
     /// <param name="clip">사용될 소리</param>
     /// <param name="_volum">소리의 크기</param>
-    public void SFXPlay(AudioClip clip, float _volum)
+    public void SFXCreate(Clips _clip, float _volum)
+    {
+        AudioClip clip = clips.Find(x => x.name == _clip.ToString());
+
+        SFXPlay(clip, _volum);
+    }
+
+    private void SFXPlay(AudioClip clip, float _volum)
     {
         StartCoroutine(SFXPlaying(clip, _volum));
     }
 
     IEnumerator SFXPlaying(AudioClip clip, float _volum)
     {
-        GameObject SFXSource = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.SFXAuiodSource, GameManager.instance.GetSFXParent);
+        GameObject SFXSource = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.SFXSource, GameManager.instance.GetSFXParent);
 
         AudioSource m_sfxaudiosource = SFXSource.GetComponent<AudioSource>();
 
-        m_sfxaudiosource.outputAudioMixerGroup = m_mixer.FindMatchingGroups("sfx")[0];
+        m_sfxaudiosource.outputAudioMixerGroup = m_mixer.FindMatchingGroups("SFX")[0];
         m_sfxaudiosource.clip = clip;
         m_sfxaudiosource.loop = false;
         m_sfxaudiosource.volume = _volum;
@@ -141,4 +153,12 @@ public class SoundManager : MonoBehaviour
     {
         m_backGroundSource.Pause();
     }
+
+    public void soundrVolums(float _master, float _backGround, float _SFX)
+    {
+        _master = masterVolum;
+        _backGround = backVolum;
+        _SFX = SFXVolum;
+    }
+
 }
