@@ -57,31 +57,31 @@ public class CardManager : MonoBehaviour
     private void Start()
     {
         player = GameManager.instance.GetPlayer;
-        //publicCards.Add(new QuickAttackCard(player));
-        //publicCards.Add(new PenetrationCard(player));
-        //publicCards.Add(new MineCard(player));
-        //publicCards.Add(new DrainCard(player));
-        //publicCards.Add(new ExplosionCard(player));
-        //publicCards.Add(new GuidedCard(player));
-        //publicCards.Add(new PoisonCard(player));
-        //publicCards.Add(new FastCard(player));
-        //publicCards.Add(new HealthCard(player));
-        //publicCards.Add(new MoveCard(player));
-        //publicCards.Add(new CutCard(player));
+        publicCards.Add(new QuickAttackCard(player));
+        publicCards.Add(new PenetrationCard(player));
+        publicCards.Add(new MineCard(player));
+        publicCards.Add(new DrainCard(player));
+        publicCards.Add(new ExplosionCard(player));
+        publicCards.Add(new GuidedCard(player));
+        publicCards.Add(new PoisonCard(player));
+        publicCards.Add(new FastCard(player));
+        publicCards.Add(new HealthCard(player));
+        publicCards.Add(new MoveCard(player));
+        publicCards.Add(new CutCard(player));
         publicCards.Add(new ThornCard(player));
         publicCards.Add(new NaturalCard(player));
         publicCards.Add(new DashCard(player));
-        //publicCards.Add(new EnhanceCard(player));
-        //publicCards.Add(new MineMachineCard(player));
-        //publicCards.Add(new GunMachineCard(player));
-        //publicCards.Add(new FlameMachineCard(player));
-        //publicCards.Add(new DefenceMachineCard(player));
-        //publicCards.Add(new Evolution(player));
-        ////ÃÑ¸¸ °¡´ÉÇÒÁöµµ
-        //publicCards.Add(new ShotgunCard(player));
-        //publicCards.Add(new Quickly(player));
-        ////ÁöÆÎÀÌ
-        //publicCards.Add(new FireB(player));
+        publicCards.Add(new EnhanceCard(player));
+        publicCards.Add(new MineMachineCard(player));
+        publicCards.Add(new GunMachineCard(player));
+        publicCards.Add(new FlameMachineCard(player));
+        publicCards.Add(new DefenceMachineCard(player));
+        publicCards.Add(new Evolution(player));
+        //ÃÑ¸¸ °¡´ÉÇÒÁöµµ
+        publicCards.Add(new ShotgunCard(player));
+        publicCards.Add(new Quickly(player));
+        //ÁöÆÎÀÌ
+        publicCards.Add(new FireB(player));
     }
 
     public void ViewCards()

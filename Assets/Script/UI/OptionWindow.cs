@@ -29,6 +29,7 @@ public class OptionWindow : MonoBehaviour
             {
                 GameManager.instance.GamePlay();
                 GameManager.instance.GetPlayer.InputKey = true;
+                soundOption.gameObject.SetActive(false);
             }
         }
     }
