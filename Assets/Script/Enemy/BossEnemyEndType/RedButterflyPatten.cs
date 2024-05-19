@@ -8,7 +8,8 @@ public class RedButterflyPatten : MonoBehaviour
     //터지는시간
     [SerializeField] private float bombTime = 5;
     private float timer = 0;
-    [SerializeField]private bool bombCheck = false;
+    [SerializeField] private bool bombCheck = false;
+    private bool disBombCheck = false;
 
     private float bombtimer = 0;
 
@@ -19,13 +20,15 @@ public class RedButterflyPatten : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             bombCheck = true;
             timer = 0;
             StartCoroutine(crateButterfly());
             dangerzone.enabled = false;
             spr.enabled = false;
+
+
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Bullet"))
@@ -51,6 +54,7 @@ public class RedButterflyPatten : MonoBehaviour
     {
         butterflyMove();
         butterflyBomb();
+        butterflyDisBomb();
     }
 
     private void butterflyMove()
@@ -82,8 +86,28 @@ public class RedButterflyPatten : MonoBehaviour
             {
                 dangerzone.enabled = true;
             }
-            
+
         }
+
+    }
+
+    private void butterflyDisBomb()
+    {
+        if (disBombCheck == false)
+        {
+            float targetDis = Vector3.Distance(parentTrs.position, target.position);
+
+            if (targetDis < 0.1f)
+            {
+                bombCheck = true;
+                timer = 0;
+                StartCoroutine(crateButterfly());
+                spr.enabled = false;
+                dangerzone.enabled = false;
+                disBombCheck = true;
+            }
+        }
+
 
     }
 
@@ -101,12 +125,14 @@ public class RedButterflyPatten : MonoBehaviour
                 spr.enabled = false;
                 dangerzone.enabled = false;
             }
+
         }
+
     }
 
     IEnumerator crateButterfly()
     {
-        
+
         for (int i = 0; i < 10; i++)
         {
             yield return new WaitForSeconds(0.1f);
@@ -116,16 +142,17 @@ public class RedButterflyPatten : MonoBehaviour
             float rangeX = Random.Range(-0.5f, 0.5f);
             float rangeZ = Random.Range(-0.5f, 0.5f);
             Vector3 randomPos = new Vector3(rangeX, 0, rangeZ);
-            
+
             nowPos += randomPos;
             butterfly = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.RedButterflyBomb, GameManager.instance.GetenemyObjectBox);
             butterfly.transform.position = nowPos;
 
         }
         bombCheck = false;
+        disBombCheck = false;
         PoolingManager.Instance.RemovePoolingObject(transform.parent.gameObject);
         spr.enabled = true;
-        
+
     }
 
 }

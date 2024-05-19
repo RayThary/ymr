@@ -2215,19 +2215,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 249342231005134009, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.4994995
       objectReference: {fileID: 0}
     - target: {fileID: 249342231005134009, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 846696764229686297, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.4994995
       objectReference: {fileID: 0}
     - target: {fileID: 846696764229686297, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1941097323975430524, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2235,39 +2235,43 @@ PrefabInstance:
       objectReference: {fileID: 1300130677}
     - target: {fileID: 2281870327186808375, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.4994995
       objectReference: {fileID: 0}
     - target: {fileID: 2281870327186808375, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4162216309352071310, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
       propertyPath: m_Name
       value: SoundWindow
       objectReference: {fileID: 0}
+    - target: {fileID: 4162216309352071310, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6531614858907796857, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.4994995
       objectReference: {fileID: 0}
     - target: {fileID: 6531614858907796857, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6531614858907796857, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.4994995
       objectReference: {fileID: 0}
     - target: {fileID: 6756138018230545860, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.4994995
       objectReference: {fileID: 0}
     - target: {fileID: 6756138018230545860, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6756138018230545860, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.4994995
       objectReference: {fileID: 0}
     - target: {fileID: 7292265811431426867, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2275,15 +2279,15 @@ PrefabInstance:
       objectReference: {fileID: 1300130679}
     - target: {fileID: 8348289116394472942, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.4994995
       objectReference: {fileID: 0}
     - target: {fileID: 8348289116394472942, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8348289116394472942, guid: 5102d1950476e7e4a8475cf9bd6bc528, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.4994995
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
