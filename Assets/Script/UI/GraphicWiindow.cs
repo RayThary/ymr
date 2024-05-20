@@ -18,12 +18,6 @@ public class GraphicWiindow : MonoBehaviour
         InitUI();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void InitUI()
     {
         for(int i = 0; i < Screen.resolutions.Length; i++)
@@ -55,6 +49,7 @@ public class GraphicWiindow : MonoBehaviour
     public void DropdownValueChange(int _value)
     {
         value = _value;
+        Apply();
     }
 
     public void FullScreenBox(bool isFull)
@@ -62,7 +57,7 @@ public class GraphicWiindow : MonoBehaviour
         fullScreenMode = isFull ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed;
     }
 
-    public void OKButton()
+    private void Apply()
     {
         Screen.SetResolution(resolutions[value].width, resolutions[value].height, fullScreenMode);
     }

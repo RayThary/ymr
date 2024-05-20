@@ -8,6 +8,8 @@ public class OptionWindow : MonoBehaviour
     private GameObject backGround;
     [SerializeField]
     private GameObject soundOption;
+    [SerializeField]
+    private GameObject graphicOption;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,7 @@ public class OptionWindow : MonoBehaviour
                 GameManager.instance.GamePlay();
                 GameManager.instance.GetPlayer.InputKey = true;
                 soundOption.gameObject.SetActive(false);
+                graphicOption.gameObject.SetActive(false);
             }
         }
     }
@@ -54,7 +57,13 @@ public class OptionWindow : MonoBehaviour
     }
     public void Sound()
     {
+        backGround.gameObject.SetActive(false);
         soundOption.gameObject.SetActive(true);
+    }
+    public void Graphic()
+    {
+        backGround.gameObject.SetActive(false);
+        graphicOption.gameObject.SetActive(true);
     }
     public void Exit()
     {
