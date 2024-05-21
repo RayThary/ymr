@@ -1029,7 +1029,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 300}
-  m_SizeDelta: {x: 300, y: 100}
+  m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1065250335
 MonoBehaviour:
@@ -1051,7 +1051,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC784\uC2DC\uC81C\uBAA9"
+  m_text: "\uCC28\uC6D0 \uC804\uC0AC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f83a7d0ab7803d547abe4a02f6bf301d, type: 2}
   m_sharedMaterial: {fileID: -3230117763012805435, guid: f83a7d0ab7803d547abe4a02f6bf301d, type: 2}
@@ -1060,8 +1060,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294914304
+  m_fontColor: {r: 0, g: 0.19270587, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1503,7 +1503,7 @@ MonoBehaviour:
     count: 30
     description: "\uC77C\uBC18\uCD1D\uC54C(\uC801)"
   - obj: {fileID: 6656935941279637534, guid: 7005241f161324b42a9a517d7d809b3d, type: 3}
-    count: 2000
+    count: 3000
     description: "\uC62C\uB77C\uAC00\uB294\uB545"
   - obj: {fileID: 6578840334332229284, guid: 9639e47cfef22414bb64ad9c7719349a, type: 3}
     count: 2000
@@ -1560,26 +1560,17 @@ MonoBehaviour:
   - obj: {fileID: 5335465979247453477, guid: 7c087722d835210448dcfc4ceed43f63, type: 3}
     count: 20
     description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 217232333790303287, guid: a9f44a46e61e09a46afec0cae0de38c6, type: 3}
-    count: 20
-    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 5213563467867851606, guid: 4dc19a01673a9b74e8ee74f76d398704, type: 3}
-    count: 20
-    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
-  - obj: {fileID: 7224039625729902101, guid: b7146b1f37d3a2b4fb5b42ae1a790c8a, type: 3}
-    count: 20
-    description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
   - obj: {fileID: 148522354681840747, guid: f52147cf7d435df47ac582790c5915d6, type: 3}
-    count: 20
+    count: 3
     description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
   - obj: {fileID: 4402205830951940465, guid: 869c3f0ff777da142a255400d85d8907, type: 3}
-    count: 20
+    count: 3
     description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
   - obj: {fileID: 7887480724389914703, guid: cb70046f6a2b90d40b4b9a5a78c63166, type: 3}
-    count: 20
+    count: 3
     description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
   - obj: {fileID: 1881190412761143920, guid: 82e45cb129169804fb47854486ba6720, type: 3}
-    count: 20
+    count: 3
     description: "\uD3ED\uBC1C\uC804 \uC704\uCE58\uB97C \uC54C\uB824\uC8FC\uAE30\uC704\uD55C\uC624\uBE0C\uC81D\uD2B8\uC785\uB2C8\uB2E4."
   - obj: {fileID: 8106668794347856304, guid: 9157431aafe4e744fa133d0a389e77ce, type: 3}
     count: 10
@@ -1589,34 +1580,34 @@ MonoBehaviour:
     description: "* \uBAA8\uC591\uC73C\uB85C \uC870\uAE08\uC758\uB51C\uB808\uC774\uB97C
       \uC8FC\uC5B4\uC11C \uCD1D\uC54C\uC744\uBC1C\uC0AC\uD558\uB294 \uC624\uBE0C\uC81D\uD2B8"
   - obj: {fileID: 938011206624785263, guid: b60eaa6f09b912a4dbb1091412f2ff84, type: 3}
-    count: 10
+    count: 100
     description: "* \uBAA8\uC591\uC73C\uB85C \uC870\uAE08\uC758\uB51C\uB808\uC774\uB97C
       \uC8FC\uC5B4\uC11C \uCD1D\uC54C\uC744\uBC1C\uC0AC\uD558\uB294 \uC624\uBE0C\uC81D\uD2B8"
   - obj: {fileID: 1443800135365878629, guid: a72443df4153a1946856173fa6198aa8, type: 3}
-    count: 10
+    count: 100
     description: "* \uBAA8\uC591\uC73C\uB85C \uC870\uAE08\uC758\uB51C\uB808\uC774\uB97C
       \uC8FC\uC5B4\uC11C \uCD1D\uC54C\uC744\uBC1C\uC0AC\uD558\uB294 \uC624\uBE0C\uC81D\uD2B8"
   - obj: {fileID: 6009053421921428543, guid: 2435946b7ceb8e047a43bfb3e0c84242, type: 3}
     count: 20
     description: "\uD30C\uC774\uC5B4\uBCFC"
   - obj: {fileID: 4493129744902347110, guid: b6c673a20e5eea14d8fedadccfd321a5, type: 3}
-    count: 1
+    count: 2
     description: "\uD50C\uB808\uC774\uC5B4\uC758 \uB300\uC26C\uC758 \uCFE8\uD0C0\uC784\uC744
       \uD45C\uC2DC\uD574\uC90C"
   - obj: {fileID: 5515080439169409439, guid: aae666dc726f74949924415461e78a2d, type: 3}
     count: 1
     description: "\uD50C\uB808\uC774\uC5B4\uC758 \uCCB4\uB825\uC744 \uD45C\uC2DC\uD574\uC90C"
   - obj: {fileID: 3505574906619622956, guid: 19bcfbac6b439934b875cca71eec51cb, type: 3}
-    count: 1
+    count: 2
     description: "\uCE74\uB4DC \uACE0\uB97C\uB54C \uD654\uBA74\uC744 \uAC00\uB824\uC90C"
   - obj: {fileID: 3794285619436556216, guid: 40a79ad76d62331468d07c2e67c3c649, type: 3}
-    count: 3
+    count: 6
     description: "\uCE74\uB4DC \uACE0\uB974\uB294 \uBC84\uD2BC"
   - obj: {fileID: 442403443871150810, guid: ce9e7cd95b3923b44ad43217a7bc7b57, type: 3}
     count: 100
     description: "SFX\uC18C\uC2A4"
   - obj: {fileID: 3969537276031431214, guid: 7373d57ac1d320c4791469a0c48e8a05, type: 3}
-    count: 100
+    count: 5
     description: "SFX\uC18C\uC2A4"
   m_listSoundClip: []
 --- !u!4 &1784393811

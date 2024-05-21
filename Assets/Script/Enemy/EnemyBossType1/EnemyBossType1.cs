@@ -77,7 +77,7 @@ public class EnemyBossType1 : Unit
             Debug.LogError($"StageNumError , StageNum ={GameManager.instance.GetStageNum}");
         }
 
-       
+
 
         stat.SetHp(hp);
     }

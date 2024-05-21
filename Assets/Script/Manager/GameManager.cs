@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
 
     public bool CardSelect = false;
 
-    public Transform GetenemyObjectBox { get { return transform.GetChild(0); } }
 
     public GameObject playerDeadButton;
 

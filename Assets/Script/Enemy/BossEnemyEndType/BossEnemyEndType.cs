@@ -89,7 +89,7 @@ public class BossEnemyEndType : Unit
         cube.FindAll(x => x.Boss = this);
 
         BossUI.Instance.StatBoss = stat;
-        
+        Debug.Log(cube.Count);
         stat.SetHp(200);//보스hp
         
     }
@@ -326,6 +326,12 @@ public class BossEnemyEndType : Unit
             anim.SetTrigger("Die");
             PoolingManager.Instance.RemoveAllPoolingObject(GameManager.instance.GetEnemyAttackObjectPatten.gameObject);
             SoundManager.instance.bgSoundPause();
+
+            for(int i = 0; i < cube.Count; i++)
+            {
+                cube[i].gameObject.SetActive(false);
+            }
+
             //보스죽었을때 어떻게할지 생각해보고 여기다작성
             Debug.Log("끗");
         }
