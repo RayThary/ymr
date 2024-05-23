@@ -10,6 +10,8 @@ public class OptionWindow : MonoBehaviour
     private GameObject soundOption;
     [SerializeField]
     private GameObject graphicOption;
+    [SerializeField]
+    private GameObject howtoOption;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,27 @@ public class OptionWindow : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            backGround.SetActive(!backGround.activeSelf);
+            if(soundOption.activeSelf)
+            {
+                soundOption.SetActive(false);
+            }
+            else if(howtoOption.activeSelf)
+            {
+                howtoOption.SetActive(false);
+            }
+            else if(graphicOption.activeSelf)
+            {
+                graphicOption.SetActive(false);
+            }
+            else if (backGround.activeSelf)
+            {
+                backGround.SetActive(false);
+            }
+            else
+            {
+                backGround.SetActive(true);
+            }
+            
             if(backGround.activeSelf)
             {
                 GameManager.instance.GameStop();
@@ -31,8 +53,6 @@ public class OptionWindow : MonoBehaviour
             {
                 GameManager.instance.GamePlay();
                 GameManager.instance.GetPlayer.InputKey = true;
-                soundOption.gameObject.SetActive(false);
-                graphicOption.gameObject.SetActive(false);
             }
         }
     }
@@ -57,13 +77,27 @@ public class OptionWindow : MonoBehaviour
     }
     public void Sound()
     {
-        backGround.gameObject.SetActive(false);
         soundOption.gameObject.SetActive(true);
+    }
+    public void SoundClose()
+    {
+        soundOption.gameObject.SetActive(false);
     }
     public void Graphic()
     {
-        backGround.gameObject.SetActive(false);
         graphicOption.gameObject.SetActive(true);
+    }
+    public void GraphicClose()
+    {
+        graphicOption.gameObject.SetActive(false);
+    }
+    public void Howto()
+    {
+        howtoOption.gameObject.SetActive(true);
+    }
+    public void HowtoClose()
+    {
+        howtoOption.gameObject.SetActive(false);
     }
     public void Exit()
     {
