@@ -142,6 +142,10 @@ public class GameManager : MonoBehaviour
         //화면 다시 열어주고
         cardSelectWindow.rectTransform.sizeDelta = new Vector2(0, 0);
         //스테이지 중에 랜덤으로 하나 골라서 씬 로드
+        if(stageNum == 4)
+        {
+            SceneManager.LoadScene("EndScene");
+        }
         if (stageNum == 3)
         {
             //마지막 보스 스테이지 로드
