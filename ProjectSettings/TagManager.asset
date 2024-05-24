@@ -8,11 +8,12 @@ TagManager:
   - Unit
   - UpGround
   - UpGroundPush
+  - UIText
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - UIText
   - Water
   - UI
   - Tile
