@@ -280,7 +280,7 @@ public class PoolingManager : MonoBehaviour
             }
             else
             {
-                Destroy(_obj);
+                Destroy(trsObj.gameObject);
             }
         }
     }

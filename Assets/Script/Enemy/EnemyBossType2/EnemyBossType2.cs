@@ -201,7 +201,6 @@ public class EnemyBossType2 : Unit
                 }
             }
         }
-
         else
         {
             if (dis < 3)
