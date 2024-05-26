@@ -75,7 +75,7 @@ SphereCollider:
     m_Bits: 384
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 577
+    m_Bits: 65
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damge: 1
   Speed: 4
+  player: {fileID: 0}
 --- !u!1 &3963685619750967201
 GameObject:
   m_ObjectHideFlags: 0
