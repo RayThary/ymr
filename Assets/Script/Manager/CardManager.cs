@@ -58,7 +58,6 @@ public class CardManager : MonoBehaviour
     {
         player = GameManager.instance.GetPlayer;
         publicCards.Add(new QuickAttackCard(player));
-        publicCards.Add(new PenetrationCard(player));
         publicCards.Add(new MineCard(player));
         publicCards.Add(new DrainCard(player));
         publicCards.Add(new ExplosionCard(player));
@@ -66,7 +65,6 @@ public class CardManager : MonoBehaviour
         publicCards.Add(new PoisonCard(player));
         publicCards.Add(new FastCard(player));
         publicCards.Add(new HealthCard(player));
-        publicCards.Add(new MoveCard(player));
         publicCards.Add(new CutCard(player));
         publicCards.Add(new ThornCard(player));
         publicCards.Add(new NaturalCard(player));
@@ -157,25 +155,6 @@ public class QuickAttackCard : Card
         {
             user.GetComponent<WeaponDepot>().Launcher.AttackTypes[i].Rate = 0.1f;
         }
-    }
-}
-
-[System.Serializable]
-public class PenetrationCard : Card
-{
-    public PenetrationCard(Player player) : base(player)
-    {
-        exp = "공격이 대상에게 명중했을때 더이상 사라지지 않습니다.";
-        _name = "관통";
-        sprite = CardManager.CardSprite.Attack;
-    }
-    public override void Activation()
-    {
-        user.componentController.AddComponent(new ComponentPenetrationCreator());
-    }
-    public override void Deactivation()
-    {
-        user.componentController.RemoveComponent(new ComponentPenetrationCreator());
     }
 }
 
@@ -318,26 +297,6 @@ public class HealthCard : Card
     public override void Deactivation()
     {
         user.STAT.MAXHP = -10;
-    }
-}
-
-[System.Serializable]
-public class MoveCard : Card
-{
-    public MoveCard(Player player) : base(player)
-    {
-        exp = "공격이 상대를 향해 이동합니다.";
-        _name = "공격에 눈 달기";
-        sprite = CardManager.CardSprite.Attack;
-    }
-
-    public override void Activation()
-    {
-        user.componentController.AddComponent(new ComponentMoveCreator());
-    }
-    public override void Deactivation()
-    {
-        user.componentController.RemoveComponent(new ComponentMoveCreator());
     }
 }
 

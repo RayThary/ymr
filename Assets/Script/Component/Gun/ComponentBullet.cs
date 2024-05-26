@@ -43,9 +43,7 @@ public class ComponentBullet : ComponentObject
         Unit unit = other.GetComponent<Unit>();
         if (other.GetComponent<Player>() == _player)
             return;
-
-        bool destroy = true;
-
+        
         if(unit != null)
         {
             unit.Hit(_player, _player.STAT.AD);
@@ -55,24 +53,10 @@ public class ComponentBullet : ComponentObject
                 _player.componentController.CallKill(unit);
             }
         }
-        for (int i = 0; i < components.Count; i++)
-        {
-            if (!components[i].Destroy(other))
-            {
-                destroy = false;
-            }
-        }
 
-        if (destroy)
+        if (1 << other.gameObject.layer == LayerMask.GetMask("Enemy") || 1 << other.gameObject.layer == LayerMask.GetMask("Wall"))
         {
-            if (1 << other.gameObject.layer ==  LayerMask.GetMask("Enemy") || 1 << other.gameObject.layer == LayerMask.GetMask("Wall"))
-            {
-                for (int i = 0; i < components.Count; i++)
-                {
-                    components[i].Remove(this);
-                }
-                PoolingManager.Instance.RemovePoolingObject(gameObject);
-            }
+            PoolingManager.Instance.RemovePoolingObject(gameObject);
         }
     }
 }
