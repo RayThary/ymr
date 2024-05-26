@@ -190,23 +190,6 @@ public interface IComponentController
 }
 
 
-//총알이 몬스터에게 맞아도 사라지지 않도록 함
-public class ComponentPenetrationCreator : IComponentController
-{
-    public void AddComponent(ComponentObject componentObject)
-    {
-        componentObject.AddComponent(new ComponentPenetration());
-    }
-
-    public void Attack(Unit unit) { }
-    public void DashEnd() { }
-    public void DashStart() { }
-    public void Fire() { }
-    public void Hit(Unit unit, ref float figure) { }
-    public void Kill(Unit unit) { }
-    public void Install(Player player) { }
-    public void Uninstall(Player player) { }    
-}
 //3번째 공격마다 몬스터에게 맞을때마다 지뢰가 설치됨
 public class ComponentMineCreator : IComponentController
 {
