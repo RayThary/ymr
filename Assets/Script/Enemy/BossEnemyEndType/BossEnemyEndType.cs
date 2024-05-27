@@ -333,7 +333,8 @@ public class BossEnemyEndType : Unit
             }
 
             //보스죽었을때 어떻게할지 생각해보고 여기다작성
-            Debug.Log("끗");
+            PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.NextStage, GameManager.instance.GetEnemyAttackObjectPatten);
+            
         }
     }
 
