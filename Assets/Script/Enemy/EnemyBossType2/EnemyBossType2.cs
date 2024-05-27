@@ -201,17 +201,15 @@ public class EnemyBossType2 : Unit
                 }
             }
         }
-
         else
         {
             if (dis < 3)
             {
                 basicAttackTime = 2;
             }
-            else
-            {
-                basicAttackTimer += Time.deltaTime;
-            }
+
+            basicAttackTimer += Time.deltaTime;
+
             if (basicAttackTimer >= basicAttackTime)
             {
                 basicAttackTimer = 0;

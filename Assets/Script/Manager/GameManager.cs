@@ -139,6 +139,7 @@ public class GameManager : MonoBehaviour
     //CardSelected 작동한 후에 실행
     public void NextStageStep()
     {
+        GameManager.instance.GetPlayer.InputKey = false;
         //화면 다시 열어주고
         cardSelectWindow.rectTransform.sizeDelta = new Vector2(0, 0);
         //스테이지 중에 랜덤으로 하나 골라서 씬 로드

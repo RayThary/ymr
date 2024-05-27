@@ -92,6 +92,7 @@ public class BossAppear : MonoBehaviour
     private void SetStartCheck()
     {
         GameManager.instance.SetStart(true);
+        GameManager.instance.GetPlayer.InputKey = true;
     }
 
 }

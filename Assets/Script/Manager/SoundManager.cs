@@ -88,6 +88,7 @@ public class SoundManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        //캔버스를 찾아주고 사운드 옵션을 설정한값을 다음씬에서도 적용해준다
         StartCoroutine(bgStart());
         if (optionObj == null)
         {
@@ -170,9 +171,11 @@ public class SoundManager : MonoBehaviour
 
     public void bgSoundPlay(AudioClip clip)
     {
+
         m_backGroundSource.outputAudioMixerGroup = m_mixer.FindMatchingGroups("BackGround")[0];
         m_backGroundSource.clip = clip;
         m_backGroundSource.loop = true;
+        m_backGroundSource.time = 0;
         m_backGroundSource.volume = 1f;
         m_backGroundSource.Play();
     }
