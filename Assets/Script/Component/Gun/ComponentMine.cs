@@ -15,12 +15,15 @@ public class ComponentMine : IComponentObject
 
     public void Enter(Collider other)
     {
-        if (other.GetComponent<Unit>() != null)
+        if (1 << other.gameObject.layer == LayerMask.GetMask("Enemy"))
         {
-            Mine mine = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.Mine, null).GetComponent<Mine>();
-            mine.transform.position = _parent.transform.position;
-            mine.Spawn(_parent.Player, _damage, _radius);
-        }
+            if (other.GetComponent<Unit>() != null)
+            {
+                Mine mine = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.Mine, null).GetComponent<Mine>();
+                mine.transform.position = _parent.transform.position;
+                mine.Spawn(_parent.Player, _damage, _radius);
+            }
+        } 
     }
 
     public void Fire(ComponentObject bullet)

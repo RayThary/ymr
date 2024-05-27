@@ -24,11 +24,14 @@ public class Mine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<Unit>() != null)
+        if (1 << other.gameObject.layer == LayerMask.GetMask("Enemy"))
         {
-            Explosion explosion = Instantiate(_explosion, transform.position, Quaternion.identity);
-            explosion.Operation(_radius, _damage, _unit);
-            gameObject.SetActive(false);
+            if (other.GetComponent<Unit>() != null)
+            {
+                Explosion explosion = Instantiate(_explosion, transform.position, Quaternion.identity);
+                explosion.Operation(_radius, _damage, _unit);
+                gameObject.SetActive(false);
+            }
         }
     }
 }
