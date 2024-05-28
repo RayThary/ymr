@@ -109,7 +109,7 @@ public class UpGround : MonoBehaviour
                     laserShotTimer += Time.deltaTime;
                     if (laserShotTimer >= laserShotTime && laserShotCheck == false)
                     {
-                        GameObject obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.LaserPatten, GameManager.instance.GetEnemyAttackObjectPatten);
+                        GameObject obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.LaserPatten, GameManager.instance.GetEnemyAttackObjectParent);
                         obj.transform.position = transform.position;
                         laserShotCheck = true;
                     }

@@ -50,7 +50,7 @@ public class BigBulletPatten : MonoBehaviour
             
             for (int i = 0; i < 4; i++)
             {
-                GameObject obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.Type2RedBullet, GameManager.instance.GetEnemyAttackObjectPatten);
+                GameObject obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.Type2RedBullet, GameManager.instance.GetEnemyAttackObjectParent);
                 obj.transform.rotation = Quaternion.Euler(0, z, 0);
                 obj.transform.position = transform.position;
                 z += 90;

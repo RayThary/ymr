@@ -14,9 +14,11 @@ public class GameManager : MonoBehaviour
     public Transform GetPlayerTransform { get { return player.transform; } }
 
     private Transform enemyAttackObj;
-    public Transform GetEnemyAttackObjectPatten { get { return enemyAttackObj; } }
+    public Transform GetEnemyAttackObjectParent { get { return enemyAttackObj; } }
 
     public Transform GetSFXParent { get { return transform.GetChild(1); } }
+
+    public Transform GetPlayerBulletParent { get { return transform.GetChild(2); } }
 
     public bool CardSelect = false;
 
@@ -160,6 +162,10 @@ public class GameManager : MonoBehaviour
         }
 
         //여기서 선택한 씬을 기록
+
+        //씬넘어갈때 플레이어 총알 부모의자식들 삭제
+        PoolingManager.Instance.RemoveAllPoolingObject(GetPlayerBulletParent.gameObject);
+
     }
 
     public Collider NearbyTrnasform(Collider[] list, Transform center)

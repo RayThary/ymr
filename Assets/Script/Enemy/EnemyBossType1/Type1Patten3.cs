@@ -42,7 +42,7 @@ public class Type1Patten3 : MonoBehaviour
         int angle = 0;
         for (int i = 0; i < 4; i++)
         {
-            blueBullet.Add(PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.BlueBullet, GameManager.instance.GetEnemyAttackObjectPatten));
+            blueBullet.Add(PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.BlueBullet, GameManager.instance.GetEnemyAttackObjectParent));
             blueBullet[i].transform.position = transform.position;
             blueBullet[i].transform.rotation = Quaternion.Euler(new Vector3(0, angle, 0));
             angle += 90;
@@ -52,7 +52,7 @@ public class Type1Patten3 : MonoBehaviour
         angle = 45;
         for (int j = 4; j < 8; j++)
         {
-            blueBullet.Add(PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.BlueBullet, GameManager.instance.GetEnemyAttackObjectPatten));
+            blueBullet.Add(PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.BlueBullet, GameManager.instance.GetEnemyAttackObjectParent));
             blueBullet[j].transform.position = transform.position;
             blueBullet[j].transform.rotation = Quaternion.Euler(new Vector3(0, angle, 0));
             angle += 90;

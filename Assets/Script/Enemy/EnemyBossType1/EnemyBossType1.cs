@@ -204,7 +204,7 @@ public class EnemyBossType1 : Unit
             }
             for (int i = 0; i < 2; i++)
             {
-                pullObject.Add(PoolingManager.Instance.CreateObject("PullObject", GameManager.instance.GetEnemyAttackObjectPatten));
+                pullObject.Add(PoolingManager.Instance.CreateObject("PullObject", GameManager.instance.GetEnemyAttackObjectParent));
                 if (i == 0)
                 {
                     pullObject[i].transform.position = targetVecX;
@@ -247,7 +247,7 @@ public class EnemyBossType1 : Unit
 
     private void enemyPatten3()
     {
-        GameObject obj = PoolingManager.Instance.CreateObject("Type1Patten3", GameManager.instance.GetEnemyAttackObjectPatten);
+        GameObject obj = PoolingManager.Instance.CreateObject("Type1Patten3", GameManager.instance.GetEnemyAttackObjectParent);
         Vector3 pos = attackTrs.position;
         pos.y = 0.1f;
 
@@ -263,7 +263,7 @@ public class EnemyBossType1 : Unit
     {
         if (pattenType == 4)
         {
-            attackRange = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.BossEndAttackRange, GameManager.instance.GetEnemyAttackObjectPatten);
+            attackRange = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.BossEndAttackRange, GameManager.instance.GetEnemyAttackObjectParent);
             attackRange.transform.position = transform.position;
             attackRange.GetComponent<MeleeAttackRange>().Boss = this;
             player.Pull(transform.parent.position, 1f, 3.2f);
@@ -317,7 +317,7 @@ public class EnemyBossType1 : Unit
             halfPattenTimer += Time.deltaTime;
             if (halfPattenTimer >= halfPattenTime)
             {
-                GameObject obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.CurveBulletPatten, GameManager.instance.GetEnemyAttackObjectPatten);
+                GameObject obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.CurveBulletPatten, GameManager.instance.GetEnemyAttackObjectParent);
                 obj.GetComponent<Type1HalfPatten>().SetHalfPatten();
                 halfPattenTime = Random.Range(2, 5);
                 halfPattenTimer = 0;
@@ -332,7 +332,7 @@ public class EnemyBossType1 : Unit
             deathCheck = true;
 
             animator.SetTrigger("Die");
-            PoolingManager.Instance.RemoveAllPoolingObject(GameManager.instance.GetEnemyAttackObjectPatten.gameObject);
+            PoolingManager.Instance.RemoveAllPoolingObject(GameManager.instance.GetEnemyAttackObjectParent.gameObject);
             SoundManager.instance.bgSoundPause();
             GameObject potal = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.NextStage, null);
             potal.transform.position = new Vector3(14.5f, 0, 14.5f);

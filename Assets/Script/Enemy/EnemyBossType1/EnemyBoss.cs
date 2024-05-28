@@ -139,7 +139,7 @@ public class EnemyBoss : Unit
 
                     }
 
-                    pullObject.Add(PoolingManager.Instance.CreateObject("PullObject", GameManager.instance.GetEnemyAttackObjectPatten));
+                    pullObject.Add(PoolingManager.Instance.CreateObject("PullObject", GameManager.instance.GetEnemyAttackObjectParent));
                     pullObject[i].transform.position = targetVec;
                     pullObject[i].GetComponent<PullObject>().RemoveObject(5);
 

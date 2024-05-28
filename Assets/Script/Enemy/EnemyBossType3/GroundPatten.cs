@@ -168,7 +168,7 @@ public class GroundPatten : MonoBehaviour
         for (int i = 0; i < mapUnderTrs.Count; i++)
         {
             GameObject obj;
-            obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectPatten);
+            obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectParent);
 
             Vector3 objVec = mapUnderTrs[i].transform.position;
             objVec.y = -1.1f;
@@ -204,7 +204,7 @@ public class GroundPatten : MonoBehaviour
         {
             GameObject obj;
 
-            obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectPatten);
+            obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectParent);
 
             Vector3 objVec = mapUnderTrs[i].transform.position;
             objVec.y = -1.1f;
@@ -232,7 +232,7 @@ public class GroundPatten : MonoBehaviour
 
             for (int j = 0; j < objTrs.Count; j++)
             {
-                obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectPatten);
+                obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectParent);
                 Vector3 objVec = objTrs[j].transform.position;
                 objVec.y = -1.1f;
                 obj.transform.position = objVec;
@@ -258,7 +258,7 @@ public class GroundPatten : MonoBehaviour
             objTrs = mapUnder.FindAll((x) => x.name.Contains($"{{{i},") == true);
             for (int j = 0; j < objTrs.Count; j++)
             {
-                obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectPatten);
+                obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectParent);
                 Vector3 objVec = objTrs[j].transform.position;
                 objVec.y = -1.1f;
                 obj.transform.position = objVec;
@@ -285,7 +285,7 @@ public class GroundPatten : MonoBehaviour
             objTrs = mapUnder.FindAll((x) => x.name.Contains($",{i}}}") == true);
             for (int j = 0; j < objTrs.Count; j++)
             {
-                obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectPatten);
+                obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectParent);
                 Vector3 objVec = objTrs[j].transform.position;
                 objVec.y = -1.1f;
                 obj.transform.position = objVec;
@@ -314,7 +314,7 @@ public class GroundPatten : MonoBehaviour
             
             for (int j = 0; j < objTrs.Count; j++)
             {
-                obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectPatten);
+                obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectParent);
                 Vector3 objVec = objTrs[j].transform.position;
                 objVec.y = -1.1f;
                 obj.transform.position = objVec;
@@ -434,7 +434,7 @@ public class GroundPatten : MonoBehaviour
 
         for (int i = 0; i < spawnTrs.Count; i++)
         {
-            GameObject obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectPatten);
+            GameObject obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundPushObj, GameManager.instance.GetEnemyAttackObjectParent);
 
             //spawnTrs[i].y = -1.1f; 이거왜안되지 
 

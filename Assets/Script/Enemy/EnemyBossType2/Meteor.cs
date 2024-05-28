@@ -41,7 +41,7 @@ public class Meteor : MonoBehaviour
         shadow.transform.localScale = new Vector3(sXY, sXY, 0.1f);
         if (sXY <= 0.1f)
         {
-            meteor = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.MeteorObj, GameManager.instance.GetEnemyAttackObjectPatten);
+            meteor = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.MeteorObj, GameManager.instance.GetEnemyAttackObjectParent);
             meteor.transform.position = new Vector3(transform.position.x, 2, transform.position.z);
             meteor.GetComponent<MeteorMove>().Boss = boss;
             StartCoroutine(shodwFalse());

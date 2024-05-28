@@ -126,7 +126,7 @@ public class BossType3 : Unit
 
         if (basicAttackTimer >= basicAttackTime)
         {
-            GameObject obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundLaserObj, GameManager.instance.GetEnemyAttackObjectPatten);
+            GameObject obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundLaserObj, GameManager.instance.GetEnemyAttackObjectParent);
             obj.transform.position = playerTrs.position;
             UpGround upGround = obj.GetComponent<UpGround>();
             upGround.SetStopTime(true, 2);
@@ -271,7 +271,7 @@ public class BossType3 : Unit
             deathCheck = true;
 
             anim.SetTrigger("Die");
-            PoolingManager.Instance.RemoveAllPoolingObject(GameManager.instance.GetEnemyAttackObjectPatten.gameObject);
+            PoolingManager.Instance.RemoveAllPoolingObject(GameManager.instance.GetEnemyAttackObjectParent.gameObject);
 
             SoundManager.instance.bgSoundPause();
             GameObject potal = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.NextStage, null);

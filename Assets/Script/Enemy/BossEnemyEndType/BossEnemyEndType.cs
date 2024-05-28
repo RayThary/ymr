@@ -89,7 +89,7 @@ public class BossEnemyEndType : Unit
         cube.FindAll(x => x.Boss = this);
 
         BossUI.Instance.StatBoss = stat;
-        
+        Debug.Log(cube.Count);
         stat.SetHp(200);//보스hp
         
     }
@@ -219,7 +219,7 @@ public class BossEnemyEndType : Unit
         for (int i = 0; i < 12; i++)
         {
 
-            bullet.Add(PoolingManager.Instance.CreateObject("BlueBullet", GameManager.instance.GetEnemyAttackObjectPatten));
+            bullet.Add(PoolingManager.Instance.CreateObject("BlueBullet", GameManager.instance.GetEnemyAttackObjectParent));
             bullet[i].transform.position = transform.parent.position;
             bullet[i].GetComponent<BulletMove>().Boss = this;
             bullet[i].transform.rotation = Quaternion.Euler(new Vector3(0, y, 0));
@@ -324,10 +324,17 @@ public class BossEnemyEndType : Unit
             deathCheck = true;
 
             anim.SetTrigger("Die");
-            PoolingManager.Instance.RemoveAllPoolingObject(GameManager.instance.GetEnemyAttackObjectPatten.gameObject);
+            PoolingManager.Instance.RemoveAllPoolingObject(GameManager.instance.GetEnemyAttackObjectParent.gameObject);
             SoundManager.instance.bgSoundPause();
+
+            for(int i = 0; i < cube.Count; i++)
+            {
+                cube[i].gameObject.SetActive(false);
+            }
+
             //보스죽었을때 어떻게할지 생각해보고 여기다작성
-            Debug.Log("끗");
+            PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.NextStage, GameManager.instance.GetEnemyAttackObjectParent);
+            
         }
     }
 
