@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     public bool CardSelect = false;
 
+    public Transform GetenemyObjectBox { get { return transform.GetChild(0); } }
 
     public GameObject playerDeadButton;
 
@@ -141,7 +142,6 @@ public class GameManager : MonoBehaviour
     //CardSelected 작동한 후에 실행
     public void NextStageStep()
     {
-        GameManager.instance.GetPlayer.InputKey = false;
         //화면 다시 열어주고
         cardSelectWindow.rectTransform.sizeDelta = new Vector2(0, 0);
         //스테이지 중에 랜덤으로 하나 골라서 씬 로드
@@ -164,6 +164,7 @@ public class GameManager : MonoBehaviour
         //여기서 선택한 씬을 기록
 
         //씬넘어갈때 플레이어 총알 부모의자식들 삭제
+        Debug.Log(GetPlayerBulletParent.childCount);
         PoolingManager.Instance.RemoveAllPoolingObject(GetPlayerBulletParent.gameObject);
 
     }
