@@ -15,6 +15,11 @@ public class Mine : MonoBehaviour
         
     }
 
+    private void Update()
+    {
+        transform.Rotate(0, 30 * Time.deltaTime, 0);
+    }
+
     public void Spawn(Unit unit, float damage, float radius)
     {
         _unit = unit;
