@@ -73,7 +73,7 @@ public class BombingObject : MonoBehaviour
                 {
                     bombingStartPos += Vector3.left;
                 }
-                obj = PoolingManager.Instance.CreateObject("BlueBombing", GameManager.instance.GetEnemyAttackObjectPatten);
+                obj = PoolingManager.Instance.CreateObject("BlueBombing", GameManager.instance.GetEnemyAttackObjectParent);
                 obj.transform.position = bombingStartPos;
                 obj.GetComponent<Bombing>().SetSpawnCheck();
                 yield return new WaitForSeconds(bombingIntervalTimer);
@@ -93,7 +93,7 @@ public class BombingObject : MonoBehaviour
                 {
                     bombingStartPos += Vector3.forward;
                 }
-                obj = PoolingManager.Instance.CreateObject("BlueBombing", GameManager.instance.GetEnemyAttackObjectPatten);
+                obj = PoolingManager.Instance.CreateObject("BlueBombing", GameManager.instance.GetEnemyAttackObjectParent);
                 obj.transform.position = bombingStartPos;
                 obj.GetComponent<Bombing>().SetSpawnCheck();
                 yield return new WaitForSeconds(bombingIntervalTimer);
@@ -113,7 +113,7 @@ public class BombingObject : MonoBehaviour
                 {
                     bombingStartPos += new Vector3(-1, 0, +1);
                 }
-                obj = PoolingManager.Instance.CreateObject("BlueBombing", GameManager.instance.GetEnemyAttackObjectPatten);
+                obj = PoolingManager.Instance.CreateObject("BlueBombing", GameManager.instance.GetEnemyAttackObjectParent);
                 obj.transform.position = bombingStartPos;
                 obj.GetComponent<Bombing>().SetSpawnCheck();
                 yield return new WaitForSeconds(bombingIntervalTimer);
@@ -133,7 +133,7 @@ public class BombingObject : MonoBehaviour
                 {
                     bombingStartPos += new Vector3(-1, 0, -1);
                 }
-                obj = PoolingManager.Instance.CreateObject("BlueBombing", GameManager.instance.GetEnemyAttackObjectPatten);
+                obj = PoolingManager.Instance.CreateObject("BlueBombing", GameManager.instance.GetEnemyAttackObjectParent);
                 obj.transform.position = bombingStartPos;
                 obj.GetComponent<Bombing>().SetSpawnCheck();
 

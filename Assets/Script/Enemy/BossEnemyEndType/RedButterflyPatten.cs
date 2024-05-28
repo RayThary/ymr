@@ -144,7 +144,7 @@ public class RedButterflyPatten : MonoBehaviour
             Vector3 randomPos = new Vector3(rangeX, 0, rangeZ);
 
             nowPos += randomPos;
-            butterfly = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.RedButterflyBomb, GameManager.instance.GetEnemyAttackObjectPatten);
+            butterfly = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.RedButterflyBomb, GameManager.instance.GetEnemyAttackObjectParent);
             butterfly.transform.position = nowPos;
 
         }

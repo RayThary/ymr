@@ -48,7 +48,7 @@ public class Type1HalfPatten : MonoBehaviour
             
             for (int i = 0; i < startTrsList.Count; i++)
             {
-                bulletObj.Add(PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.CurveBullet, GameManager.instance.GetEnemyAttackObjectPatten));
+                bulletObj.Add(PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.CurveBullet, GameManager.instance.GetEnemyAttackObjectParent));
                 bulletObj[i].transform.position = startTrsList[i];
                 bulletObj[i].GetComponentInChildren<TrailRenderer>().Clear();
             }

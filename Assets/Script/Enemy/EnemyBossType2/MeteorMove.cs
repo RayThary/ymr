@@ -36,7 +36,7 @@ public class MeteorMove : MonoBehaviour
             for (int i = 0; i < 4; i++)
             {
                 GameObject obj = null;
-                obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.EnemyBullet, GameManager.instance.GetEnemyAttackObjectPatten);
+                obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.EnemyBullet, GameManager.instance.GetEnemyAttackObjectParent);
                 obj.transform.position = new Vector3(transform.position.x, 0.1f, transform.position.z);
                 obj.transform.rotation = Quaternion.Euler(new Vector3(0, i * 90, 0));
 

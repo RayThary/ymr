@@ -102,7 +102,7 @@ public class EndBossSeal : MonoBehaviour
             if (pattenNum == 0)
             {
                 GameObject attackObj;
-                attackObj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.LaserPatten, GameManager.instance.GetEnemyAttackObjectPatten);
+                attackObj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.LaserPatten, GameManager.instance.GetEnemyAttackObjectParent);
                 attackObj.transform.position = transform.position;
                 basicAttackTimer = 0;
                 colorChange = false;
@@ -119,7 +119,7 @@ public class EndBossSeal : MonoBehaviour
                     Vector3 randomSpawnVec = playerTrs.position;
                     randomSpawnVec.x += rangeX;
                     randomSpawnVec.z += rnageZ;
-                    attackObj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundObj, GameManager.instance.GetEnemyAttackObjectPatten);
+                    attackObj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.UpGroundObj, GameManager.instance.GetEnemyAttackObjectParent);
                     DangerZone danger = attackObj.GetComponentInChildren<DangerZone>();
                     danger.SetTime(upGroundTime);
                     attackObj.transform.position = randomSpawnVec;
@@ -131,7 +131,7 @@ public class EndBossSeal : MonoBehaviour
             else if (pattenNum == 2)
             {
                 GameObject attackObj;
-                attackObj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.RedButterfly, GameManager.instance.GetEnemyAttackObjectPatten);
+                attackObj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.RedButterfly, GameManager.instance.GetEnemyAttackObjectParent);
                 attackObj.transform.position = transform.position;
                 basicAttackTimer = 0;
                 colorChange = false;

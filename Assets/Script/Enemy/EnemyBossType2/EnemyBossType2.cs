@@ -254,7 +254,7 @@ public class EnemyBossType2 : Unit
         for (int i = 0; i < 9; i++)
         {
             spawnPos = GetRandomPosition();
-            patten1ObjCheck = PoolingManager.Instance.CreateObject("Meteor", GameManager.instance.GetEnemyAttackObjectPatten);
+            patten1ObjCheck = PoolingManager.Instance.CreateObject("Meteor", GameManager.instance.GetEnemyAttackObjectParent);
             patten1ObjCheck.transform.position = spawnPos;
             patten1ObjCheck.GetComponent<Meteor>().Boss = this;
 
@@ -326,7 +326,7 @@ public class EnemyBossType2 : Unit
     IEnumerator bigBulletSpawn()
     {
         GameObject bigBulletObj;
-        bigBulletObj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.BigBullet, GameManager.instance.GetEnemyAttackObjectPatten);
+        bigBulletObj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.BigBullet, GameManager.instance.GetEnemyAttackObjectParent);
         bigBulletObj.transform.position = transform.position;
         Vector3 player = playerTrs.transform.position - transform.position;
 
@@ -391,7 +391,7 @@ public class EnemyBossType2 : Unit
         }
         if (stat.HP <= stat.MAXHP / 2)
         {
-            patten3ObjCheck = PoolingManager.Instance.CreateObject("WindMillPatten", GameManager.instance.GetEnemyAttackObjectPatten);
+            patten3ObjCheck = PoolingManager.Instance.CreateObject("WindMillPatten", GameManager.instance.GetEnemyAttackObjectParent);
             patten3Check = true;
             patten3ObjCheck.GetComponent<WindMillPattenUnit>().Boss = this;
         }
@@ -409,7 +409,7 @@ public class EnemyBossType2 : Unit
             patten2ObjCheck = null;
             patten3ObjCheck = null;
 
-            PoolingManager.Instance.RemoveAllPoolingObject(GameManager.instance.GetEnemyAttackObjectPatten.gameObject);
+            PoolingManager.Instance.RemoveAllPoolingObject(GameManager.instance.GetEnemyAttackObjectParent.gameObject);
 
             SoundManager.instance.bgSoundPause();
             GameObject potal = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.NextStage, null);
