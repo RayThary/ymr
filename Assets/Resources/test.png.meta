@@ -4885,7 +4885,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -4893,6 +4893,27 @@ TextureImporter:
       bones: []
       spriteID: c02b5d58bb3431d4ca90cab675d47975
       internalID: -704817604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: whiteStar
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 255
+        width: 32
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74f35a5cd84f2ae45a021d1492a91489
+      internalID: -1858225578
       vertices: []
       indices: 
       edges: []
@@ -5149,6 +5170,7 @@ TextureImporter:
       test_98: 1922050608
       test_99: -2110634808
       type3Shield: -2141625848
+      whiteStar: -1858225578
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
