@@ -76,6 +76,6 @@ public class FireBall : AttackType
 
     private ComponentBullet CreateBullet()
     {
-        return PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.FireBall, null).GetComponent<ComponentBullet>();
+        return PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.FireBall, GameManager.instance.GetPlayerBulletParent).GetComponent<ComponentBullet>();
     }
 }

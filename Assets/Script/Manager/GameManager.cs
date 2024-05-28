@@ -164,6 +164,7 @@ public class GameManager : MonoBehaviour
         //여기서 선택한 씬을 기록
 
         //씬넘어갈때 플레이어 총알 부모의자식들 삭제
+        Debug.Log(GetPlayerBulletParent.childCount);
         PoolingManager.Instance.RemoveAllPoolingObject(GetPlayerBulletParent.gameObject);
 
     }

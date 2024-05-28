@@ -31,6 +31,6 @@ public class Shot : AttackType
 
     private ComponentBullet CreateBullet()
     {
-        return PoolingManager.Instance.CreateObject(_poolingObject, null).GetComponent<ComponentBullet>();
+        return PoolingManager.Instance.CreateObject(_poolingObject, GameManager.instance.GetPlayerBulletParent).GetComponent<ComponentBullet>();
     }
 }

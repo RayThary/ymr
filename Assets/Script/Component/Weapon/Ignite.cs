@@ -31,6 +31,6 @@ public class Ignite : AttackType
 
     private ComponentFlame CreateBullet()
     {
-        return PoolingManager.Instance.CreateObject(_poolingObject, null).GetComponent<ComponentFlame>();
+        return PoolingManager.Instance.CreateObject(_poolingObject, GameManager.instance.GetPlayerBulletParent).GetComponent<ComponentFlame>();
     }
 }
