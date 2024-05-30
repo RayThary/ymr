@@ -46,8 +46,8 @@ public class BigBulletPatten : MonoBehaviour
         launchtimer += Time.deltaTime;
         if(launchtimer > launchDelay)
         {
-            float z = sprTrs.eulerAngles.y;
-            
+            float z = sprTrs.eulerAngles.z;
+
             for (int i = 0; i < 4; i++)
             {
                 GameObject obj = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.Type2RedBullet, GameManager.instance.GetEnemyAttackObjectParent);
