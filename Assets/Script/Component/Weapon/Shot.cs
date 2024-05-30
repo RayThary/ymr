@@ -24,6 +24,7 @@ public class Shot : AttackType
         _player.componentController.CallAddComponent(bullet);
 
         bullet.Fire(_player, _speed, _timer);
+        SoundManager.instance.SFXCreate(SoundManager.Clips.Arrow, 1, 0.2f);
         return true;
     }
 
