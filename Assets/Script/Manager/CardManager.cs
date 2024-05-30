@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CardManager : MonoBehaviour
@@ -129,7 +130,7 @@ public class CardManager : MonoBehaviour
                 view[i].transform.position = new Vector3(660 + (i * 300), 540, 0);
             }
         }
-        
+
         for (int i = 0; i < view.Length; i++)
         {
             view[i].Init(this);
@@ -426,15 +427,21 @@ public class MineMachineCard : Card
         {
             machine.Master = user;
             machine.transform.position = user.transform.position;
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
     }
     public override void Deactivation()
     {
         if (machine != null)
         {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
             machine.Master = null;
             PoolingManager.Instance.RemovePoolingObject(machine.gameObject);
         }
+    }
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        machine.transform.position = machine.Master.transform.position;
     }
 }
 
@@ -456,15 +463,21 @@ public class GunMachineCard : Card
         {
             machine.Master = user;
             machine.transform.position = user.transform.position;
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
     }
     public override void Deactivation()
     {
         if (machine != null)
         {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
             machine.Master = null;
             PoolingManager.Instance.RemovePoolingObject(machine.gameObject);
         }
+    }
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        machine.transform.position = machine.Master.transform.position;
     }
 }
 
@@ -486,15 +499,21 @@ public class FlameMachineCard : Card
         {
             machine.Master = user;
             machine.transform.position = user.transform.position;
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
     }
     public override void Deactivation()
     {
         if (machine != null)
         {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
             machine.Master = null;
             PoolingManager.Instance.RemovePoolingObject(machine.gameObject);
         }
+    }
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        machine.transform.position = machine.Master.transform.position;
     }
 }
 
@@ -516,15 +535,21 @@ public class DefenceMachineCard : Card
         {
             machine.Master = user;
             machine.transform.position = user.transform.position;
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
     }
     public override void Deactivation()
     {
         if (machine != null)
         {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
             machine.Master = null;
             PoolingManager.Instance.RemovePoolingObject(machine.gameObject);
         }
+    }
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        machine.transform.position = machine.Master.transform.position;
     }
 }
 [System.Serializable]

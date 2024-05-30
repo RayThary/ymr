@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public abstract class Pet : MonoBehaviour
 {
@@ -43,13 +44,13 @@ public abstract class Pet : MonoBehaviour
     void Update()
     {
         //플레이어를 따라가기
-        if(_follow)
+        if (_follow)
             Follow();
         //주위 적을 찾기
         if (_find)
             Find();
         //행동
-        if(_action)
+        if (_action)
             Action();
 
         _timer += Time.deltaTime;
@@ -58,7 +59,7 @@ public abstract class Pet : MonoBehaviour
     //주인 찾아가기
     public virtual void Follow()
     {
-        if(_master != null && Vector3.Distance(transform.position, _master.transform.position) > 0.5f)
+        if (_master != null && Vector3.Distance(transform.position, _master.transform.position) > 0.5f)
         {
             transform.position += (_master.transform.position - transform.position).normalized * Time.deltaTime * _speed;
         }
@@ -80,7 +81,7 @@ public abstract class Pet : MonoBehaviour
                 nearby = GameManager.instance.NearbyTrnasform(colliders.ToArray(), transform);
             }
         }
-        if(nearby != null)
+        if (nearby != null)
         {
             _target = nearby.GetComponent<Unit>();
         }

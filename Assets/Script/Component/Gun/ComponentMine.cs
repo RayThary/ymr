@@ -19,11 +19,11 @@ public class ComponentMine : IComponentObject
         {
             if (other.GetComponent<Unit>() != null)
             {
-                Mine mine = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.Mine, null).GetComponent<Mine>();
+                Mine mine = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.Mine, GameManager.instance.GetPlayerBulletParent).GetComponent<Mine>();
                 mine.transform.position = _parent.transform.position;
                 mine.Spawn(_parent.Player, _damage, _radius);
             }
-        } 
+        }
     }
 
     public void Fire(ComponentObject bullet)

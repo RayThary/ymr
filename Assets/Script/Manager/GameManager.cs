@@ -102,28 +102,35 @@ public class GameManager : MonoBehaviour
     //보스가 죽고 포탈에 들어가면 실행
     public void CardSelectStep()
     {
-        //근데 무기를 장착중인지 확인 해야함
-        WeaponDepot w = player.GetComponent<WeaponDepot>();
-        //장착하고 있는 무기의 갯수가 0개가 아니다!
-        if (w.Launcher.AttackTypes.Count != 0)
+        if (stageNum == 4)
         {
-            float width = Screen.width;
-            float height = Screen.height;
-            if (cardSelectWindow == null)
-            {
-                cardSelectWindow = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.CardSelectWindow, FindObjectOfType<Canvas>().transform).GetComponent<Image>();
-                cardSelectWindow.transform.position = new Vector3(width * 0.5f, height * 0.5f);
-                cardSelectWindow.transform.SetAsFirstSibling();
-            }
-
-            //화면 가려주고
-            cardSelectWindow.rectTransform.sizeDelta = new Vector2(width, height);
-            //카드 보여주고
-            CardSelect = true;
+            CardSelected();
         }
         else
         {
-            StartCoroutine(WaringText());
+            //근데 무기를 장착중인지 확인 해야함
+            WeaponDepot w = player.GetComponent<WeaponDepot>();
+            //장착하고 있는 무기의 갯수가 0개가 아니다!
+            if (w.Launcher.AttackTypes.Count != 0)
+            {
+                float width = Screen.width;
+                float height = Screen.height;
+                if (cardSelectWindow == null)
+                {
+                    cardSelectWindow = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.CardSelectWindow, FindObjectOfType<Canvas>().transform).GetComponent<Image>();
+                    cardSelectWindow.transform.position = new Vector3(width * 0.5f, height * 0.5f);
+                    cardSelectWindow.transform.SetAsFirstSibling();
+                }
+
+                //화면 가려주고
+                cardSelectWindow.rectTransform.sizeDelta = new Vector2(width, height);
+                //카드 보여주고
+                CardSelect = true;
+            }
+            else
+            {
+                StartCoroutine(WaringText());
+            }
         }
     }
     private IEnumerator WaringText()
@@ -136,20 +143,23 @@ public class GameManager : MonoBehaviour
     public void CardSelected()
     {
         NextStageStep();
-        cardSelectWindow.rectTransform.sizeDelta = new Vector2(0, 0);
+        if (cardSelectWindow != null)
+            cardSelectWindow.rectTransform.sizeDelta = new Vector2(0, 0);
     }
 
     //CardSelected 작동한 후에 실행
     public void NextStageStep()
     {
         //화면 다시 열어주고
-        cardSelectWindow.rectTransform.sizeDelta = new Vector2(0, 0);
+        if (cardSelectWindow != null)
+            cardSelectWindow.rectTransform.sizeDelta = new Vector2(0, 0);
         //스테이지 중에 랜덤으로 하나 골라서 씬 로드
-        if(stageNum == 4)
+        if (stageNum == 4)
         {
+            GetPlayer.InputKey = false;
             SceneManager.LoadScene("EndScene");
         }
-        if (stageNum == 3)
+        else if (stageNum == 3)
         {
             //마지막 보스 스테이지 로드
             SceneManager.LoadScene("Type" + "End" + "Stage");
@@ -223,9 +233,19 @@ public class GameManager : MonoBehaviour
         if (GetPlayer != null)
         {
             SceneManager.sceneLoaded -= GetPlayer.OnSceneLoaded;
+            for (int i = 0; i < cardManager.SelectCards.Count; i++)
+            {
+                cardManager.SelectCards[i].Deactivation();
+            }
+            cardManager.SelectCards.Clear();
             Destroy(GetPlayer.gameObject);
         }
         SceneManager.LoadScene("MainScene");
+
+        for (int i = 1; i < 3; i++)
+        {
+            stageList.Add(i);
+        }
     }
 
     public void ExitGame()
@@ -240,7 +260,7 @@ public class GameManager : MonoBehaviour
         //0이나 1인 경우 플레이어를 삭제 해야함
         if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 0)
         {
-            if(GetPlayer != null)
+            if (GetPlayer != null)
             {
                 SceneManager.sceneLoaded -= GetPlayer.OnSceneLoaded;
                 Destroy(GetPlayer.gameObject);

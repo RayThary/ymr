@@ -22,6 +22,6 @@ public class MineMachine : Pet
 
     public void CreateMine(out Mine mine)
     {
-        mine = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.Mine, null).GetComponent<Mine>();
+        mine = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.Mine, GameManager.instance.GetPlayerBulletParent).GetComponent<Mine>();
     }
 }
