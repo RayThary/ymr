@@ -5369,13 +5369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b320b5e07f4b91e41818f5a50b56540e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_btnParent: {fileID: 0}
-  m_btnStart: {fileID: 0}
-  m_btnOption: {fileID: 0}
-  m_btnOptionClose: {fileID: 0}
-  m_btnControlKey: {fileID: 0}
-  m_btnControlKeyClose: {fileID: 0}
-  m_btnEnd: {fileID: 0}
 --- !u!1 &630232190
 GameObject:
   m_ObjectHideFlags: 0
@@ -6795,6 +6788,12 @@ MonoBehaviour:
   m_mainBackGroundClip: {fileID: 8300000, guid: d4c3e022cdd22744cbf70202140eb33b, type: 3}
   clips:
   - {fileID: 8300000, guid: 7bbd327f6bf1eb44a8b9d5bf7bacd7d1, type: 3}
+  - {fileID: 8300000, guid: bc65fc1b4a8e99041bb9839d3b2de13f, type: 3}
+  - {fileID: 8300000, guid: e5d67209e7a16674188ca19ed450c943, type: 3}
+  - {fileID: 8300000, guid: 259547774f452664eae6b29b9e82fee0, type: 3}
+  - {fileID: 8300000, guid: 2963b8f0509f1b14091115871f3db100, type: 3}
+  - {fileID: 8300000, guid: 1b80d24bcc1cf8046a822090663391eb, type: 3}
+  - {fileID: 8300000, guid: 71c98e7f0eae2f74780795dd3f9c5ed5, type: 3}
 --- !u!4 &1300130680
 Transform:
   m_ObjectHideFlags: 0
