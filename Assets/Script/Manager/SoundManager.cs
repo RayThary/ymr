@@ -137,32 +137,34 @@ public class SoundManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 외부에서 불러서 clip 을 넣어서 사용하면된다. 
+    /// 내부 이넘을 통해서 사용할 클립을 선택, 볼륨 크기 , 사운드의 시작지점
     /// </summary>
-    /// <param name="clip">사용될 소리</param>
+    /// <param name="_clip">사용될 소리</param>
     /// <param name="_volum">소리의 크기</param>
-    public void SFXCreate(Clips _clip, float _volum)
+    /// <param name="_SFXTime">소리의 크기</param>
+    public void SFXCreate(Clips _clip, float _volum,float _SFXTime)
     {
         AudioClip clip = clips.Find(x => x.name == _clip.ToString());
-
-        SFXPlay(clip, _volum);
+        StartCoroutine(SFXPlaying(clip, _volum,_SFXTime));
+        //SFXPlay(clip, _volum);
     }
 
     private void SFXPlay(AudioClip clip, float _volum)
     {
-        StartCoroutine(SFXPlaying(clip, _volum));
+        //StartCoroutine(SFXPlaying(clip, _volum));
     }
 
-    IEnumerator SFXPlaying(AudioClip clip, float _volum)
+    IEnumerator SFXPlaying(AudioClip clip, float _volum,float _SFXTime)
     {
         GameObject SFXSource = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.SFXSource, GameManager.instance.GetSFXParent);
 
         AudioSource m_sfxaudiosource = SFXSource.GetComponent<AudioSource>();
-
+        
         m_sfxaudiosource.outputAudioMixerGroup = m_mixer.FindMatchingGroups("SFX")[0];
         m_sfxaudiosource.clip = clip;
         m_sfxaudiosource.loop = false;
         m_sfxaudiosource.volume = _volum;
+        m_sfxaudiosource.time = _SFXTime;
         m_sfxaudiosource.Play();
         yield return new WaitForSeconds(clip.length);
         PoolingManager.Instance.RemovePoolingObject(SFXSource);
