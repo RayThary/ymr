@@ -13,6 +13,12 @@ public class SoundManager : MonoBehaviour
     public enum Clips
     {
         Arrow,
+        PlayerDeathClip,
+        MagicClip,
+        FireballClip,
+        CardClip,
+        ButtonClip,
+        BossDeathClip,
     }
 
     [SerializeField] private AudioSource m_backGroundSource;

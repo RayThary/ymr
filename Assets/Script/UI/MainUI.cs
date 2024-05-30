@@ -7,14 +7,14 @@ using UnityEngine.UI;
 public class MainUI : MonoBehaviour
 {
 
-    [SerializeField] private GameObject m_btnParent;
+    private GameObject m_btnParent;
 
-    [SerializeField] private Button m_btnStart;
-    [SerializeField] private Button m_btnOption;
-    [SerializeField] private Button m_btnOptionClose;
-    [SerializeField] private Button m_btnControlKey;
-    [SerializeField] private Button m_btnControlKeyClose;
-    [SerializeField] private Button m_btnEnd;
+    private Button m_btnStart;
+    private Button m_btnOption;
+    private Button m_btnOptionClose;
+    private Button m_btnControlKey;
+    private Button m_btnControlKeyClose;
+    private Button m_btnEnd;
 
 
     private GameObject m_optinWindow;
@@ -56,6 +56,7 @@ public class MainUI : MonoBehaviour
     {
         if (m_optinWindow.activeSelf == false)
         {
+            SoundManager.instance.SFXCreate(SoundManager.Clips.ButtonClip, 1, 0);
             m_optinWindow.SetActive(true);
         }
     }
@@ -64,6 +65,7 @@ public class MainUI : MonoBehaviour
     {
         if (m_optinWindow.activeSelf == true)
         {
+            SoundManager.instance.SFXCreate(SoundManager.Clips.ButtonClip, 1, 0);
             m_optinWindow.SetActive(false);
         }
     }
@@ -72,6 +74,7 @@ public class MainUI : MonoBehaviour
     {
         if (m_controlKeyWindow.activeSelf == false)
         {
+            SoundManager.instance.SFXCreate(SoundManager.Clips.ButtonClip, 1, 0);
             m_controlKeyWindow.SetActive(true);
         }
     }
@@ -80,12 +83,14 @@ public class MainUI : MonoBehaviour
     {
         if (m_controlKeyWindow.activeSelf == true)
         {
+            SoundManager.instance.SFXCreate(SoundManager.Clips.ButtonClip, 1, 0);
             m_controlKeyWindow.SetActive(false);
         }
     }
 
     private void btnEnd()
     {
+        SoundManager.instance.SFXCreate(SoundManager.Clips.ButtonClip, 1, 0);
         Application.Quit();
     }
 }
