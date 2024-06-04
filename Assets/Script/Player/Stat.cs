@@ -113,7 +113,6 @@ public class Stat : MonoBehaviour
     public void MinusHp(float figure)
     {
         hp -= figure;
-        Debug.Log($"{user.name}의 남은 체력 {hp}");
         if(nrhp == null && naturalHPing)
         {
             nrhp = StartCoroutine(Natural_Recovery_HP());

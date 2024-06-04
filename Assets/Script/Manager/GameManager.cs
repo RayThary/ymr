@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         //프레임 제한 최대 60
         Application.targetFrameRate = 60;//59 
 
-        for (int i = 1; i < 3; i++)
+        for (int i = 1; i <= 3; i++)
         {
             stageList.Add(i);
         }
@@ -171,10 +171,40 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Type" + stage + "Stage");
         }
 
+        if (player != null)
+        {
+            player.InputKey = false;
+        }
+        //보스이름 정해주는부분
+        setBossName();
+
         //여기서 선택한 씬을 기록
 
         //씬넘어갈때 플레이어 총알 부모의자식들 삭제
         PoolingManager.Instance.RemoveAllPoolingObject(GetPlayerBulletParent.gameObject);
+
+    }
+
+    private void setBossName()
+    {
+
+        if (SceneManager.sceneCount == 2)
+        {
+            bossName = "토끼 괴한";
+        }
+        else if (SceneManager.sceneCount == 3)
+        {
+            bossName = "갑옷 마법사";
+        }
+        else if (SceneManager.sceneCount == 4)
+        {
+            bossName = "갑옷 주술사";
+        }
+        else if (SceneManager.sceneCount == 5)
+        {
+            bossName = "암흑 기사";
+
+        }
 
     }
 
