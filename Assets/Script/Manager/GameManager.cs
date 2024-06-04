@@ -308,6 +308,7 @@ public class GameManager : MonoBehaviour
 
         GamePlay();
         player.InputKey = true;
+        stageNum--;
     }
 
 }

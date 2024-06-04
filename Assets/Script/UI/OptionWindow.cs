@@ -67,8 +67,6 @@ public class OptionWindow : MonoBehaviour
     public void Again()
     {
         GameManager.instance.RestartGame();
-        GameManager.instance.GamePlay();
-        GameManager.instance.GetPlayer.InputKey = true;
         SoundManager.instance.SFXCreate(SoundManager.Clips.ButtonClip, 1, 0);
     }
     public void MainMenu()

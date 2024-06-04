@@ -216,14 +216,19 @@ public class ComponentMineCreator : IComponentController
 public class ComponentDrainCreator : IComponentController
 {
     ComponentObject ComponentObject;
+    int count = 0;
     public void AddComponent(ComponentObject componentObject)
     {
         ComponentObject = componentObject;
     }
     public void Attack(Unit unit) 
     {
-        ComponentObject.Player.STAT.RecoveryHP(1, null);
-        Debug.Log("Attack으로 인한 회복");
+        count++;
+        if(count >= 3)
+        {
+            ComponentObject.Player.STAT.RecoveryHP(1, null);
+            count = 0;
+        }
     }
     public void DashEnd() { }
     public void DashStart() { }
