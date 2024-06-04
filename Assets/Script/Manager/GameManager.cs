@@ -175,8 +175,7 @@ public class GameManager : MonoBehaviour
         {
             player.InputKey = false;
         }
-        //보스이름 정해주는부분
-        setBossName();
+        
 
         //여기서 선택한 씬을 기록
 
@@ -185,7 +184,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void setBossName()
+    public string setBossName()
     {
 
         if (SceneManager.GetActiveScene().buildIndex == 2)
@@ -205,7 +204,7 @@ public class GameManager : MonoBehaviour
             bossName = "암흑 기사";
 
         }
-
+        return bossName;
     }
 
     public Collider NearbyTrnasform(Collider[] list, Transform center)

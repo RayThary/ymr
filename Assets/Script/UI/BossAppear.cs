@@ -33,7 +33,7 @@ public class BossAppear : MonoBehaviour
         GameManager.instance.SetStart(false);
         rectTrs = transform.GetChild(1).GetComponent<RectTransform>();
         bossName = rectTrs.GetComponentInChildren<TextMeshProUGUI>();
-        //bossName.text = (bossName.text == null ? "MisingEnemy" : GameManager.instance.BossName);
+        bossName.text = (bossName.text == null ? "MisingEnemy" : GameManager.instance.setBossName());
         bossImage = transform.GetChild(2).GetComponent<Image>();
 
         int bulidNum = SceneManager.GetActiveScene().buildIndex;
@@ -49,23 +49,6 @@ public class BossAppear : MonoBehaviour
         anyKeyText = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         anyKeyText.text = string.Empty;
 
-        if (SceneManager.GetActiveScene().buildIndex == 2)
-        {
-            bossName.text = "Åä³¢ ±«ÇÑ";
-        }
-        else if (SceneManager.GetActiveScene().buildIndex == 3)
-        {
-            bossName.text = "°©¿Ê ¸¶¹ý»ç";
-        }
-        else if (SceneManager.GetActiveScene().buildIndex == 4)
-        {
-            bossName.text = "°©¿Ê ÁÖ¼ú»ç";
-        }
-        else if (SceneManager.GetActiveScene().buildIndex == 5)
-        {
-            bossName.text = "¾ÏÈæ ±â»ç";
-
-        }
 
     }
 
