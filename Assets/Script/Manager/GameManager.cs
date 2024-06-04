@@ -246,6 +246,11 @@ public class GameManager : MonoBehaviour
     public void PlayerDead()
     {
         GameStop();
+        Transform ui = Instantiate(playerDeadButton, null).transform;
+        Button Exit = ui.GetChild(0).GetComponent<Button>();
+        Exit.onClick.AddListener(ExitGame);
+        Button restart = ui.GetChild(1).gameObject.GetComponent<Button>();
+        restart.onClick.AddListener(RestartGame);
         playerDeadButton.SetActive(true);
     }
 

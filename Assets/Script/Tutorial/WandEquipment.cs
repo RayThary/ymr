@@ -29,6 +29,7 @@ public class WandEquipment : MonoBehaviour
         {
             if (inside != null)
             {
+                SoundManager.instance.SFXCreate(SoundManager.Clips.CardClip, 1, 0);
                 inside.Disarming();
                 inside.EquipWand();
             }
