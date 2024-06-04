@@ -30,6 +30,6 @@ public class GunMachine : Pet
 
     public void CreateBullet(out ComponentBullet componentBullet)
     {
-        componentBullet = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.ComponuntBulle, null).GetComponent<ComponentBullet>();
+        componentBullet = PoolingManager.Instance.CreateObject(PoolingManager.ePoolingObject.ComponuntBulle, GameManager.instance.GetPlayerBulletParent).GetComponent<ComponentBullet>();
     }
 }

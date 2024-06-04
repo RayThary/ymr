@@ -43,17 +43,20 @@ public abstract class Pet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //플레이어를 따라가기
-        if (_follow)
-            Follow();
-        //주위 적을 찾기
-        if (_find)
-            Find();
-        //행동
-        if (_action)
-            Action();
+        if (_master.InputKey)
+        {
+            //플레이어를 따라가기
+            if (_follow)
+                Follow();
+            //주위 적을 찾기
+            if (_find)
+                Find();
+            //행동
+            if (_action)
+                Action();
 
-        _timer += Time.deltaTime;
+            _timer += Time.deltaTime;
+        }
     }
 
     //주인 찾아가기
