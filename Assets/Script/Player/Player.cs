@@ -212,7 +212,8 @@ public class Player : Unit
             {
                 //게임 다시시작
                 SoundManager.instance.SFXCreate(SoundManager.Clips.PlayerDeathClip, 1, 0);
-                GameManager.instance.PlayerDead();
+                animator.SetTrigger("Die");
+                StartCoroutine(RestartCoroutine());
                 return;
             }
             else
@@ -230,6 +231,12 @@ public class Player : Unit
                 spriteAlpha.isHit = true;
             }
         }
+    }
+
+    private IEnumerator RestartCoroutine()
+    {
+        yield return new WaitForSeconds(0.23f);
+        GameManager.instance.PlayerDead();
     }
 
     //플레이어가 어디를 보는지에 따라 좌우 반전
