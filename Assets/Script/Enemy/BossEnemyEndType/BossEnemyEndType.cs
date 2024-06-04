@@ -89,7 +89,6 @@ public class BossEnemyEndType : Unit
         cube.FindAll(x => x.Boss = this);
 
         BossUI.Instance.StatBoss = stat;
-        Debug.Log(cube.Count);
         stat.SetHp(200);//º¸½ºhp
         
     }

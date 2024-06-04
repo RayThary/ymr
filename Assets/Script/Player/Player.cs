@@ -211,6 +211,7 @@ public class Player : Unit
             if (stat.HP <= 0)
             {
                 //게임 다시시작
+                inputKey = false;
                 SoundManager.instance.SFXCreate(SoundManager.Clips.PlayerDeathClip, 1, 0);
                 animator.SetTrigger("Die");
                 StartCoroutine(RestartCoroutine());

@@ -245,7 +245,7 @@ public class GameManager : MonoBehaviour
     public void PlayerDead()
     {
         GameStop();
-        Transform ui = Instantiate(playerDeadButton, GetPlayerBulletParent).transform;
+        Transform ui = Instantiate(playerDeadButton, FindObjectOfType<Canvas>().transform).transform;
         Button Exit = ui.GetChild(0).GetComponent<Button>();
         Exit.onClick.AddListener(ExitGame);
         Button restart = ui.GetChild(1).gameObject.GetComponent<Button>();
@@ -303,6 +303,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //플레이어의 스탯을 다시 로드
         player.STAT.Init();
+
+        player.InputKey = true;
     }
 
 }
