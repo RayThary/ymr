@@ -302,11 +302,11 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        SceneManager.LoadScene("Ex");
         SceneManager.LoadScene(index);
         //플레이어의 스탯을 다시 로드
         player.STAT.Init();
 
+        GamePlay();
         player.InputKey = true;
     }
 
