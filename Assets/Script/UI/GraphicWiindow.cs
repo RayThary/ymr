@@ -55,10 +55,12 @@ public class GraphicWiindow : MonoBehaviour
     public void FullScreenBox(bool isFull)
     {
         fullScreenMode = isFull ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed;
+        SoundManager.instance.SFXCreate(SoundManager.Clips.ButtonClip, 1, 0);
     }
 
     private void Apply()
     {
         Screen.SetResolution(resolutions[value].width, resolutions[value].height, fullScreenMode);
+        SoundManager.instance.SFXCreate(SoundManager.Clips.ButtonClip, 1, 0);
     }
 }

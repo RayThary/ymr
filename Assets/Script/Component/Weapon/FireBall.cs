@@ -29,6 +29,8 @@ public class FireBall : AttackType
 
         _chargingTimer = 0;
         _player.componentController.CallFire();
+        SoundManager.instance.SFXCreate(SoundManager.Clips.FireballClip, 1, 0);
+
         return true;
     }
 

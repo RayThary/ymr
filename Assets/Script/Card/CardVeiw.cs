@@ -36,6 +36,7 @@ public class CardVeiw : MonoBehaviour , IPointerEnterHandler, IPointerExitHandle
     public void Select()
     {
         CardManager.Selected(_card);
+        SoundManager.instance.SFXCreate(SoundManager.Clips.CardClip, 1, 0);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
