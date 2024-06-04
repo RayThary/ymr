@@ -290,6 +290,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        int index = SceneManager.GetActiveScene().buildIndex;
         //NextStageStep 에서 선택한 씬을 다시 로드 
         //0이나 1인 경우 플레이어를 삭제 해야함
         if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 0)
@@ -300,7 +301,9 @@ public class GameManager : MonoBehaviour
                 Destroy(GetPlayer.gameObject);
             }
         }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        SceneManager.LoadScene("Ex");
+        SceneManager.LoadScene(index);
         //플레이어의 스탯을 다시 로드
         player.STAT.Init();
 
