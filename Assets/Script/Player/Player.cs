@@ -211,6 +211,7 @@ public class Player : Unit
             if (stat.HP <= 0)
             {
                 //게임 다시시작
+                SoundManager.instance.SFXCreate(SoundManager.Clips.PlayerDeathClip, 1, 0);
                 GameManager.instance.PlayerDead();
                 return;
             }
