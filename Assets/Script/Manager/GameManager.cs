@@ -188,19 +188,19 @@ public class GameManager : MonoBehaviour
     private void setBossName()
     {
 
-        if (SceneManager.sceneCount == 2)
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             bossName = "Åä³¢ ±«ÇÑ";
         }
-        else if (SceneManager.sceneCount == 3)
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             bossName = "°©¿Ê ¸¶¹ý»ç";
         }
-        else if (SceneManager.sceneCount == 4)
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
         {
             bossName = "°©¿Ê ÁÖ¼ú»ç";
         }
-        else if (SceneManager.sceneCount == 5)
+        else if (SceneManager.GetActiveScene().buildIndex == 5)
         {
             bossName = "¾ÏÈæ ±â»ç";
 

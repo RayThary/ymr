@@ -44,7 +44,7 @@ public class UpGround : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            player.Hit(null, 2);
+            player.Hit(null, 1);
         }
 
     }
