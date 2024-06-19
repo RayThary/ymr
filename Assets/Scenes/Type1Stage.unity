@@ -110293,6 +110293,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OptionWindow
       objectReference: {fileID: 0}
+    - target: {fileID: 8920153760663971607, guid: b3062647d53dba04aab572f66deb1807, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8060364490926942511, guid: fdef59268224f874ba6e8ee142aad8e4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
