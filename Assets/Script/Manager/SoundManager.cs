@@ -152,13 +152,8 @@ public class SoundManager : MonoBehaviour
     {
         AudioClip clip = clips.Find(x => x.name == _clip.ToString());
         StartCoroutine(SFXPlaying(clip, _volum,_SFXTime));
-        //SFXPlay(clip, _volum);
     }
 
-    private void SFXPlay(AudioClip clip, float _volum)
-    {
-        //StartCoroutine(SFXPlaying(clip, _volum));
-    }
 
     IEnumerator SFXPlaying(AudioClip clip, float _volum,float _SFXTime)
     {
